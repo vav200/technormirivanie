@@ -1,0 +1,51 @@
+.logo__box {
+  /* background-color: rgb(95, 95, 147); */
+  /* background-color: rgb(207, 207, 220); */
+  /* background-color: rgba(209, 209, 252, 0.145); */
+  border-bottom: 1px solid rgba(176, 181, 252, 0.383);
+  background-color: rgb(248, 248, 255);
+  height: 75px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: 0.5s top ease-in-out;
+  z-index: 15;
+}
+.logo__box_hide {
+  /* transform: translateY(-100%); */
+  top: -100%;
+}
+.header__dist {
+  height: 75px;
+}
+.logo__wrap {
+  max-width: 1440px;
+  margin: 0 auto;
+  height: 100%;
+}
+.logo__img {
+  width: 100%;
+  height: auto;
+  opacity: 0;
+}
+.titlelocation {
+  position: absolute;
+  /* top: 30px;
+  left: 40px; */
+  top: 50%;
+  transform: translateY(-50%);
+  left: 4px;
+  color: white;
+  z-index: 2;
+  max-width: 150px;
+  height: auto;
+  background: url(./img/logo.png) no-repeat center center;
+  background-size: cover;
+}
+
+@media screen and (max-width: 1440px) {
+  .titlelocation {
+    left: 24px;
+  }
+}
