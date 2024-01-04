@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+// --------------- растачивание -----------------
 function Boring(props) {
   let dispatch = useDispatch();
   let statenow = useSelector((dat) => dat.tokarnovintorezn);
@@ -122,7 +122,7 @@ function Boring(props) {
     } else setStateallowence("");
   }
 
-  function maxoverhang(ind) {
+  function maxoverhang(ind, e) {
     if (
       Object.keys(statenow.perehods[props.numpereh][1][ind]).includes("mandrel_section") &&
       statenow.perehods[props.numpereh][1][ind].mandrel_section
@@ -141,6 +141,10 @@ function Boring(props) {
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateoverhang", "", ind],
             });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "length", e.target.value, props.index],
+            });
           }
           break;
         case "16x16":
@@ -155,6 +159,10 @@ function Boring(props) {
             dispatch({
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateoverhang", "", ind],
+            });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "length", e.target.value, props.index],
             });
           }
           break;
@@ -171,6 +179,10 @@ function Boring(props) {
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateoverhang", "", ind],
             });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "length", e.target.value, props.index],
+            });
           }
           break;
         case "25x25":
@@ -185,6 +197,10 @@ function Boring(props) {
             dispatch({
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateoverhang", "", ind],
+            });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "length", e.target.value, props.index],
             });
           }
           break;
@@ -201,6 +217,10 @@ function Boring(props) {
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateoverhang", "", ind],
             });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "length", e.target.value, props.index],
+            });
           }
           break;
         case "40x40":
@@ -215,6 +235,10 @@ function Boring(props) {
             dispatch({
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateoverhang", "", ind],
+            });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "length", e.target.value, props.index],
             });
           }
           break;
@@ -231,6 +255,10 @@ function Boring(props) {
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateoverhang", "", ind],
             });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "length", e.target.value, props.index],
+            });
           }
           break;
         case "80x80":
@@ -245,6 +273,10 @@ function Boring(props) {
             dispatch({
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateoverhang", "", ind],
+            });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "length", e.target.value, props.index],
             });
           }
           break;
@@ -274,10 +306,74 @@ function Boring(props) {
     }
   }, [statenow.partmaterial]);
 
+  useEffect(() => {
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "diameter", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "length", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "accuracy", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "roghness", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "allowance", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "availability_SOG", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "typecuttingmaterial", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "cuttingmaterial", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "mainplanangle", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "mandrel_section", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "vertex_radius", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "crust", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "impact_treatment", "", props.index],
+    });
+  }, []);
+
   return (
     <>
       <div className="infoblock__item">
-        <div className="inpname">Характер обработки:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].charactertreatment
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Характер обработки:
+        </div>
         <div className={`radiobox d-inline-block `}>
           <div className={`form-check form-check-inline`}>
             <label className={`form-check-label`}>
@@ -350,7 +446,16 @@ function Boring(props) {
             : ""
         }`}
       >
-        <div className="inpname">Наличие корки:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].crust
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Наличие корки:
+        </div>
         <div className={`radiobox d-inline-block `}>
           <div className={`form-check form-check-inline`}>
             <label className={`form-check-label`}>
@@ -399,7 +504,16 @@ function Boring(props) {
             : ""
         }`}
       >
-        <div className="inpname">Обработка на удар:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].impact_treatment
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Обработка на удар:
+        </div>
         <div className={`radiobox d-inline-block `}>
           <div className={`form-check form-check-inline`}>
             <label className={`form-check-label`}>
@@ -441,7 +555,16 @@ function Boring(props) {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname">Применеие СОЖ:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].availability_SOG
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Применение СОЖ:
+        </div>
         <div className={`radiobox d-inline-block `}>
           <div className={`form-check form-check-inline`}>
             <label className={`form-check-label`}>
@@ -488,7 +611,16 @@ function Boring(props) {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname">Сечение державки:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].mandrel_section
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Сечение державки:
+        </div>
         <select
           className="selectbox"
           value={
@@ -501,6 +633,11 @@ function Boring(props) {
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "mandrel_section", e.target.value, props.index],
             });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "length", "", props.index],
+            });
+            setStateOverhang("");
             dispatch({ type: "CALCULATIONTIME_TOKARNOVINTOREZN" });
           }}
         >
@@ -524,7 +661,16 @@ function Boring(props) {
             : ""
         }`}
       >
-        <div className="inpname">- радиус вершины, мм:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].vertex_radius
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          - радиус вершины, мм:
+        </div>
         <div className={`radiobox d-inline-block `}>
           <div className={`form-check form-check-inline`}>
             <label className={`form-check-label`}>
@@ -602,7 +748,16 @@ function Boring(props) {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname">- материал:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].typecuttingmaterial
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          - материал:
+        </div>
         <div className={`radiobox d-inline-block `}>
           <div className="form-check">
             <label className={`form-check-label`}>
@@ -656,7 +811,16 @@ function Boring(props) {
           !statenow.perehods[props.numpereh][1][props.index].typecuttingmaterial ? "d-none" : ""
         }`}
       >
-        <div className="inpname">- марка материала:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].cuttingmaterial
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          - марка материала:
+        </div>
         <div className={`radiobox d-inline-block `}>
           <div
             className={`form-check ${
@@ -928,7 +1092,16 @@ function Boring(props) {
       </div>
 
       <div className={`infoblock__item `}>
-        <div className="inpname">- угол в плане:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].mainplanangle
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          - угол в плане:
+        </div>
         <div className={`radiobox d-inline-block `}>
           <div className="form-check">
             <label className={`form-check-label`}>
@@ -988,7 +1161,16 @@ function Boring(props) {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname">Диаметр обработки, мм:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].diameter
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Диаметр обработки, мм:
+        </div>
         <div className="d-inline-block">
           <input
             type="text"
@@ -1025,8 +1207,18 @@ function Boring(props) {
           </div>
         </div>
       </div>
+
       <div className="infoblock__item">
-        <div className="inpname">Длина обработки, мм:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].length
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Длина обработки, мм:
+        </div>
         <div className="d-inline-block">
           <input
             type="text"
@@ -1037,11 +1229,7 @@ function Boring(props) {
                 : ""
             }
             onChange={(e) => {
-              maxoverhang(props.index);
-              dispatch({
-                type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
-                data: [props.numpereh, "length", e.target.value, props.index],
-              });
+              maxoverhang(props.index, e);
               dispatch({ type: "CALCULATIONTIME_TOKARNOVINTOREZN" });
             }}
             ref={mandreloverhang}
@@ -1057,7 +1245,16 @@ function Boring(props) {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname">Квалитет точности:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].accuracy
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Квалитет точности:
+        </div>
         <select
           className="selectbox"
           value={
@@ -1128,7 +1325,16 @@ function Boring(props) {
             : ""
         }`}
       >
-        <div className="inpname">Шероховатость Ra, мм:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].roghness
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Шероховатость Ra, мм:
+        </div>
         <select
           className="selectbox"
           value={
@@ -1178,7 +1384,16 @@ function Boring(props) {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname">Припуск на сторону, мм:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].allowance
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Припуск на сторону, мм:
+        </div>
         <div className="d-inline-block">
           <input
             type="text"

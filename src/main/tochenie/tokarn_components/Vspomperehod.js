@@ -546,7 +546,16 @@ function Vspomperehod(props) {
   return (
     <>
       <div className="infoblock__item infoblock__item_top">
-        <div className="inpname">Вариант установки:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1] ||
+            !statenow.perehods[props.numpereh][1].installoption
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Вариант установки:
+        </div>
         <div className="radiobox d-inline-block">
           {/* -----самоцентрирующийся патрон------ */}
 
@@ -762,7 +771,15 @@ function Vspomperehod(props) {
             : ""
         }`}
       >
-        <div className="inpname">Тип заднего центра:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1] || !statenow.perehods[props.numpereh][1].typecentr
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Тип заднего центра:
+        </div>
         <div className="radiobox d-inline-block">
           <div className="form-check">
             <label className={`form-check-label`}>
@@ -817,7 +834,15 @@ function Vspomperehod(props) {
             : ""
         }`}
       >
-        <div className="inpname">Тип люнета:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1] || !statenow.perehods[props.numpereh][1].typelunet
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Тип люнета:
+        </div>
         <div className="radiobox d-inline-block">
           <div className="form-check">
             <label className={`form-check-label`}>
@@ -864,7 +889,16 @@ function Vspomperehod(props) {
       {/* ------------Точность------------------- */}
 
       <div className="infoblock__item">
-        <div className="inpname">Точность установки:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1] ||
+            !statenow.perehods[props.numpereh][1].positionaccuracy
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Точность установки:
+        </div>
         <div className="radiobox d-inline-block">
           <div className="form-check">
             <label

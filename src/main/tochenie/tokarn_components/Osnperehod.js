@@ -4,6 +4,9 @@ import Longturning from "./osnperehods/Longturning";
 import Boring from "./osnperehods/Boring";
 import External_pruning from "./osnperehods/External_pruning";
 import Internal_pruning from "./osnperehods/Internal_pruning";
+import External_grooving from "./osnperehods/External_grooving";
+import Internal_grooving from "./osnperehods/Internal_grooving";
+import Drilling from "./osnperehods/Drilling";
 
 function Osnperehod(props) {
   let dispatch = useDispatch();
@@ -24,7 +27,7 @@ function Osnperehod(props) {
     );
   });
 
-  function changetypetreatment(e) {
+  function changetypetreatment(e, ind) {
     if (e.target.value === "boring") {
       dispatch({
         type: "DATAVSPPEREHODA_TOKARNOVINTOREZN",
@@ -36,6 +39,20 @@ function Osnperehod(props) {
         data: [numvspperhfromstate, "limit_installoption", "nolimit"],
       });
     }
+
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "typetreatment", e.target.value, ind],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "typecentr", vspperhfromstate[1].typecentr, ind],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "typelunet", vspperhfromstate[1].typelunet, ind],
+    });
+    dispatch({ type: "CALCULATIONTIME_TOKARNOVINTOREZN" });
   }
 
   function gettypetreatment(index) {
@@ -54,6 +71,12 @@ function Osnperehod(props) {
             return <External_pruning numpereh={props.numpereh} index={index} />;
           case "internal_pruning":
             return <Internal_pruning numpereh={props.numpereh} index={index} />;
+          case "external_grooving":
+            return <External_grooving numpereh={props.numpereh} index={index} />;
+          case "internal_grooving":
+            return <Internal_grooving numpereh={props.numpereh} index={index} />;
+          case "drilling":
+            return <Drilling numpereh={props.numpereh} index={index} />;
           default:
             return "";
         }
@@ -81,7 +104,7 @@ function Osnperehod(props) {
   function gettimestr(index) {
     if (
       statenow.perehods[props.numpereh][1][index].hasOwnProperty("Otime") &&
-      !isNaN(statenow.perehods[props.numpereh][1][index].Otime) &&
+      statenow.perehods[props.numpereh][1][index].Otime !== undefined &&
       statenow.perehods[props.numpereh][1][index].Otime != 0
     ) {
       return " - " + Number(statenow.perehods[props.numpereh][1][index].Otime).toFixed(1) + " мин";
@@ -108,7 +131,7 @@ function Osnperehod(props) {
     <>
       {statenow.perehods[props.numpereh][1]
         ? statenow.perehods[props.numpereh][1].map((item, index) => (
-            <>
+            <div key={"per" + index}>
               <div className="checkstrpereh">
                 <input
                   type="checkbox"
@@ -123,7 +146,16 @@ function Osnperehod(props) {
               </h6>
 
               <div className="infoblock__item">
-                <div className="inpname">Вид обработки:</div>
+                <div
+                  className={`inpname ${
+                    !statenow.perehods[props.numpereh][1][index] ||
+                    !statenow.perehods[props.numpereh][1][index].typetreatment
+                      ? ""
+                      : "inpname__withData"
+                  }`}
+                >
+                  Вид обработки:
+                </div>
                 <select
                   className="selectbox_long"
                   value={
@@ -132,25 +164,11 @@ function Osnperehod(props) {
                       : ""
                   }
                   onChange={(e) => {
-                    changetypetreatment(e);
-                    dispatch({
-                      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
-                      data: [props.numpereh, "typetreatment", e.target.value, index],
-                    });
-                    dispatch({
-                      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
-                      data: [props.numpereh, "typecentr", vspperhfromstate[1].typecentr, index],
-                    });
-                    dispatch({
-                      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
-                      data: [props.numpereh, "typelunet", vspperhfromstate[1].typelunet, index],
-                    });
-
-                    dispatch({ type: "CALCULATIONTIME_TOKARNOVINTOREZN" });
+                    changetypetreatment(e, index);
                   }}
                 >
                   <option selected value=""></option>
-                  <option value="longturning">точение</option>
+                  <option value="longturning">наружное точение</option>
                   <option
                     value="boring"
                     disabled={
@@ -163,8 +181,30 @@ function Osnperehod(props) {
                     растачивание
                   </option>
                   <option value="external_pruning">наружная подрезка</option>
-                  <option value="internal_pruning">внутренняя подрезка</option>
-                  <option value="prorezka_otrezka">прорезка и отрезка</option>
+                  <option
+                    value="internal_pruning"
+                    disabled={
+                      vspperhfromstate[1].installoption === "samocentrpatron_centr" ||
+                      vspperhfromstate[1].installoption === "samocentrpatron_centr_lunet" ||
+                      vspperhfromstate[1].installoption === "chetirehkulachk_centr" ||
+                      vspperhfromstate[1].installoption === "chetirehkulachk_centr_lunet"
+                    }
+                  >
+                    внутренняя подрезка
+                  </option>
+                  <option value="external_grooving">наружные канавки и отрезка</option>
+                  <option
+                    value="internal_grooving"
+                    disabled={
+                      vspperhfromstate[1].installoption === "samocentrpatron_centr" ||
+                      vspperhfromstate[1].installoption === "samocentrpatron_centr_lunet" ||
+                      vspperhfromstate[1].installoption === "chetirehkulachk_centr" ||
+                      vspperhfromstate[1].installoption === "chetirehkulachk_centr_lunet"
+                    }
+                  >
+                    внутренние канавки
+                  </option>
+
                   <option
                     value="drilling"
                     disabled={
@@ -180,19 +220,23 @@ function Osnperehod(props) {
               </div>
 
               {gettypetreatment(index)}
-            </>
+            </div>
           ))
         : ""}
 
       <div className="d-flex flex-sm-row flex-column gap-2 btn-str">
         <button
           type="button"
-          class="btn btn-outline-secondary btn-sm w-100"
+          className="btn btn-outline-secondary btn-sm w-100"
           onClick={addstrperehoda}
         >
           Добавить строку перехода
         </button>
-        <button type="button" class="btn btn-outline-danger btn-sm w-100" onClick={delstrperehoda}>
+        <button
+          type="button"
+          className="btn btn-outline-danger btn-sm w-100"
+          onClick={delstrperehoda}
+        >
           Удалить строку перехода
         </button>
       </div>

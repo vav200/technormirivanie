@@ -51,7 +51,11 @@ function Perehodi() {
         if (
           statenow.perehods[index][1] &&
           statenow.perehods[index][1].filter(
-            (item) => item.Otime === "ошибки" || item.Otime === "" || item.Otime === 0
+            (item) =>
+              item.Otime === "ошибки" ||
+              item.Otime === "" ||
+              item.Otime === 0 ||
+              typeof item.Otime === "undefined"
           ).length == 0 &&
           statenow.perehods[index][1].filter((item) => !item.hasOwnProperty("Otime")).length == 0
         ) {
@@ -76,7 +80,7 @@ function Perehodi() {
               <div className="checkperehod">
                 <input
                   type="checkbox"
-                  class="form-check-input"
+                  className="form-check-input"
                   value={index}
                   onChange={checkChange}
                   checked={massivperehtodel.includes(String(index)) ? true : false}

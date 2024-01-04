@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+//---------------- Наружная подрезка -----------------------
 function External_pruning(props) {
   let dispatch = useDispatch();
   let statenow = useSelector((dat) => dat.tokarnovintorezn);
@@ -135,10 +135,74 @@ function External_pruning(props) {
     }
   }, [statenow.partmaterial]);
 
+  useEffect(() => {
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "diameter1", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "diameter2", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "controllength", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "accuracy", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "roghness", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "allowance", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "availability_SOG", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "typecuttingmaterial", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "cuttingmaterial", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "mainplanangle", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "crust", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "impact_treatment", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "vertex_radius", "", props.index],
+    });
+  }, []);
+
   return (
     <>
       <div className="infoblock__item">
-        <div className="inpname">Характер обработки:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].charactertreatment
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Характер обработки:
+        </div>
         <div className={`radiobox d-inline-block `}>
           <div className={`form-check form-check-inline`}>
             <label className={`form-check-label`}>
@@ -211,7 +275,16 @@ function External_pruning(props) {
             : ""
         }`}
       >
-        <div className="inpname">Наличие корки:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].crust
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Наличие корки:
+        </div>
         <div className={`radiobox d-inline-block `}>
           <div className={`form-check form-check-inline`}>
             <label className={`form-check-label`}>
@@ -260,7 +333,16 @@ function External_pruning(props) {
             : ""
         }`}
       >
-        <div className="inpname">Обработка на удар:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].impact_treatment
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Обработка на удар:
+        </div>
         <div className={`radiobox d-inline-block `}>
           <div className={`form-check form-check-inline`}>
             <label className={`form-check-label`}>
@@ -302,7 +384,16 @@ function External_pruning(props) {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname">Применеие СОЖ:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].availability_SOG
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Применение СОЖ:
+        </div>
         <div className={`radiobox d-inline-block `}>
           <div className={`form-check form-check-inline`}>
             <label className={`form-check-label`}>
@@ -345,7 +436,7 @@ function External_pruning(props) {
 
       <div className="infoblock__item">
         <div className="inpname">Режущий инструмент:</div>
-        <div className="toolname">проходной резец</div>
+        <div className="toolname">подрезной резец</div>
       </div>
 
       <div
@@ -356,7 +447,16 @@ function External_pruning(props) {
             : ""
         }`}
       >
-        <div className="inpname">- радиус вершины, мм:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].vertex_radius
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          - радиус вершины, мм:
+        </div>
         <div className={`radiobox d-inline-block `}>
           <div className={`form-check form-check-inline`}>
             <label className={`form-check-label`}>
@@ -434,7 +534,16 @@ function External_pruning(props) {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname">- материал:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].typecuttingmaterial
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          - материал:
+        </div>
         <div className={`radiobox d-inline-block `}>
           <div className="form-check">
             <label className={`form-check-label`}>
@@ -488,7 +597,16 @@ function External_pruning(props) {
           !statenow.perehods[props.numpereh][1][props.index].typecuttingmaterial ? "d-none" : ""
         }`}
       >
-        <div className="inpname">- марка материала:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].cuttingmaterial
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          - марка материала:
+        </div>
         <div className={`radiobox d-inline-block `}>
           <div
             className={`form-check ${
@@ -760,7 +878,16 @@ function External_pruning(props) {
       </div>
 
       <div className={`infoblock__item `}>
-        <div className="inpname">- угол в плане:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].mainplanangle
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          - угол в плане:
+        </div>
         <div className={`radiobox d-inline-block `}>
           <div className="form-check">
             <label className={`form-check-label`}>
@@ -820,7 +947,16 @@ function External_pruning(props) {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname">Диаметр обработки D1, мм:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].diameter1
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Диаметр D1, мм:
+        </div>
         <div className="d-inline-block">
           <input
             type="text"
@@ -858,7 +994,16 @@ function External_pruning(props) {
         </div>
       </div>
       <div className="infoblock__item">
-        <div className="inpname">Диаметр обработки D2, мм:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].diameter2
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Диаметр D2, мм:
+        </div>
         <div className="d-inline-block">
           <input
             type="text"
@@ -896,7 +1041,16 @@ function External_pruning(props) {
         </div>
       </div>
       <div className="infoblock__item">
-        <div className="inpname">Контролируемый размер, мм:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].controllength
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Контроль размера, мм:
+        </div>
         <div className="d-inline-block">
           <input
             type="text"
@@ -931,7 +1085,16 @@ function External_pruning(props) {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname">Квалитет точности:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].accuracy
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Квалитет точности:
+        </div>
         <select
           className="selectbox"
           value={
@@ -1002,7 +1165,16 @@ function External_pruning(props) {
             : ""
         }`}
       >
-        <div className="inpname">Шероховатость Ra, мм:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].roghness
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Шероховатость Ra, мм:
+        </div>
         <select
           className="selectbox"
           value={
@@ -1052,7 +1224,16 @@ function External_pruning(props) {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname">Припуск на сторону, мм:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1][props.index] ||
+            !statenow.perehods[props.numpereh][1][props.index].allowance
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Припуск на сторону, мм:
+        </div>
         <div className="d-inline-block">
           <input
             type="text"

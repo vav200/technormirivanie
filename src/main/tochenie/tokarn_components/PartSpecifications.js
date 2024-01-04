@@ -183,7 +183,9 @@ function PartSpecifications() {
   return (
     <div className="infoblock">
       <div className="infoblock__item">
-        <label className="inpname">Масса детали, кг:</label>
+        <label className={`inpname ${!statenow.partweightstate ? "" : "inpname__withData"}`}>
+          Масса детали, кг:
+        </label>
         <div className="d-inline-block">
           <input
             type="text"
@@ -200,18 +202,20 @@ function PartSpecifications() {
           />
           <div
             className={`selectbox__errormessage ${
-              statenow.partweight > statenow.maxWeight || statenow.partweightstate === false
+              statenow.partweightstate === false || statenow.partweight > statenow.maxWeight
                 ? "selectbox__errormessage_active"
                 : ""
             }`}
           >
-            {statenow.partweightstate === false ? "введите значение" : "больше допустимой"}
+            {statenow.partweightstate == false ? "введите значение" : "больше допустимой"}
           </div>
         </div>
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname align-top">Вид заготовки:</div>
+        <div className={`inpname align-top ${statenow.partmaterial ? "inpname__withData" : ""}`}>
+          Вид заготовки:
+        </div>
         <div className="radiobox d-inline-block">
           <div className="form-check">
             <label className="form-check-label">
@@ -267,7 +271,9 @@ function PartSpecifications() {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname align-top">Материал детали:</div>
+        <div className={`inpname align-top ${statenow.partmaterial ? "inpname__withData" : ""}`}>
+          Материал детали:
+        </div>
         <div className="radiobox d-inline-block">
           <div className="form-check">
             <label className="form-check-label">
@@ -339,7 +345,9 @@ function PartSpecifications() {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname">Марка материала:</div>
+        <div className={`inpname ${statenow.part_gradematerial ? "inpname__withData" : ""}`}>
+          Марка материала:
+        </div>
 
         {/*----------углеродистые стали----------------------  */}
         <select
@@ -449,7 +457,9 @@ function PartSpecifications() {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname">Твердость HB:</div>
+        <div className={`inpname ${statenow.parthardness ? "inpname__withData" : ""}`}>
+          Твердость HB:
+        </div>
         <select
           className={`selectbox d-inline-block `}
           value={statenow.parthardness ? statenow.parthardness : ""}
@@ -462,11 +472,13 @@ function PartSpecifications() {
         >
           {statenow.hardnessmassiv.map((item, ind) =>
             ind === 0 ? (
-              <option value={item} selected>
+              <option value={item} selected key={ind}>
                 {"от " + item.split("-").join(" до ")}
               </option>
             ) : (
-              <option value={item}>{"от " + item.split("-").join(" до ")}</option>
+              <option value={item} key={ind}>
+                {"от " + item.split("-").join(" до ")}
+              </option>
             )
           )}
           {/* <option value="117-142">от 117 до 142</option>
@@ -512,7 +524,9 @@ function PartSpecifications() {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname align-top">Форма детали:</div>
+        <div className={`inpname align-top ${statenow.partform ? "inpname__withData" : ""}`}>
+          Форма детали:
+        </div>
         <div className="radiobox d-inline-block">
           <div className="form-check">
             <label className="form-check-label">
@@ -549,7 +563,9 @@ function PartSpecifications() {
       </div>
 
       <div className={`infoblock__item ${statenow.partform !== "cilindric" ? "d-none" : ""}`}>
-        <div className="inpname align-top">Тип детали:</div>
+        <div className={`inpname align-top ${statenow.typeofpart ? "inpname__withData" : ""}`}>
+          Тип детали:
+        </div>
         <div className="radiobox d-inline-block">
           <div className="form-check form-check-inline">
             <label className="form-check-label">
@@ -586,7 +602,9 @@ function PartSpecifications() {
       </div>
 
       <div className={`infoblock__item`}>
-        <div className="inpname align-top">Длина детали:</div>
+        <div className={`inpname align-top ${statenow.generallength ? "inpname__withData" : ""}`}>
+          Длина детали:
+        </div>
         <div className="d-inline-block">
           <input
             type="text"
@@ -598,24 +616,30 @@ function PartSpecifications() {
             value={statenow.generallength ? statenow.generallength : ""}
             onChange={(e) => {
               dispatch({
-                type: "GENERAL_LENGTH",
+                type: "GENERAL_LENGTH_TOKARNOVINTOREZN",
                 data: e.target.value,
               });
               dispatch({ type: "CALCULATIONTIME_TOKARNOVINTOREZN" });
             }}
           />
+
           <div
             className={`selectbox__errormessage ${
-              statenow.generallength > statenow.maxLength ? "selectbox__errormessage_active" : ""
+              statenow.generallengthstate === false || statenow.generallength > statenow.maxLength
+                ? "selectbox__errormessage_active"
+                : ""
             }`}
           >
-            больше допустимой
+            {statenow.generallengthstate === false ? "введите значение" : "больше допустимой"}
+            {/* больше допустимой */}
           </div>
         </div>
       </div>
 
       <div className={`infoblock__item ${statenow.partform !== "fason_korobch" ? "d-none" : ""}`}>
-        <div className="inpname align-top">Условный средний диаметр:</div>
+        <div className={`inpname align-top ${statenow.sd_factor ? "inpname__withData" : ""}`}>
+          Условный средний диаметр:
+        </div>
         <div className="d-inline-block">
           <input
             type="text"
@@ -635,12 +659,13 @@ function PartSpecifications() {
           />
           <div
             className={`selectbox__errormessage ${
+              statenow.sd_factorstate === false ||
               statenow.sd_factor > statenow.maxDiameterPatron / 2
                 ? "selectbox__errormessage_active"
                 : ""
             }`}
           >
-            больше допустимого
+            {statenow.sd_factorstate === false ? "введите значение" : "больше допустимого"}
           </div>
         </div>
       </div>
@@ -650,7 +675,9 @@ function PartSpecifications() {
           statenow.partform !== "cilindric" || statenow.typeofpart !== "vtulka" ? "d-none" : ""
         }`}
       >
-        <div className="inpname align-top">Толщина стенки:</div>
+        <div className={`inpname align-top ${statenow.sd_factor ? "inpname__withData" : ""}`}>
+          Толщина стенки:
+        </div>
         <div className="d-inline-block">
           <input
             type="text"
@@ -671,12 +698,13 @@ function PartSpecifications() {
           />
           <div
             className={`selectbox__errormessage ${
+              statenow.sd_factorstate === false ||
               statenow.sd_factor > statenow.maxDiameterPatron / 2
                 ? "selectbox__errormessage_active"
                 : ""
             }`}
           >
-            больше допустимой
+            {statenow.sd_factorstate === false ? "введите значение" : "больше допустимой"}
           </div>
         </div>
       </div>
@@ -686,7 +714,9 @@ function PartSpecifications() {
           statenow.partform !== "cilindric" || statenow.typeofpart !== "val" ? "d-none" : ""
         }`}
       >
-        <div className="inpname align-top">Средний диаметр:</div>
+        <div className={`inpname align-top ${statenow.sd_factor ? "inpname__withData" : ""}`}>
+          Средний диаметр:
+        </div>
         <div className="d-inline-block">
           <input
             type="text"
@@ -706,18 +736,20 @@ function PartSpecifications() {
           />
           <div
             className={`selectbox__errormessage ${
-              statenow.sd_factor > statenow.maxDiameterPatron
+              statenow.sd_factorstate === false || statenow.sd_factor > statenow.maxDiameterPatron
                 ? "selectbox__errormessage_active"
                 : ""
             }`}
           >
-            больше допустимого
+            {statenow.sd_factorstate === false ? "введите значение" : "больше допустимого"}
           </div>
         </div>
       </div>
 
-      <div className="infoblock__item">
-        <div className="inpname">Обрабатывается деталей:</div>
+      {/* <div className="infoblock__item">
+        <div className={`inpname ${statenow.numberparts ? "inpname__withData" : ""}`}>
+          Обрабатывается деталей:
+        </div>
         <div className="d-inline-block">
           <input
             type="text"
@@ -736,7 +768,7 @@ function PartSpecifications() {
             введите значение
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
