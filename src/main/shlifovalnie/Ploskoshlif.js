@@ -20,7 +20,7 @@ function Ploskoshlif() {
       <MachineSpecification />
       <PartSpecifications />
       <Perehodi />
-      <ValidCalcUnit />
+      {/* <ValidCalcUnit /> */}
     </section>
   );
 }

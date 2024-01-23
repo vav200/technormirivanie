@@ -20,7 +20,7 @@ function Vnutrishlif() {
       <MachineSpecification />
       <PartSpecifications />
       <Perehodi />
-      <ValidCalcUnit />
+      {/* <ValidCalcUnit /> */}
     </section>
   );
 }

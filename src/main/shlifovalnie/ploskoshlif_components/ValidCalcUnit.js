@@ -34,27 +34,7 @@ function ValidCalcUnit() {
 
   return (
     <>
-      {/* <button
-        className="btn btn-primary w-100 mb-4 btn-lg"
-        data-bs-target="#errorModal"
-        data-bs-toggle={buttonstate}
-        onClick={() => dispatch({ type: "CALCULATIONTIME" })}
-      >
-        Рассчитать
-      </button> */}
-
-      {/* <div className="rezult">
-        <h5>Вспомагательное время операции Тв = {calcVtime()}</h5>
-        <h5>Основное время операции То = {calcOtime()}</h5>
-      </div> */}
-
-      <div
-        className={`truerezult ${
-          calcVtime() === "ошибки" || calcOtime() === "ошибки" || statenow.perehods.length == 0
-            ? "d-none"
-            : ""
-        }`}
-      >
+      <div className={`truerezult ${calcOtime() === "ошибки" ? "d-none" : ""}`}>
         <h5
           className={
             statenow.perehods.filter((item) => item[0] === "Вспомагательный переход").length > 0
@@ -63,7 +43,9 @@ function ValidCalcUnit() {
           }
         >
           Вспомагательное время операции:
-          {calcVtime() === "" ? calcVtime() : " Тв = " + calcVtime() + " мин"}
+          {calcVtime() === "" || calcVtime() === "ошибки"
+            ? ""
+            : " Тв = " + calcVtime().toFixed(2) + " мин"}
         </h5>
         <h5
           className={
@@ -73,52 +55,19 @@ function ValidCalcUnit() {
           }
         >
           Основное время операции:
-          {calcOtime() === "" ? calcOtime() : " То = " + calcOtime() + " мин"}
+          {calcOtime() === "" || calcOtime() === "ошибки"
+            ? ""
+            : " То = " + calcOtime().toFixed(2) + " мин"}
         </h5>
       </div>
 
       <div
         className={`falserezult ${
-          statenow.perehods.length != 0
-            ? calcOtime() === "ошибки" || calcVtime() === "ошибки"
-              ? ""
-              : "d-none"
-            : "d-none"
+          statenow.perehods.length != 0 ? (calcOtime() === "ошибки" ? "" : "d-none") : "d-none"
         }`}
       >
         <h5 className="text-danger">Расчет невозможен, исправьте ошибки!</h5>
       </div>
-
-      {/* <div
-        className="modal fade"
-        id="errorModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
-                Обнаружены ошибки:
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Закрыть"
-              ></button>
-            </div>
-            <div className="modal-body">
-              <ol>
-                {errormes.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ol>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </>
   );
 }

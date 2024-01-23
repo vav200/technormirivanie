@@ -2527,6 +2527,7 @@ const dataTokarnovintorezn = {
         },
       },
     },
+    // зенкерование
     countersinking: {
       matP: {
         20: { 50: 0.75, 100: 1.4, 200: 3.8, 300: 6.5, 400: 10 },
@@ -2661,18 +2662,707 @@ const dataTokarnovintorezn = {
         },
       },
     },
+    // развертывание
     reaming: {
-      50: 1.9,
-      100: 2,
-      200: 2.3,
-      300: 2.5,
-      400: 2.8,
-      500: 3,
-      600: 3.5,
-      700: 3.9,
-      800: 4.2,
-      900: 4.6,
-      1000: 5.2,
+      matP: {
+        80: {
+          50: 1.9,
+          100: 2,
+          200: 2.3,
+          300: 2.5,
+          400: 2.8,
+          500: 3,
+          600: 3.5,
+          700: 3.9,
+          800: 4.2,
+          900: 4.6,
+          1000: 5.2,
+        },
+      },
+      matK: {
+        80: {
+          50: 1.9,
+          100: 2,
+          200: 2.3,
+          300: 2.5,
+          400: 2.8,
+          500: 3,
+          600: 3.5,
+          700: 3.9,
+          800: 4.2,
+          900: 4.6,
+          1000: 5.2,
+        },
+      },
+      matN: {
+        80: {
+          50: 1.9,
+          100: 2,
+          200: 2.3,
+          300: 2.5,
+          400: 2.8,
+          500: 3,
+          600: 3.5,
+          700: 3.9,
+          800: 4.2,
+          900: 4.6,
+          1000: 5.2,
+        },
+      },
+    },
+    // нарезание резьбы
+    thread_cutting: {
+      by_cutter: {
+        // метрическая резьба
+        metric: {
+          external_thread_cutting: {
+            ld_factor: { 1.5: 1.1, 2: 1.2, 3: 1.3, 4: 1.4, 6: 1.5, 10: 1.7 },
+            420: {
+              100: { 2: 3.9, 4: 4.4, 6: 4.9 },
+              250: { 2: 4.3, 4: 4.9, 6: 5.4 },
+              500: { 2: 4.9, 4: 5.4, 6: 6 },
+              750: { 2: 5.5, 4: 6, 6: 6.5 },
+              1000: { 2: 6.1, 4: 6.6, 6: 7.1 },
+            },
+            900: {
+              100: { 2: 4.3, 4: 5.2, 6: 5.8 },
+              250: { 2: 5, 4: 5.9, 6: 6.5 },
+              500: { 2: 5.7, 4: 6.6, 6: 7.5 },
+              750: { 2: 6.4, 4: 7.3, 6: 8.2 },
+              1000: { 2: 7.1, 4: 8, 6: 8.9 },
+            },
+            2000: {
+              100: { 2: 4.9, 4: 5.9, 6: 6.3 },
+              250: { 2: 5.6, 4: 6.7, 6: 7.2 },
+              500: { 2: 6.2, 4: 7.6, 6: 8.3 },
+              750: { 2: 7, 4: 8, 6: 9.1 },
+              1000: { 2: 7.6, 4: 8.6, 6: 9.7 },
+            },
+          },
+          internal_thread_cutting: {
+            ld_factor: { 1.5: 1.1, 2: 1.2, 3: 1.3, 4: 1.4, 6: 1.5, 10: 1.7 },
+            420: {
+              100: { 2: 4.9, 4: 5.6, 6: 6 },
+              250: { 2: 5.4, 4: 6, 6: 6.8 },
+              500: { 2: 6, 4: 6.8, 6: 7.5 },
+            },
+            900: {
+              100: { 2: 5.4, 4: 6.7, 6: 7 },
+              250: { 2: 6.3, 4: 7.2, 6: 8 },
+              500: { 2: 7.1, 4: 8, 6: 9 },
+            },
+            2000: {
+              100: { 2: 6, 4: 7.2, 6: 7.9 },
+              250: { 2: 6.9, 4: 8, 6: 9 },
+              500: { 2: 7.7, 4: 9.5, 6: 10.6 },
+            },
+          },
+        },
+        // трубная резьба
+        inch: {
+          external_thread_cutting: {
+            ld_factor: { 1.5: 1.1, 2: 1.2, 3: 1.3, 4: 1.4, 6: 1.5, 10: 1.7 },
+            420: {
+              100: { 2: 3.9, 4: 4.4, 6: 4.9 },
+              250: { 2: 4.3, 4: 4.9, 6: 5.4 },
+              500: { 2: 4.9, 4: 5.4, 6: 6 },
+              750: { 2: 5.5, 4: 6, 6: 6.5 },
+              1000: { 2: 6.1, 4: 6.6, 6: 7.1 },
+            },
+            900: {
+              100: { 2: 4.3, 4: 5.2, 6: 5.8 },
+              250: { 2: 5, 4: 5.9, 6: 6.5 },
+              500: { 2: 5.7, 4: 6.6, 6: 7.5 },
+              750: { 2: 6.4, 4: 7.3, 6: 8.2 },
+              1000: { 2: 7.1, 4: 8, 6: 8.9 },
+            },
+            2000: {
+              100: { 2: 4.9, 4: 5.9, 6: 6.3 },
+              250: { 2: 5.6, 4: 6.7, 6: 7.2 },
+              500: { 2: 6.2, 4: 7.6, 6: 8.3 },
+              750: { 2: 7, 4: 8, 6: 9.1 },
+              1000: { 2: 7.6, 4: 8.6, 6: 9.7 },
+            },
+          },
+          internal_thread_cutting: {
+            ld_factor: { 1.5: 1.1, 2: 1.2, 3: 1.3, 4: 1.4, 6: 1.5, 10: 1.7 },
+            420: {
+              100: { 2: 4.9, 4: 5.6, 6: 6 },
+              250: { 2: 5.4, 4: 6, 6: 6.8 },
+              500: { 2: 6, 4: 6.8, 6: 7.5 },
+            },
+            900: {
+              100: { 2: 5.4, 4: 6.7, 6: 7 },
+              250: { 2: 6.3, 4: 7.2, 6: 8 },
+              500: { 2: 7.1, 4: 8, 6: 9 },
+            },
+            2000: {
+              100: { 2: 6, 4: 7.2, 6: 7.9 },
+              250: { 2: 6.9, 4: 8, 6: 9 },
+              500: { 2: 7.7, 4: 9.5, 6: 10.6 },
+            },
+          },
+        },
+        // трапецеидальная резьба
+        trapezoidal: {
+          external_thread_cutting: {
+            ld_factor: { 5: 1.1, 10: 1.15, 15: 1.2, 20: 1.3, 30: 1.4, 40: 1.45, 50: 1.5, 60: 1.55 },
+            420: {
+              250: { 5: 8, 6: 8.8, 8: 9.7, 10: 12.4, 12: 14, 16: 18, 20: 19, 24: 22, 32: 26 },
+              500: { 5: 9.3, 6: 10.3, 8: 11.8, 10: 14.5, 12: 16, 16: 22, 20: 24, 24: 26, 32: 30 },
+              1000: { 5: 10.9, 6: 12.2, 8: 14.1, 10: 17.2, 12: 20, 16: 25, 20: 26, 24: 29, 32: 36 },
+              2000: { 5: 14.8, 6: 15.8, 8: 18.5, 10: 23, 12: 26, 16: 33, 20: 36, 24: 39, 32: 47 },
+            },
+            900: {
+              250: {
+                5: 11.1,
+                6: 12.3,
+                8: 13.7,
+                10: 16.8,
+                12: 21,
+                16: 25,
+                20: 27,
+                24: 30,
+                32: 35,
+                40: 49,
+              },
+              500: {
+                5: 13.2,
+                6: 14.9,
+                8: 16.4,
+                10: 19,
+                12: 25,
+                16: 30,
+                20: 31,
+                24: 35,
+                32: 41,
+                40: 58,
+              },
+              1000: {
+                5: 16.2,
+                6: 17.6,
+                8: 22,
+                10: 24,
+                12: 29,
+                16: 36,
+                20: 38,
+                24: 41,
+                32: 49,
+                40: 69,
+              },
+              2000: {
+                5: 18.2,
+                6: 20.6,
+                8: 27,
+                10: 29,
+                12: 32,
+                16: 39,
+                20: 42,
+                24: 49,
+                32: 67,
+                40: 78,
+              },
+              5000: {
+                5: 21.4,
+                6: 24.4,
+                8: 32,
+                10: 34,
+                12: 36,
+                16: 43,
+                20: 51,
+                24: 59,
+                32: 65,
+                40: 84,
+              },
+            },
+            2000: {
+              250: {
+                5: 13.2,
+                6: 15.7,
+                8: 18.3,
+                10: 25,
+                12: 26,
+                16: 27,
+                20: 33,
+                24: 38,
+                32: 48,
+                40: 56,
+              },
+              500: {
+                5: 16.6,
+                6: 19,
+                8: 22,
+                10: 21.9,
+                12: 30,
+                16: 35,
+                20: 40,
+                24: 44,
+                32: 46,
+                40: 64,
+              },
+              1000: {
+                5: 19.4,
+                6: 22,
+                8: 26,
+                10: 33,
+                12: 35,
+                16: 40,
+                20: 46,
+                24: 53,
+                32: 62,
+                40: 76,
+              },
+              2000: {
+                5: 22.1,
+                6: 26.6,
+                8: 37,
+                10: 39,
+                12: 43,
+                16: 48,
+                20: 59,
+                24: 62,
+                32: 74,
+                40: 91,
+              },
+              5000: {
+                5: 24.1,
+                6: 27.9,
+                8: 39,
+                10: 42,
+                12: 45,
+                16: 49,
+                20: 61,
+                24: 63,
+                32: 77,
+                40: 95,
+              },
+            },
+          },
+          internal_thread_cutting: {
+            ld_factor: { 1.5: 1.1, 2: 1.2, 3: 1.3, 4: 1.4, 6: 1.5, 10: 1.7 },
+            420: {
+              100: { 5: 9, 6: 9.8, 8: 11.3, 10: 13.8, 12: 16, 16: 18, 20: 21.5, 24: 24, 32: 28 },
+              250: { 5: 10.5, 6: 11.2, 8: 13, 10: 16.9, 12: 19.6, 16: 22, 20: 24, 24: 29, 32: 34 },
+              500: { 5: 12.4, 6: 13.6, 8: 16, 10: 19.7, 12: 23, 16: 25, 20: 28, 24: 35, 32: 40 },
+            },
+            900: {
+              100: {
+                5: 12.6,
+                6: 14,
+                8: 16.3,
+                10: 18,
+                12: 23,
+                16: 26,
+                20: 29,
+                24: 36,
+                32: 41,
+                40: 49,
+              },
+              250: {
+                5: 15.4,
+                6: 16.7,
+                8: 19,
+                10: 23,
+                12: 28,
+                16: 30,
+                20: 35,
+                24: 42,
+                32: 48,
+                40: 58,
+              },
+              500: {
+                5: 18,
+                6: 18.9,
+                8: 23,
+                10: 27,
+                12: 32,
+                16: 36,
+                20: 40,
+                24: 50,
+                32: 56,
+                40: 66,
+              },
+              1000: {
+                5: 21.5,
+                6: 23,
+                8: 26,
+                10: 32,
+                12: 39,
+                16: 42,
+                20: 48,
+                24: 59,
+                32: 67,
+                40: 78,
+              },
+            },
+            2000: {
+              250: {
+                5: 16.6,
+                6: 18.7,
+                8: 26,
+                10: 27,
+                12: 28,
+                16: 35,
+                20: 39,
+                24: 55,
+                32: 53,
+                40: 63,
+              },
+              500: {
+                5: 18,
+                6: 22,
+                8: 29,
+                10: 31,
+                12: 35,
+                16: 40,
+                20: 46,
+                24: 57,
+                32: 63,
+                40: 76,
+              },
+              1000: {
+                5: 23.5,
+                6: 25,
+                8: 36,
+                10: 38,
+                12: 41,
+                16: 47,
+                20: 57,
+                24: 69,
+                32: 74,
+                40: 90,
+              },
+            },
+          },
+        },
+        // упорная резьба 33 град.
+        persistent: {
+          external_thread_cutting: {
+            ld_factor: { 5: 1.1, 10: 1.15, 15: 1.2, 20: 1.3, 30: 1.4, 40: 1.45, 50: 1.5, 60: 1.55 },
+            420: {
+              250: {
+                5: 10.2,
+                6: 12.6,
+                8: 16.3,
+                10: 20,
+                12: 24,
+                16: 28,
+                20: 37,
+                24: 45,
+                32: 59,
+                40: 72,
+              },
+              500: {
+                5: 11.9,
+                6: 15,
+                8: 19.7,
+                10: 23,
+                12: 29,
+                16: 33,
+                20: 41,
+                24: 54,
+                32: 71,
+                40: 88,
+              },
+              1000: {
+                5: 14.5,
+                6: 8,
+                8: 23,
+                10: 18,
+                12: 34,
+                16: 39,
+                20: 49,
+                24: 63,
+                32: 82,
+                40: 100,
+              },
+              2000: {
+                5: 17,
+                6: 21,
+                8: 27,
+                10: 33,
+                12: 39,
+                16: 45,
+                20: 58,
+                24: 73,
+                32: 97,
+                40: 118,
+              },
+            },
+            900: {
+              250: {
+                5: 14.9,
+                6: 18,
+                8: 24,
+                10: 28,
+                12: 34,
+                16: 41,
+                20: 53,
+                24: 65,
+                32: 87,
+                40: 106,
+                48: 124,
+                64: 160,
+              },
+              500: {
+                5: 18,
+                6: 22,
+                8: 28,
+                10: 33,
+                12: 40,
+                16: 48,
+                20: 61,
+                24: 78,
+                32: 103,
+                40: 123,
+                48: 147,
+                64: 179,
+              },
+              1000: {
+                5: 21,
+                6: 25,
+                8: 33,
+                10: 39,
+                12: 47,
+                16: 58,
+                20: 72,
+                24: 91,
+                32: 121,
+                40: 146,
+                48: 174,
+                64: 208,
+              },
+              3000: {
+                5: 25,
+                6: 32,
+                8: 38,
+                10: 46,
+                12: 56,
+                16: 69,
+                20: 85,
+                24: 107,
+                32: 142,
+                40: 172,
+                48: 206,
+                64: 243,
+              },
+            },
+            2000: {
+              250: {
+                5: 16.8,
+                6: 20,
+                8: 27,
+                10: 32,
+                12: 39,
+                16: 46,
+                20: 56,
+                24: 76,
+                32: 97,
+                40: 140,
+                48: 154,
+                64: 169,
+              },
+              500: {
+                5: 19,
+                6: 23,
+                8: 31,
+                10: 38,
+                12: 47,
+                16: 53,
+                20: 77,
+                24: 86,
+                32: 114,
+                40: 159,
+                48: 166,
+                64: 201,
+              },
+              1000: {
+                5: 24,
+                6: 28,
+                8: 36,
+                10: 46,
+                12: 55,
+                16: 63,
+                20: 80,
+                24: 101,
+                32: 134,
+                40: 180,
+                48: 196,
+                64: 236,
+              },
+              3000: {
+                5: 30,
+                6: 33,
+                8: 43,
+                10: 54,
+                12: 64,
+                16: 74,
+                20: 94,
+                24: 120,
+                32: 158,
+                40: 209,
+                48: 222,
+                64: 277,
+              },
+            },
+          },
+          internal_thread_cutting: {
+            ld_factor: { 1.5: 1.1, 2: 1.2, 3: 1.3, 4: 1.4, 6: 1.5, 10: 1.7 },
+            420: {
+              100: {
+                5: 9.9,
+                6: 12.5,
+                8: 16.4,
+                10: 19,
+                12: 24,
+                16: 28,
+                20: 36,
+                24: 42,
+                32: 59,
+                40: 72,
+              },
+              250: {
+                5: 12.2,
+                6: 14.9,
+                8: 19.7,
+                10: 24,
+                12: 29,
+                16: 33,
+                20: 41,
+                24: 51,
+                32: 70,
+                40: 84,
+              },
+              500: {
+                5: 14.5,
+                6: 17.9,
+                8: 23,
+                10: 28,
+                12: 34,
+                16: 38,
+                20: 50,
+                24: 59,
+                32: 80,
+                40: 100,
+              },
+            },
+            900: {
+              100: {
+                5: 14.8,
+                6: 18,
+                8: 23,
+                10: 28,
+                12: 35,
+                16: 41,
+                20: 53,
+                24: 66,
+                32: 89,
+                40: 106,
+                48: 124,
+                64: 150,
+              },
+              250: {
+                5: 17.6,
+                6: 21.6,
+                8: 28,
+                10: 33,
+                12: 40,
+                16: 48,
+                20: 61,
+                24: 77,
+                32: 104,
+                40: 123,
+                48: 147,
+                64: 177,
+              },
+              500: {
+                5: 20.9,
+                6: 249,
+                8: 34,
+                10: 39,
+                12: 47,
+                16: 56,
+                20: 73,
+                24: 91,
+                32: 123,
+                40: 146,
+                48: 177,
+                64: 207,
+              },
+              1000: {
+                5: 23.7,
+                6: 29,
+                8: 38,
+                10: 46,
+                12: 56,
+                16: 68,
+                20: 85,
+                24: 107,
+                32: 147,
+                40: 172,
+                48: 197,
+                64: 243,
+              },
+            },
+            2000: {
+              250: {
+                5: 19,
+                6: 23,
+                8: 31,
+                10: 38,
+                12: 47,
+                16: 54,
+                20: 85,
+                24: 88,
+                32: 113,
+                40: 148,
+                48: 166,
+                64: 199,
+              },
+              500: {
+                5: 25,
+                6: 28,
+                8: 36,
+                10: 45,
+                12: 54,
+                16: 63,
+                20: 80,
+                24: 101,
+                32: 134,
+                40: 175,
+                48: 195,
+                64: 236,
+              },
+              1000: {
+                5: 28,
+                6: 33,
+                8: 43,
+                10: 53,
+                12: 64,
+                16: 74,
+                20: 94,
+                24: 118,
+                32: 156,
+                40: 207,
+                48: 242,
+                64: 277,
+              },
+            },
+          },
+        },
+      },
+      by_tap_and_die: {
+        external_thread_cutting: {
+          420: 0.5,
+          900: 0.6,
+          2000: 0.7,
+        },
+        internal_thread_cutting: {
+          420: { 1: 1.2, 2: 1.3, 3: 1.7 },
+          900: { 1: 1.6, 2: 1.7, 3: 2.2 },
+          2000: { 1: 2, 2: 2.2, 3: 2.9 },
+        },
+      },
     },
   },
   feeds: {
@@ -5369,6 +6059,106 @@ const dataTokarnovintorezn = {
       matK: { 20: 6, 25: 6, 31.5: 6, 40: 5, 50: 5, 63: 1.6, 80: 5 },
       matN: { 20: 10, 25: 10, 31.5: 10, 40: 8, 50: 8, 63: 8, 80: 8 },
     },
+    thread_cutting: {
+      by_cutter: {
+        // метрическая
+        metric: {
+          tvsplav: {
+            2: { proh: 6, v: 95 },
+            3: { proh: 8, v: 88 },
+            4: { proh: 9, v: 86 },
+            5: { proh: 9, v: 85 },
+            6: { proh: 10, v: 84 },
+          },
+          bistrorez: {
+            2: { p: 7, z: 2, vp: 25, vz: 4 },
+            3: { p: 7, z: 2, vp: 23, vz: 4 },
+            4: { p: 8, z: 2, vp: 21, vz: 4 },
+            5: { p: 9, z: 2, vp: 19, vz: 4 },
+            6: { p: 10, z: 3, vp: 17, vz: 4 },
+          },
+        },
+        // дюймовая
+        inch: {
+          tvsplav: {
+            "inch_1/2": { proh: 5, v: 96 },
+            "inch_3/4": { proh: 6, v: 94 },
+            inch1: { proh: 7, v: 90 },
+            "inch1_1/2": { proh: 8, v: 86 },
+            inch2: { proh: 10, v: 84 },
+            "inch2_1/2": { proh: 10, v: 82 },
+            inch3: { proh: 12, v: 80 },
+          },
+          bistrorez: {
+            "inch_1/2": { p: 5, z: 2, vp: 27, vz: 4 },
+            "inch_3/4": { p: 6, z: 2, vp: 26, vz: 4 },
+            inch1: { p: 7, z: 2, vp: 25, vz: 4 },
+            "inch1_1/2": { p: 8, z: 2, vp: 23, vz: 4 },
+            inch2: { p: 10, z: 3, vp: 21, vz: 4 },
+            "inch2_1/2": { p: 10, z: 3, vp: 20, vz: 4 },
+            inch3: { p: 12, z: 3, vp: 19, vz: 4 },
+          },
+        },
+        // трапецеидальная резьба
+        trapezoidal: {
+          tvsplav: {
+            5: { proh: 17, v: 74 },
+            6: { proh: 21, v: 70 },
+            8: { proh: 25, v: 67 },
+            10: { proh: 29, v: 64 },
+            12: { proh: 36, v: 60 },
+            16: { proh: 44, v: 57 },
+            20: { proh: 52, v: 55 },
+            24: { proh: 62, v: 60 },
+          },
+          bistrorez: {
+            5: { p: 20, z: 7, vp: 25, vz: 4 },
+            6: { p: 25, z: 7, vp: 24, vz: 4 },
+            8: { p: 30, z: 7, vp: 23, vz: 4 },
+            10: { p: 38, z: 8, vp: 22, vz: 4 },
+            12: { p: 43, z: 9, vp: 21, vz: 3.7 },
+            16: { p: 57, z: 10, vp: 20, vz: 3.7 },
+            20: { p: 66, z: 10, vp: 19, vz: 3.7 },
+            24: { p: 80, z: 11, vp: 18, vz: 3.2 },
+            32: { p: 96, z: 12, vp: 17, vz: 3.2 },
+            40: { p: 110, z: 13, vp: 17, vz: 3.2 },
+          },
+        },
+        // упорная резьба 33 град.
+        persistent: {
+          tvsplav: {
+            5: { proh: 36, v: 74 },
+            6: { proh: 39, v: 70 },
+            8: { proh: 43, v: 67 },
+            10: { proh: 48, v: 64 },
+            12: { proh: 60, v: 62 },
+            16: { proh: 80, v: 60 },
+            20: { proh: 100, v: 56 },
+            24: { proh: 112, v: 52 },
+          },
+          bistrorez: {
+            5: { p: 26, z: 7, vp: 25, vz: 4 },
+            6: { p: 34, z: 7, vp: 24, vz: 4 },
+            8: { p: 40, z: 9, vp: 23, vz: 4 },
+            10: { p: 49, z: 11, vp: 22, vz: 4 },
+            12: { p: 54, z: 13, vp: 21, vz: 3.7 },
+            16: { p: 78, z: 15, vp: 20, vz: 3.7 },
+            20: { p: 97, z: 18, vp: 19, vz: 3.7 },
+            24: { p: 117, z: 21, vp: 18, vz: 3.2 },
+            32: { p: 157, z: 25, vp: 17, vz: 3.2 },
+            40: { p: 185, z: 29, vp: 17, vz: 2.6 },
+            48: { p: 216, z: 31, vp: 16, vz: 2.6 },
+            64: { p: 243, z: 35, vp: 15, vz: 2.6 },
+          },
+        },
+      },
+      by_tap_and_die: {
+        // метчик
+        internal: { v: 3.4 },
+        // плашка
+        external: { v: 1.5 },
+      },
+    },
   },
   correctionFactors: {
     forFeeds: {
@@ -5520,6 +6310,7 @@ const dataTokarnovintorezn = {
               "374-400": 0.13,
             },
             C_nomore_60_with_Cr_Mn: {
+              "117-142": 1.34,
               "145-171": 1.34,
               "174-200": 1.05,
               "202-228": 0.9,
@@ -5574,6 +6365,189 @@ const dataTokarnovintorezn = {
               "260-286": 0.53,
               "288-314": 0.44,
             },
+            C_nomore_60_with_Cr: {
+              "117-142": 2,
+              "145-171": 1.44,
+              "174-200": 1.1,
+              "202-228": 0.85,
+              "231-257": 0.7,
+              "260-286": 0.56,
+              "288-314": 0.47,
+            },
+            C_more_60_with_Cr: {
+              "145-171": 1.35,
+              "174-200": 1,
+              "202-228": 0.8,
+              "231-257": 0.64,
+              "260-286": 0.54,
+              "288-314": 0.44,
+            },
+            C_nomore_60_with_Mn: {
+              "174-200": 1.9,
+              "202-228": 1.36,
+              "231-257": 1.04,
+              "260-286": 0.8,
+              "288-314": 0.66,
+            },
+            C_nomore_60_with_Ni: {
+              "117-142": 2.2,
+              "145-171": 1.7,
+              "174-200": 1.3,
+              "202-228": 1,
+            },
+            C_nomore_60_with_Cr_Ni: {
+              "117-142": 2.12,
+              "145-171": 1.62,
+              "174-200": 1.23,
+              "202-228": 1,
+              "231-257": 0.75,
+              "260-286": 0.7,
+              "288-314": 0.6,
+            },
+            C_nomore_60_with_Cr_Ni_Mo: {
+              "117-142": 1.69,
+              "145-171": 1.29,
+              "174-200": 1,
+              "202-228": 0.8,
+              "231-257": 0.68,
+              "260-286": 0.59,
+              "288-314": 0.52,
+            },
+            C_nomore_60_with_Cr_Mn: {
+              "145-171": 1.13,
+              "174-200": 0.85,
+              "202-228": 0.8,
+              "231-257": 0.68,
+              "260-286": 0.59,
+              "288-314": 0.52,
+            },
+            C_nomore_60_with_Cr_Si: {
+              "145-171": 1.15,
+              "174-200": 0.86,
+              "202-228": 0.7,
+              "231-257": 0.56,
+              "260-286": 0.5,
+              "288-314": 0.41,
+            },
+            C_nomore_60_with_Cr_Ni_W: {
+              "174-200": 0.95,
+              "202-228": 0.8,
+              "231-257": 0.64,
+              "260-286": 0.59,
+              "288-314": 0.43,
+            },
+            C_nomore_shx: {
+              "202-228": 0.6,
+              "231-257": 0.5,
+              "260-286": 0.44,
+              "288-314": 0.39,
+              "317-343": 0.3,
+            },
+          },
+        },
+        matPL: {
+          tvsplav: {
+            C_nomore_60_with_Cr: {
+              "117-142": 1.95,
+              "145-171": 1.45,
+              "174-200": 1.22,
+              "202-228": 1,
+              "231-257": 0.82,
+              "260-286": 0.7,
+              "288-314": 0.6,
+            },
+            C_more_60_with_Cr: {
+              "145-171": 1.09,
+              "174-200": 1,
+              "202-228": 0.8,
+              "231-257": 0.7,
+              "260-286": 0.63,
+              "288-314": 0.57,
+              "317-343": 0.5,
+              "345-372": 0.4,
+              "374-400": 0.35,
+            },
+            C_nomore_60_with_Mn: {
+              "174-200": 1.95,
+              "202-228": 1.42,
+              "231-257": 1.13,
+              "260-286": 0.9,
+              "288-314": 0.78,
+              "317-343": 0.7,
+              "345-372": 0.63,
+              "374-400": 0.58,
+            },
+            C_nomore_60_with_Ni: {
+              "117-142": 1.95,
+              "145-171": 1.45,
+              "174-200": 1.13,
+              "202-228": 1,
+            },
+            C_nomore_60_with_Cr_Ni: {
+              "117-142": 1.95,
+              "145-171": 1.42,
+              "174-200": 1.22,
+              "202-228": 1,
+              "231-257": 0.82,
+              "260-286": 0.71,
+              "288-314": 0.64,
+              "317-343": 0.58,
+              "345-372": 0.5,
+              "374-400": 0.28,
+            },
+            C_nomore_60_with_Cr_Ni_Mo: {
+              "117-142": 1.95,
+              "145-171": 1.42,
+              "174-200": 1.13,
+              "202-228": 0.9,
+              "231-257": 0.8,
+              "260-286": 0.71,
+              "288-314": 0.66,
+              "317-343": 0.52,
+              "374-400": 0.13,
+            },
+            C_nomore_60_with_Cr_Mn: {
+              "117-142": 1.34,
+              "145-171": 1.34,
+              "174-200": 1.05,
+              "202-228": 0.9,
+              "231-257": 0.8,
+              "260-286": 0.71,
+              "288-314": 0.65,
+              "317-343": 0.45,
+              "345-372": 0.35,
+              "374-400": 0.28,
+            },
+            C_nomore_60_with_Cr_Si: {
+              "145-171": 1.22,
+              "174-200": 1.03,
+              "202-228": 0.9,
+              "231-257": 0.8,
+              "260-286": 0.71,
+              "288-314": 0.64,
+              "317-343": 0.59,
+              "345-372": 0.41,
+              "374-400": 0.35,
+            },
+            C_nomore_60_with_Cr_Ni_W: {
+              "174-200": 1.13,
+              "202-228": 1,
+              "231-257": 0.9,
+              "260-286": 0.8,
+              "288-314": 0.59,
+              "317-343": 0.53,
+              "345-372": 0.5,
+              "374-400": 0.47,
+            },
+            C_more_60_shx: {
+              "202-228": 0.64,
+              "231-257": 0.6,
+              "260-286": 0.54,
+              "288-314": 0.5,
+              "317-343": 0.45,
+            },
+          },
+          bistrorez: {
             C_nomore_60_with_Cr: {
               "117-142": 2,
               "145-171": 1.44,
@@ -5916,6 +6890,7 @@ let tokarnovintorezn_defaultstate = {
   partlength: "1000",
   typeworkpiece: "prokat",
   partmaterial: "matP",
+  partmaterialForCuttingSpeed: "matP",
   hardnessmassiv: [],
   parthardness: "117-142",
   part_gradematerial: "C_nomore_60",
@@ -5960,17 +6935,748 @@ let tokarnovintorezn_defaultstate = {
 
   get_Tokarnovintorezn_MainTime(indper, indstr) {
     if (this.partweight > this.maxWeight) {
-      return "ошибки";
-    } else if (this.partweight === "" || this.numberparts === "") return "ошибки";
+      return { Otime: "ошибки" };
+    } else if (this.partweight === "" || this.numberparts === "") return { Otime: "ошибки" };
     else if (
       this.perehods[indper][1][indstr].length > this.maxLength ||
       this.perehods[indper][1][indstr].diameter > this.maxDiameter
     ) {
-      return "ошибки";
+      return { Otime: "ошибки" };
     } else if (this.perehods[indper][0] == "Основной переход") {
       let MainTime = 0;
       let dataperehod = this.perehods[indper][1][indstr];
       switch (dataperehod.typetreatment) {
+        //
+        // ----------наружная нарезка резьбы------------------
+
+        case "external_thread_cutting":
+          if (
+            Object.keys(dataperehod).includes("typeinstrum") &&
+            Object.keys(dataperehod).includes("typecuttingmaterial") &&
+            Object.keys(dataperehod).includes("typethread") &&
+            (Object.keys(dataperehod).includes("diameter") ||
+              Object.keys(dataperehod).includes("inchdiameter")) &&
+            (Object.keys(dataperehod).includes("stepthread") ||
+              dataperehod.typethread === "inch") &&
+            Object.keys(dataperehod).includes("length") &&
+            Object.keys(dataperehod).includes("accuracy") &&
+            dataperehod.typeinstrum &&
+            dataperehod.typecuttingmaterial &&
+            dataperehod.typethread &&
+            (dataperehod.diameter || dataperehod.inchdiameter) &&
+            (dataperehod.stepthread || dataperehod.typethread === "inch") &&
+            dataperehod.length &&
+            dataperehod.accuracy &&
+            (dataperehod.diameter <= dataperehod.maxDiameter ||
+              dataperehod.typethread === "inch") &&
+            dataperehod.length <= this.maxLength
+          ) {
+            let diameter = 0;
+            let stepthread = 0;
+            if (dataperehod.inchdiameter) {
+              switch (dataperehod.inchdiameter) {
+                case "inch_1/2":
+                  diameter = 20.95;
+                  stepthread = 1.8;
+                  break;
+                case "inch_3/4":
+                  diameter = 26.4;
+                  stepthread = 1.8;
+                  break;
+                case "inch1":
+                  diameter = 33.2;
+                  stepthread = 2.3;
+                  break;
+                case "inch1_1/2":
+                  diameter = 47.8;
+                  stepthread = 2.3;
+                  break;
+                case "inch2":
+                  diameter = 59.6;
+                  stepthread = 2.3;
+                  break;
+                case "inch2_1/2":
+                  diameter = 75.2;
+                  stepthread = 2.3;
+                  break;
+                case "inch3":
+                  diameter = 87.9;
+                  stepthread = 2.3;
+                  break;
+              }
+            } else {
+              diameter = Number(dataperehod.diameter);
+              stepthread = Number(dataperehod.stepthread);
+            }
+
+            let length = Number(dataperehod.length);
+            let specified_stepthread = 0;
+
+            let specified_maxD = [420, 900, 2000].find(
+              (item) =>
+                item >=
+                dataTokarnovintorezn.machineModels[this.model].characteristics.part_maxD_patron
+            );
+
+            if (dataperehod.typethread !== "inch") {
+              specified_stepthread = Object.keys(
+                dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[dataperehod.typethread][
+                  dataperehod.typecuttingmaterial
+                ]
+              ).find((item) => item >= stepthread);
+            } else {
+              specified_stepthread = stepthread;
+            }
+
+            console.log(specified_stepthread);
+
+            if (specified_stepthread === undefined) return { stepthread: false };
+            else {
+              let koefficient_cuttingspeed =
+                dataTokarnovintorezn.correctionFactors.forCuttingSpeed.hardnessFactor[
+                  this.partmaterial
+                ][dataperehod.typecuttingmaterial][this.part_gradematerial][this.parthardness];
+              console.log("koefficient_cuttingspeed", koefficient_cuttingspeed);
+
+              let numprohod = 0;
+              let cuttingSpeed = 0;
+              let numprohod_p = 0;
+              let numprohod_z = 0;
+              let cuttingSpeed_p = 0;
+              let cuttingSpeed_z = 0;
+
+              if (dataperehod.typeinstrum === "by_tap_and_die") {
+                numprohod = 1;
+                cuttingSpeed =
+                  dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_tap_and_die.external.v;
+              } else if (
+                dataperehod.typeinstrum === "by_cutter" &&
+                dataperehod.typecuttingmaterial === "tvsplav"
+              ) {
+                if (dataperehod.typethread !== "inch") {
+                  numprohod =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].tvsplav[specified_stepthread].proh;
+                  cuttingSpeed =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].tvsplav[specified_stepthread].v;
+                } else {
+                  numprohod =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].tvsplav[dataperehod.inchdiameter].proh;
+                  cuttingSpeed =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].tvsplav[dataperehod.inchdiameter].v;
+                }
+              } else if (
+                dataperehod.typeinstrum === "by_cutter" &&
+                dataperehod.typecuttingmaterial === "bistrorez"
+              ) {
+                if (dataperehod.typethread !== "inch") {
+                  numprohod_p =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].bistrorez[specified_stepthread].p;
+                  numprohod_z =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].bistrorez[specified_stepthread].z;
+                  cuttingSpeed_p =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].bistrorez[specified_stepthread].vp;
+                  cuttingSpeed_z =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].bistrorez[specified_stepthread].vz;
+                } else {
+                  numprohod_p =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].bistrorez[dataperehod.inchdiameter].p;
+                  numprohod_z =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].bistrorez[dataperehod.inchdiameter].z;
+                  cuttingSpeed_p =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].bistrorez[dataperehod.inchdiameter].vp;
+                  cuttingSpeed_z =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].bistrorez[dataperehod.inchdiameter].vz;
+                }
+              }
+
+              console.log("numprohod", numprohod);
+              console.log("cuttingSpeed", cuttingSpeed);
+              console.log("numprohod_p", numprohod_p);
+              console.log("numprohod_z", numprohod_z);
+              console.log("cuttingSpeed_p", cuttingSpeed_p);
+              console.log("cuttingSpeed_z", cuttingSpeed_z);
+
+              let cuttingSpeed_correct = cuttingSpeed ? cuttingSpeed : cuttingSpeed_p;
+
+              cuttingSpeed_correct = cuttingSpeed_correct * koefficient_cuttingspeed;
+
+              if (
+                (dataperehod.typecentr === "none" || dataperehod.typecentr === "vrash") &&
+                dataperehod.typelunet === "none"
+              ) {
+              } else {
+                let specified_permissibleSpeed_weight = [
+                  1000, 2000, 3000, 5000, 7000, 10000, 15000, 20000, 30000,
+                ].find((item) => item > Number(this.partweight));
+
+                if (dataperehod.typecentr === "gestk" && dataperehod.typelunet === "none") {
+                  let cuttingspeed_gestkcentr =
+                    (dataTokarnovintorezn.cuttingSpeed.permissibleSpeed.typecentr[
+                      dataperehod.typecentr
+                    ][specified_permissibleSpeed_weight] *
+                      3.14 *
+                      diameter) /
+                    1000;
+                  cuttingSpeed_correct =
+                    cuttingSpeed_correct <= cuttingspeed_gestkcentr
+                      ? cuttingSpeed_correct
+                      : cuttingspeed_gestkcentr;
+                } else if (
+                  (dataperehod.typecentr === "none" || dataperehod.typecentr === "vrash") &&
+                  dataperehod.typelunet !== "none"
+                ) {
+                  let cuttingspeed_lunet =
+                    dataTokarnovintorezn.cuttingSpeed.permissibleSpeed.typelunet[
+                      dataperehod.typelunet
+                    ][specified_permissibleSpeed_weight];
+                  cuttingSpeed_correct =
+                    cuttingSpeed_correct <= cuttingspeed_lunet
+                      ? cuttingSpeed_correct
+                      : cuttingspeed_lunet;
+                } else if (dataperehod.typecentr === "gestk" && dataperehod.typelunet !== "none") {
+                  let cuttingspeed_centr =
+                    (dataTokarnovintorezn.cuttingSpeed.permissibleSpeed.typecentr[
+                      dataperehod.typecentr
+                    ][specified_permissibleSpeed_weight] *
+                      3.14 *
+                      diameter) /
+                    1000;
+
+                  let cuttingspeed_lunet =
+                    dataTokarnovintorezn.cuttingSpeed.permissibleSpeed.typelunet[
+                      dataperehod.typelunet
+                    ][specified_permissibleSpeed_weight];
+
+                  if (cuttingspeed_centr < cuttingspeed_lunet) {
+                    cuttingSpeed_correct =
+                      cuttingSpeed_correct <= cuttingspeed_centr
+                        ? cuttingSpeed_correct
+                        : cuttingspeed_centr;
+                  } else {
+                    cuttingSpeed_correct =
+                      cuttingSpeed_correct <= cuttingspeed_lunet
+                        ? cuttingSpeed_correct
+                        : cuttingspeed_lunet;
+                  }
+                }
+              }
+
+              console.log("cuttingSpeed_correct", cuttingSpeed_correct);
+
+              let rpm = 0;
+              let rpm_p = 0;
+              let rpm_z = 0;
+              let MashiningTime = 0;
+
+              if (dataperehod.typeinstrum === "by_tap_and_die") {
+                rpm = (1000 * cuttingSpeed_correct) / (3.14 * diameter);
+                MashiningTime = ((length + 6 * stepthread) * 2) / (rpm * stepthread);
+              } else if (
+                dataperehod.typeinstrum === "by_cutter" &&
+                dataperehod.typecuttingmaterial === "tvsplav"
+              ) {
+                rpm = (1000 * cuttingSpeed_correct) / (3.14 * diameter);
+                MashiningTime = ((length + 6 * stepthread) * numprohod) / (rpm * stepthread);
+              } else if (
+                dataperehod.typeinstrum === "by_cutter" &&
+                dataperehod.typecuttingmaterial === "bistrorez"
+              ) {
+                rpm_p = (1000 * cuttingSpeed_correct) / (3.14 * diameter);
+                rpm_z = (1000 * cuttingSpeed_z) / (3.14 * diameter);
+                MashiningTime =
+                  ((length + 6 * stepthread) * numprohod_p) / (rpm_p * stepthread) +
+                  ((length + 4 * stepthread) * numprohod_z) / (rpm_z * stepthread);
+              }
+              console.log("MashiningTime", MashiningTime);
+
+              let specified_length = 0;
+
+              if (dataperehod.typeinstrum !== "by_tap_and_die") {
+                specified_length = Object.keys(
+                  dataTokarnovintorezn.trasitionTime.thread_cutting[dataperehod.typeinstrum][
+                    dataperehod.typethread
+                  ][dataperehod.typetreatment][specified_maxD]
+                ).find((item) => item >= length);
+              } else {
+                specified_length = Object.keys(
+                  dataTokarnovintorezn.trasitionTime.thread_cutting[dataperehod.typeinstrum][
+                    dataperehod.typetreatment
+                  ][specified_maxD]
+                ).find((item) => item >= length);
+              }
+
+              let specified_stepthread_for_trasitiontime = 0;
+              if (dataperehod.typeinstrum !== "by_tap_and_die") {
+                specified_stepthread_for_trasitiontime = Object.keys(
+                  dataTokarnovintorezn.trasitionTime.thread_cutting[dataperehod.typeinstrum][
+                    dataperehod.typethread
+                  ][dataperehod.typetreatment][specified_maxD][specified_length]
+                ).find((item) => item >= stepthread);
+              }
+
+              let koefficient_trasitiontime_accuracy = dataperehod.accuracy === "kl2" ? 1 : 1.3;
+
+              let specified_ld_factor = 0;
+              if (dataperehod.typeinstrum !== "by_tap_and_die") {
+                specified_ld_factor = Object.keys(
+                  dataTokarnovintorezn.trasitionTime.thread_cutting[dataperehod.typeinstrum][
+                    dataperehod.typethread
+                  ][dataperehod.typetreatment].ld_factor
+                ).find((item) => item >= length / (diameter - dataperehod.stepthread));
+              }
+
+              let koefficient_trasitiontime_ld_factor = 0;
+              if (dataperehod.typeinstrum !== "by_tap_and_die") {
+                koefficient_trasitiontime_ld_factor =
+                  dataTokarnovintorezn.trasitionTime.thread_cutting[dataperehod.typeinstrum][
+                    dataperehod.typethread
+                  ][dataperehod.typetreatment].ld_factor[specified_ld_factor];
+              }
+
+              let trasitiontime = 0;
+              if (dataperehod.typeinstrum !== "by_tap_and_die") {
+                trasitiontime =
+                  dataTokarnovintorezn.trasitionTime.thread_cutting[dataperehod.typeinstrum][
+                    dataperehod.typethread
+                  ][dataperehod.typetreatment][specified_maxD][specified_length][
+                    specified_stepthread_for_trasitiontime
+                  ] *
+                  koefficient_trasitiontime_accuracy *
+                  koefficient_trasitiontime_ld_factor;
+              } else {
+                trasitiontime =
+                  dataTokarnovintorezn.trasitionTime.thread_cutting[dataperehod.typeinstrum][
+                    dataperehod.typetreatment
+                  ][specified_maxD];
+              }
+
+              console.log("trasitiontime", trasitiontime);
+
+              MainTime = Number(MashiningTime.toFixed(2)) + Number(trasitiontime.toFixed(2));
+
+              console.log("MainTime", MainTime);
+
+              if (rpm) {
+                let strrezults = {
+                  feed: stepthread,
+                  cuttingspeed: Math.floor(cuttingSpeed_correct * 10) / 10,
+                  rpm: Math.floor(rpm),
+                  numprohod: numprohod,
+                  trasitiontime: trasitiontime.toFixed(2),
+                  machintime: MashiningTime.toFixed(2),
+                  Otime: MainTime,
+                };
+                return strrezults;
+              } else {
+                let strrezults = {
+                  feed: stepthread,
+                  cuttingspeed_p: Math.floor(cuttingSpeed_correct * 10) / 10,
+                  rpm_p: Math.floor(rpm_p),
+                  numprohod_p: numprohod_p,
+                  cuttingspeed_z: Math.floor(cuttingSpeed_z),
+                  rpm_z: Math.floor(rpm_z),
+                  numprohod_z: numprohod_z,
+                  trasitiontime: trasitiontime.toFixed(2),
+                  machintime: MashiningTime.toFixed(2),
+                  Otime: MainTime,
+                };
+                return strrezults;
+              }
+            }
+          }
+          break;
+        //
+        //
+        // ----------внутренняя нарезка резьбы------------------
+
+        case "internal_thread_cutting":
+          if (
+            Object.keys(dataperehod).includes("typeinstrum") &&
+            (Object.keys(dataperehod).includes("numtaps") ||
+              dataperehod.typeinstrum !== "by_tap_and_die") &&
+            Object.keys(dataperehod).includes("typecuttingmaterial") &&
+            Object.keys(dataperehod).includes("typethread") &&
+            (Object.keys(dataperehod).includes("diameter") ||
+              Object.keys(dataperehod).includes("inchdiameter")) &&
+            (Object.keys(dataperehod).includes("stepthread") ||
+              dataperehod.typethread === "inch") &&
+            Object.keys(dataperehod).includes("length") &&
+            Object.keys(dataperehod).includes("accuracy") &&
+            dataperehod.typeinstrum &&
+            (dataperehod.numtaps || dataperehod.typeinstrum !== "by_tap_and_die") &&
+            dataperehod.typecuttingmaterial &&
+            dataperehod.typethread &&
+            (dataperehod.diameter || dataperehod.inchdiameter) &&
+            (dataperehod.stepthread || dataperehod.typethread === "inch") &&
+            dataperehod.length &&
+            dataperehod.accuracy &&
+            (dataperehod.diameter <= dataperehod.maxDiameter ||
+              dataperehod.typethread === "inch") &&
+            dataperehod.length <= this.maxLength
+          ) {
+            let diameter = 0;
+            let stepthread = 0;
+            if (dataperehod.inchdiameter) {
+              switch (dataperehod.inchdiameter) {
+                case "inch_1/2":
+                  diameter = 20.95;
+                  stepthread = 1.8;
+                  break;
+                case "inch_3/4":
+                  diameter = 26.4;
+                  stepthread = 1.8;
+                  break;
+                case "inch1":
+                  diameter = 33.2;
+                  stepthread = 2.3;
+                  break;
+                case "inch1_1/2":
+                  diameter = 47.8;
+                  stepthread = 2.3;
+                  break;
+                case "inch2":
+                  diameter = 59.6;
+                  stepthread = 2.3;
+                  break;
+                case "inch2_1/2":
+                  diameter = 75.2;
+                  stepthread = 2.3;
+                  break;
+                case "inch3":
+                  diameter = 87.9;
+                  stepthread = 2.3;
+                  break;
+              }
+            } else {
+              diameter = Number(dataperehod.diameter);
+              stepthread = Number(dataperehod.stepthread);
+            }
+
+            let length = Number(dataperehod.length);
+            let specified_stepthread = 0;
+
+            let specified_maxD = [420, 900, 2000].find(
+              (item) =>
+                item >=
+                dataTokarnovintorezn.machineModels[this.model].characteristics.part_maxD_patron
+            );
+
+            if (dataperehod.typethread !== "inch") {
+              specified_stepthread = Object.keys(
+                dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[dataperehod.typethread][
+                  dataperehod.typecuttingmaterial
+                ]
+              ).find((item) => item >= stepthread);
+            } else {
+              specified_stepthread = stepthread;
+            }
+
+            console.log(specified_stepthread);
+
+            if (specified_stepthread === undefined) return { stepthread: false };
+            else {
+              let koefficient_cuttingspeed =
+                dataTokarnovintorezn.correctionFactors.forCuttingSpeed.hardnessFactor[
+                  this.partmaterial
+                ][dataperehod.typecuttingmaterial][this.part_gradematerial][this.parthardness];
+              console.log("koefficient_cuttingspeed", koefficient_cuttingspeed);
+
+              let numprohod = 0;
+              let cuttingSpeed = 0;
+              let numprohod_p = 0;
+              let numprohod_z = 0;
+              let cuttingSpeed_p = 0;
+              let cuttingSpeed_z = 0;
+
+              if (dataperehod.typeinstrum === "by_tap_and_die") {
+                numprohod = 1;
+                cuttingSpeed =
+                  dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_tap_and_die.internal.v;
+              } else if (
+                dataperehod.typeinstrum === "by_cutter" &&
+                dataperehod.typecuttingmaterial === "tvsplav"
+              ) {
+                if (dataperehod.typethread !== "inch") {
+                  numprohod =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].tvsplav[specified_stepthread].proh;
+                  cuttingSpeed =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].tvsplav[specified_stepthread].v;
+                } else {
+                  numprohod =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].tvsplav[dataperehod.inchdiameter].proh;
+                  cuttingSpeed =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].tvsplav[dataperehod.inchdiameter].v;
+                }
+              } else if (
+                dataperehod.typeinstrum === "by_cutter" &&
+                dataperehod.typecuttingmaterial === "bistrorez"
+              ) {
+                if (dataperehod.typethread !== "inch") {
+                  numprohod_p =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].bistrorez[specified_stepthread].p;
+                  numprohod_z =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].bistrorez[specified_stepthread].z;
+                  cuttingSpeed_p =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].bistrorez[specified_stepthread].vp;
+                  cuttingSpeed_z =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].bistrorez[specified_stepthread].vz;
+                } else {
+                  numprohod_p =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].bistrorez[dataperehod.inchdiameter].p;
+                  numprohod_z =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].bistrorez[dataperehod.inchdiameter].z;
+                  cuttingSpeed_p =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].bistrorez[dataperehod.inchdiameter].vp;
+                  cuttingSpeed_z =
+                    dataTokarnovintorezn.cuttingSpeed.thread_cutting.by_cutter[
+                      dataperehod.typethread
+                    ].bistrorez[dataperehod.inchdiameter].vz;
+                }
+              }
+
+              console.log("numprohod", numprohod);
+              console.log("cuttingSpeed", cuttingSpeed);
+              console.log("numprohod_p", numprohod_p);
+              console.log("numprohod_z", numprohod_z);
+              console.log("cuttingSpeed_p", cuttingSpeed_p);
+              console.log("cuttingSpeed_z", cuttingSpeed_z);
+
+              let cuttingSpeed_correct = cuttingSpeed ? cuttingSpeed : cuttingSpeed_p;
+
+              cuttingSpeed_correct = cuttingSpeed_correct * koefficient_cuttingspeed;
+
+              if (
+                (dataperehod.typecentr === "none" || dataperehod.typecentr === "vrash") &&
+                dataperehod.typelunet === "none"
+              ) {
+              } else {
+                let specified_permissibleSpeed_weight = [
+                  1000, 2000, 3000, 5000, 7000, 10000, 15000, 20000, 30000,
+                ].find((item) => item > Number(this.partweight));
+
+                if (dataperehod.typecentr === "gestk" && dataperehod.typelunet === "none") {
+                  let cuttingspeed_gestkcentr =
+                    (dataTokarnovintorezn.cuttingSpeed.permissibleSpeed.typecentr[
+                      dataperehod.typecentr
+                    ][specified_permissibleSpeed_weight] *
+                      3.14 *
+                      diameter) /
+                    1000;
+                  cuttingSpeed_correct =
+                    cuttingSpeed_correct <= cuttingspeed_gestkcentr
+                      ? cuttingSpeed_correct
+                      : cuttingspeed_gestkcentr;
+                } else if (
+                  (dataperehod.typecentr === "none" || dataperehod.typecentr === "vrash") &&
+                  dataperehod.typelunet !== "none"
+                ) {
+                  let cuttingspeed_lunet =
+                    dataTokarnovintorezn.cuttingSpeed.permissibleSpeed.typelunet[
+                      dataperehod.typelunet
+                    ][specified_permissibleSpeed_weight];
+                  cuttingSpeed_correct =
+                    cuttingSpeed_correct <= cuttingspeed_lunet
+                      ? cuttingSpeed_correct
+                      : cuttingspeed_lunet;
+                } else if (dataperehod.typecentr === "gestk" && dataperehod.typelunet !== "none") {
+                  let cuttingspeed_centr =
+                    (dataTokarnovintorezn.cuttingSpeed.permissibleSpeed.typecentr[
+                      dataperehod.typecentr
+                    ][specified_permissibleSpeed_weight] *
+                      3.14 *
+                      diameter) /
+                    1000;
+
+                  let cuttingspeed_lunet =
+                    dataTokarnovintorezn.cuttingSpeed.permissibleSpeed.typelunet[
+                      dataperehod.typelunet
+                    ][specified_permissibleSpeed_weight];
+
+                  if (cuttingspeed_centr < cuttingspeed_lunet) {
+                    cuttingSpeed_correct =
+                      cuttingSpeed_correct <= cuttingspeed_centr
+                        ? cuttingSpeed_correct
+                        : cuttingspeed_centr;
+                  } else {
+                    cuttingSpeed_correct =
+                      cuttingSpeed_correct <= cuttingspeed_lunet
+                        ? cuttingSpeed_correct
+                        : cuttingspeed_lunet;
+                  }
+                }
+              }
+
+              console.log("cuttingSpeed_correct", cuttingSpeed_correct);
+
+              let rpm = 0;
+              let rpm_p = 0;
+              let rpm_z = 0;
+              let MashiningTime = 0;
+
+              if (dataperehod.typeinstrum === "by_tap_and_die") {
+                rpm = (1000 * cuttingSpeed_correct) / (3.14 * diameter);
+                MashiningTime =
+                  ((length + 6 * stepthread) * dataperehod.numtaps * 2) / (rpm * stepthread);
+              } else if (
+                dataperehod.typeinstrum === "by_cutter" &&
+                dataperehod.typecuttingmaterial === "tvsplav"
+              ) {
+                rpm = (1000 * cuttingSpeed_correct) / (3.14 * diameter);
+                MashiningTime = ((length + 6 * stepthread) * numprohod) / (rpm * stepthread);
+              } else if (
+                dataperehod.typeinstrum === "by_cutter" &&
+                dataperehod.typecuttingmaterial === "bistrorez"
+              ) {
+                rpm_p = (1000 * cuttingSpeed_correct) / (3.14 * diameter);
+                rpm_z = (1000 * cuttingSpeed_z) / (3.14 * diameter);
+                MashiningTime =
+                  ((length + 6 * stepthread) * numprohod_p) / (rpm_p * stepthread) +
+                  ((length + 4 * stepthread) * numprohod_z) / (rpm_z * stepthread);
+              }
+              console.log("MashiningTime", MashiningTime);
+
+              let specified_length = 0;
+
+              if (dataperehod.typeinstrum !== "by_tap_and_die") {
+                specified_length = Object.keys(
+                  dataTokarnovintorezn.trasitionTime.thread_cutting[dataperehod.typeinstrum][
+                    dataperehod.typethread
+                  ][dataperehod.typetreatment][specified_maxD]
+                ).find((item) => item >= length);
+              } else {
+                specified_length = Object.keys(
+                  dataTokarnovintorezn.trasitionTime.thread_cutting[dataperehod.typeinstrum][
+                    dataperehod.typetreatment
+                  ][specified_maxD]
+                ).find((item) => item >= length);
+              }
+
+              let specified_stepthread_for_trasitiontime = 0;
+              if (dataperehod.typeinstrum !== "by_tap_and_die") {
+                specified_stepthread_for_trasitiontime = Object.keys(
+                  dataTokarnovintorezn.trasitionTime.thread_cutting[dataperehod.typeinstrum][
+                    dataperehod.typethread
+                  ][dataperehod.typetreatment][specified_maxD][specified_length]
+                ).find((item) => item >= stepthread);
+              }
+
+              let koefficient_trasitiontime_accuracy = dataperehod.accuracy === "kl2" ? 1 : 1.3;
+
+              let specified_ld_factor = 0;
+              if (dataperehod.typeinstrum !== "by_tap_and_die") {
+                specified_ld_factor = Object.keys(
+                  dataTokarnovintorezn.trasitionTime.thread_cutting[dataperehod.typeinstrum][
+                    dataperehod.typethread
+                  ][dataperehod.typetreatment].ld_factor
+                ).find((item) => item >= length / (diameter - dataperehod.stepthread));
+              }
+
+              let koefficient_trasitiontime_ld_factor = 0;
+              if (dataperehod.typeinstrum !== "by_tap_and_die") {
+                koefficient_trasitiontime_ld_factor =
+                  dataTokarnovintorezn.trasitionTime.thread_cutting[dataperehod.typeinstrum][
+                    dataperehod.typethread
+                  ][dataperehod.typetreatment].ld_factor[specified_ld_factor];
+              }
+
+              let trasitiontime = 0;
+              if (dataperehod.typeinstrum !== "by_tap_and_die") {
+                trasitiontime =
+                  dataTokarnovintorezn.trasitionTime.thread_cutting[dataperehod.typeinstrum][
+                    dataperehod.typethread
+                  ][dataperehod.typetreatment][specified_maxD][specified_length][
+                    specified_stepthread_for_trasitiontime
+                  ] *
+                  koefficient_trasitiontime_accuracy *
+                  koefficient_trasitiontime_ld_factor;
+              } else {
+                trasitiontime =
+                  dataTokarnovintorezn.trasitionTime.thread_cutting[dataperehod.typeinstrum][
+                    dataperehod.typetreatment
+                  ][specified_maxD][dataperehod.numtaps];
+              }
+
+              console.log("trasitiontime", trasitiontime);
+
+              MainTime = Number(MashiningTime.toFixed(2)) + Number(trasitiontime.toFixed(2));
+
+              console.log("MainTime", MainTime);
+
+              if (rpm) {
+                let strrezults = {
+                  feed: stepthread,
+                  cuttingspeed: Math.floor(cuttingSpeed_correct * 10) / 10,
+                  rpm: Math.floor(rpm),
+                  numprohod: numprohod,
+                  trasitiontime: trasitiontime.toFixed(2),
+                  machintime: MashiningTime.toFixed(2),
+                  Otime: MainTime,
+                };
+                return strrezults;
+              } else {
+                let strrezults = {
+                  feed: stepthread,
+                  cuttingspeed_p: Math.floor(cuttingSpeed_correct * 10) / 10,
+                  rpm_p: Math.floor(rpm_p),
+                  numprohod_p: numprohod_p,
+                  cuttingspeed_z: Math.floor(cuttingSpeed_z),
+                  rpm_z: Math.floor(rpm_z),
+                  numprohod_z: numprohod_z,
+                  trasitiontime: trasitiontime.toFixed(2),
+                  machintime: MashiningTime.toFixed(2),
+                  Otime: MainTime,
+                };
+                return strrezults;
+              }
+            }
+          }
+          break;
         //
         // ----------черновое наружное точение------------------
 
@@ -5997,7 +7703,6 @@ let tokarnovintorezn_defaultstate = {
             dataperehod.length &&
             dataperehod.accuracy &&
             dataperehod.allowance &&
-            dataperehod.vertex_radius &&
             dataperehod.diameter <= dataperehod.maxDiameter &&
             dataperehod.length <= this.maxLength &&
             dataperehod.charactertreatment === "rough"
@@ -6254,22 +7959,22 @@ let tokarnovintorezn_defaultstate = {
             MainTime =
               Number(
                 Number(
-                  (((length + cuttingin_overrun) * numprohod) / (rpm * specified_feed)).toFixed(1)
+                  (((length + cuttingin_overrun) * numprohod) / (rpm * specified_feed)).toFixed(2)
                 )
-              ) + Number(trasitiontime_full.toFixed(1));
+              ) + Number(trasitiontime_full.toFixed(2));
 
             let strrezults = {
               feed: specified_feed,
-              cuttingspeed: Math.floor(cuttingspeed),
+              cuttingspeed: Math.floor(cuttingspeed * 10) / 10,
               rpm: Math.floor(rpm),
               numprohod: numprohod,
               cutdepth: get_cutdepth(),
-              trasitiontime: trasitiontime_full.toFixed(1),
+              trasitiontime: trasitiontime_full.toFixed(2),
               machintime: (
                 ((length + cuttingin_overrun) * numprohod) /
                 (rpm * specified_feed)
-              ).toFixed(1),
-              maintime: MainTime,
+              ).toFixed(2),
+              Otime: MainTime,
             };
 
             return strrezults;
@@ -6563,21 +8268,21 @@ let tokarnovintorezn_defaultstate = {
 
             MainTime =
               Number(
-                (((length + cuttingin_overrun) * numprohod) / (rpm * specified_feed)).toFixed(1)
-              ) + Number(trasitiontime.toFixed(1));
+                (((length + cuttingin_overrun) * numprohod) / (rpm * specified_feed)).toFixed(2)
+              ) + Number(trasitiontime.toFixed(2));
 
             let strrezults = {
               feed: specified_feed,
-              cuttingspeed: Math.floor(cuttingspeed),
+              cuttingspeed: Math.floor(cuttingspeed * 10) / 10,
               rpm: Math.floor(rpm),
               numprohod: numprohod,
               cutdepth: cutdepth,
-              trasitiontime: trasitiontime.toFixed(1),
+              trasitiontime: trasitiontime.toFixed(2),
               machintime: (
                 ((length + cuttingin_overrun) * numprohod) /
                 (rpm * specified_feed)
-              ).toFixed(1),
-              maintime: MainTime,
+              ).toFixed(2),
+              Otime: MainTime,
             };
 
             return strrezults;
@@ -6592,6 +8297,7 @@ let tokarnovintorezn_defaultstate = {
             Object.keys(dataperehod).includes("crust") &&
             Object.keys(dataperehod).includes("impact_treatment") &&
             Object.keys(dataperehod).includes("availability_SOG") &&
+            Object.keys(dataperehod).includes("mandrel_section") &&
             Object.keys(dataperehod).includes("typecuttingmaterial") &&
             Object.keys(dataperehod).includes("cuttingmaterial") &&
             Object.keys(dataperehod).includes("mainplanangle") &&
@@ -6815,21 +8521,21 @@ let tokarnovintorezn_defaultstate = {
 
             MainTime =
               Number(
-                (((length + cuttingin_overrun) * numprohod) / (rpm * specified_feed)).toFixed(1)
-              ) + Number(trasitiontime_full.toFixed(1));
+                (((length + cuttingin_overrun) * numprohod) / (rpm * specified_feed)).toFixed(2)
+              ) + Number(trasitiontime_full.toFixed(2));
 
             let strrezults = {
               feed: specified_feed,
-              cuttingspeed: Math.floor(cuttingspeed),
+              cuttingspeed: Math.floor(cuttingspeed * 10) / 10,
               rpm: Math.floor(rpm),
               numprohod: numprohod,
               cutdepth: get_cutdepth(),
-              trasitiontime: trasitiontime_full.toFixed(1),
+              trasitiontime: trasitiontime_full.toFixed(2),
               machintime: (
                 ((length + cuttingin_overrun) * numprohod) /
                 (rpm * specified_feed)
-              ).toFixed(1),
-              maintime: MainTime,
+              ).toFixed(2),
+              Otime: MainTime,
             };
 
             return strrezults;
@@ -7055,21 +8761,21 @@ let tokarnovintorezn_defaultstate = {
 
             MainTime =
               Number(
-                (((length + cuttingin_overrun) * numprohod) / (rpm * specified_feed)).toFixed(1)
-              ) + Number(trasitiontime.toFixed(1));
+                (((length + cuttingin_overrun) * numprohod) / (rpm * specified_feed)).toFixed(2)
+              ) + Number(trasitiontime.toFixed(2));
 
             let strrezults = {
               feed: specified_feed,
-              cuttingspeed: Math.floor(cuttingspeed),
+              cuttingspeed: Math.floor(cuttingspeed * 10) / 10,
               rpm: Math.floor(rpm),
               numprohod: numprohod,
               cutdepth: cutdepth,
-              trasitiontime: trasitiontime.toFixed(1),
+              trasitiontime: trasitiontime.toFixed(2),
               machintime: (
                 ((length + cuttingin_overrun) * numprohod) /
                 (rpm * specified_feed)
-              ).toFixed(1),
-              maintime: MainTime,
+              ).toFixed(2),
+              Otime: MainTime,
             };
 
             return strrezults;
@@ -7356,21 +9062,21 @@ let tokarnovintorezn_defaultstate = {
                 (
                   ((Math.abs(diameter1 - diameter2) / 2 + cuttingin_overrun) * numprohod) /
                   (rpm * specified_feed)
-                ).toFixed(1)
-              ) + Number(trasitiontime_full.toFixed(1));
+                ).toFixed(2)
+              ) + Number(trasitiontime_full.toFixed(2));
 
             let strrezults = {
               feed: specified_feed,
-              cuttingspeed: Math.floor(cuttingspeed),
+              cuttingspeed: Math.floor(cuttingspeed * 10) / 10,
               rpm: Math.floor(rpm),
               numprohod: numprohod,
               cutdepth: get_cutdepth(),
-              trasitiontime: trasitiontime_full.toFixed(1),
+              trasitiontime: trasitiontime_full.toFixed(2),
               machintime: (
                 ((Math.abs(diameter1 - diameter2) / 2 + cuttingin_overrun) * numprohod) /
                 (rpm * specified_feed)
-              ).toFixed(1),
-              maintime: MainTime,
+              ).toFixed(2),
+              Otime: MainTime,
             };
 
             return strrezults;
@@ -7662,21 +9368,21 @@ let tokarnovintorezn_defaultstate = {
                 (
                   ((Math.abs(diameter1 - diameter2) / 2 + cuttingin_overrun) * numprohod) /
                   (rpm * specified_feed)
-                ).toFixed(1)
-              ) + Number(trasitiontime.toFixed(1));
+                ).toFixed(2)
+              ) + Number(trasitiontime.toFixed(2));
 
             let strrezults = {
               feed: specified_feed,
-              cuttingspeed: Math.floor(cuttingspeed),
+              cuttingspeed: Math.floor(cuttingspeed * 10) / 10,
               rpm: Math.floor(rpm),
               numprohod: numprohod,
               cutdepth: cutdepth,
-              trasitiontime: trasitiontime.toFixed(1),
+              trasitiontime: trasitiontime.toFixed(2),
               machintime: (
                 ((Math.abs(diameter1 - diameter2) / 2 + cuttingin_overrun) * numprohod) /
                 (rpm * specified_feed)
-              ).toFixed(1),
-              maintime: MainTime,
+              ).toFixed(2),
+              Otime: MainTime,
             };
 
             return strrezults;
@@ -7902,27 +9608,27 @@ let tokarnovintorezn_defaultstate = {
                 (
                   ((Math.abs(diameter1 - diameter2) / 2 + cuttingin_overrun) * numprohod) /
                   (rpm * specified_feed)
-                ).toFixed(1)
-              ) + Number(trasitiontime_full.toFixed(1));
+                ).toFixed(2)
+              ) + Number(trasitiontime_full.toFixed(2));
 
             let strrezults = {
               feed: specified_feed,
-              cuttingspeed: Math.floor(cuttingspeed),
+              cuttingspeed: Math.floor(cuttingspeed * 10) / 10,
               rpm: Math.floor(rpm),
               numprohod: numprohod,
               cutdepth: get_cutdepth(),
-              trasitiontime: trasitiontime_full.toFixed(1),
+              trasitiontime: trasitiontime_full.toFixed(2),
               machintime: (
                 ((Math.abs(diameter1 - diameter2) / 2 + cuttingin_overrun) * numprohod) /
                 (rpm * specified_feed)
-              ).toFixed(1),
-              maintime: MainTime,
+              ).toFixed(2),
+              Otime: MainTime,
             };
 
             return strrezults;
           } else if (
             //
-            // ---------------чистовая внутренняя подрезка--------------
+            // --------------чистовая внутренняя подрезка--------------
 
             Object.keys(dataperehod).includes("charactertreatment") &&
             Object.keys(dataperehod).includes("availability_SOG") &&
@@ -8128,21 +9834,21 @@ let tokarnovintorezn_defaultstate = {
                 (
                   ((Math.abs(diameter1 - diameter2) / 2 + cuttingin_overrun) * numprohod) /
                   (rpm * specified_feed)
-                ).toFixed(1)
-              ) + Number(trasitiontime.toFixed(1));
+                ).toFixed(2)
+              ) + Number(trasitiontime.toFixed(2));
 
             let strrezults = {
               feed: specified_feed,
-              cuttingspeed: Math.floor(cuttingspeed),
+              cuttingspeed: Math.floor(cuttingspeed * 10) / 10,
               rpm: Math.floor(rpm),
               numprohod: numprohod,
               cutdepth: cutdepth,
-              trasitiontime: trasitiontime.toFixed(1),
+              trasitiontime: trasitiontime.toFixed(2),
               machintime: (
                 ((Math.abs(diameter1 - diameter2) / 2 + cuttingin_overrun) * numprohod) /
                 (rpm * specified_feed)
-              ).toFixed(1),
-              maintime: MainTime,
+              ).toFixed(2),
+              Otime: MainTime,
             };
 
             return strrezults;
@@ -8394,14 +10100,14 @@ let tokarnovintorezn_defaultstate = {
                   ((diameter1 / 2) * 0.5 + cuttingin_overrun) / (rpm * specified_feed) +
                     ((diameter1 - diameter2) / 2 - (diameter1 / 2) * 0.5) /
                       (rpm * specified_feed * 0.6)
-                ).toFixed(1);
+                ).toFixed(2);
                 feed_after_05R = specified_feed * 0.6;
               } else {
                 mashtime = Number(
                   ((diameter2 / 2) * 0.5 + cuttingin_overrun) / (rpm * specified_feed) +
                     ((diameter2 - diameter1) / 2 - (diameter2 / 2) * 0.5) /
                       (rpm * specified_feed * 0.6)
-                ).toFixed(1);
+                ).toFixed(2);
                 feed_after_05R = specified_feed * 0.6;
               }
             } else {
@@ -8409,21 +10115,21 @@ let tokarnovintorezn_defaultstate = {
                 (
                   (Math.abs(diameter1 - diameter2) / 2 + cuttingin_overrun) /
                   (rpm * specified_feed)
-                ).toFixed(1)
+                ).toFixed(2)
               );
             }
 
-            MainTime = mashtime * numprohod + Number(trasitiontime_full.toFixed(1));
+            MainTime = mashtime * numprohod + Number(trasitiontime_full.toFixed(2));
 
             let strrezults = {
               feed: specified_feed,
               feed_after_05R: feed_after_05R,
-              cuttingspeed: Math.floor(cuttingspeed),
+              cuttingspeed: Math.floor(cuttingspeed * 10) / 10,
               numprohod: numprohod,
               rpm: Math.floor(rpm),
-              trasitiontime: trasitiontime_full.toFixed(1),
+              trasitiontime: trasitiontime_full.toFixed(2),
               machintime: mashtime * numprohod,
-              maintime: MainTime,
+              Otime: MainTime,
             };
 
             return strrezults;
@@ -8608,20 +10314,20 @@ let tokarnovintorezn_defaultstate = {
                 (
                   ((Math.abs(diameter1 - diameter2) / 2 + cuttingin_overrun) * numprohod) /
                   (rpm * specified_feed)
-                ).toFixed(1)
-              ) + Number(trasitiontime_full.toFixed(1));
+                ).toFixed(2)
+              ) + Number(trasitiontime_full.toFixed(2));
 
             let strrezults = {
               feed: specified_feed,
-              cuttingspeed: Math.floor(cuttingspeed),
+              cuttingspeed: Math.floor(cuttingspeed * 10) / 10,
               rpm: Math.floor(rpm),
               numprohod: numprohod,
-              trasitiontime: trasitiontime_full.toFixed(1),
+              trasitiontime: trasitiontime_full.toFixed(2),
               machintime: (
                 ((Math.abs(diameter1 - diameter2) / 2 + cuttingin_overrun) * numprohod) /
                 (rpm * specified_feed)
-              ).toFixed(1),
-              maintime: MainTime,
+              ).toFixed(2),
+              Otime: MainTime,
             };
 
             return strrezults;
@@ -8729,18 +10435,396 @@ let tokarnovintorezn_defaultstate = {
 
             console.log("всп время", trasitiontime);
 
-            let cuttingin_overrun = 5;
+            let drilling_overrun = 5;
 
             MainTime =
-              Number((length / (rpm * feed)).toFixed(1)) + Number(trasitiontime.toFixed(1));
+              Number(((length + drilling_overrun) / (rpm * feed)).toFixed(2)) +
+              Number(trasitiontime.toFixed(2));
 
             let strrezults = {
               feed: feed,
-              cuttingspeed: Math.floor(cuttingspeed),
+              cuttingspeed: Math.floor(cuttingspeed * 10) / 10,
               rpm: Math.floor(rpm),
-              trasitiontime: trasitiontime.toFixed(1),
-              machintime: (length / (rpm * feed)).toFixed(1),
-              maintime: MainTime,
+              trasitiontime: trasitiontime.toFixed(2),
+              machintime: (length / (rpm * feed)).toFixed(2),
+              Otime: MainTime,
+            };
+
+            return strrezults;
+          }
+          break;
+
+        //
+        // ---------------рассверление--------------
+
+        case "redrilling":
+          if (
+            Object.keys(dataperehod).includes("availability_SOG") &&
+            Object.keys(dataperehod).includes("diameter") &&
+            Object.keys(dataperehod).includes("length") &&
+            dataperehod.diameter &&
+            dataperehod.length &&
+            dataperehod.availability_SOG &&
+            dataperehod.diameter <= 60 &&
+            dataperehod.length <= this.maxLength
+          ) {
+            let diameter = Number(dataperehod.diameter);
+            let length = Number(dataperehod.length);
+
+            let specified_diameter = Object.keys(
+              dataTokarnovintorezn.feeds.redrilling[this.partmaterial]
+            )
+              .sort((a, b) => a - b)
+              .find((item) => item >= diameter);
+
+            let koefficient_feed =
+              dataTokarnovintorezn.correctionFactors.forFeeds.hardnessFactor[this.partmaterial][
+                this.parthardness
+              ];
+
+            console.log("коэффициент подачи", koefficient_feed);
+
+            let feed = (
+              dataTokarnovintorezn.feeds.redrilling[this.partmaterial][specified_diameter] *
+              koefficient_feed
+            ).toFixed(1);
+
+            console.log("подача", feed);
+
+            let specified_ld_ratio = Object.keys(
+              dataTokarnovintorezn.correctionFactors.forCuttingSpeed.drill_length
+            )
+              .sort((a, b) => a - b)
+              .find((item) => item >= length / diameter);
+
+            let koefficient_cuttingspeed =
+              dataTokarnovintorezn.correctionFactors.forCuttingSpeed.hardnessFactor[
+                this.partmaterial
+              ]["bistrorez"][this.part_gradematerial][this.parthardness] *
+              dataTokarnovintorezn.correctionFactors.forCuttingSpeed.drill_length[
+                specified_ld_ratio
+              ] *
+              dataTokarnovintorezn.correctionFactors.forCuttingSpeed.cooling[
+                dataperehod.availability_SOG
+              ];
+
+            console.log("коеф скорости", koefficient_cuttingspeed);
+
+            let cuttingspeed = 0;
+
+            if (dataperehod.typelunet === "none") {
+              cuttingspeed = (
+                dataTokarnovintorezn.cuttingSpeed.redrilling[this.partmaterial][
+                  specified_diameter
+                ] * koefficient_cuttingspeed
+              ).toFixed(1);
+            } else {
+              let specified_permissibleSpeed_weight = [
+                1000, 2000, 3000, 5000, 7000, 10000, 15000, 20000, 30000,
+              ].find((item) => item > Number(this.partweight));
+              let cuttingspeed_lunet =
+                dataTokarnovintorezn.cuttingSpeed.permissibleSpeed.typelunet[dataperehod.typelunet][
+                  specified_permissibleSpeed_weight
+                ];
+              let cuttingspeed_patron =
+                dataTokarnovintorezn.cuttingSpeed.redrilling[this.partmaterial][
+                  specified_diameter
+                ] * koefficient_cuttingspeed;
+
+              cuttingspeed =
+                +cuttingspeed_lunet <= +cuttingspeed_patron
+                  ? cuttingspeed_lunet.toFixed(1)
+                  : cuttingspeed_patron.toFixed(1);
+            }
+
+            console.log("скорость рез", cuttingspeed);
+
+            let rpm = (1000 * cuttingspeed) / (3.14 * diameter);
+
+            specified_diameter = Object.keys(
+              dataTokarnovintorezn.trasitionTime.countersinking[this.partmaterial]
+            )
+              .sort((a, b) => a - b)
+              .find((item) => item >= diameter);
+
+            let specified_length = Object.keys(
+              dataTokarnovintorezn.trasitionTime.countersinking[this.partmaterial][
+                specified_diameter
+              ]
+            )
+              .sort((a, b) => a - b)
+              .find((item) => item >= length);
+
+            let trasitiontime =
+              dataTokarnovintorezn.trasitionTime.countersinking[this.partmaterial][
+                specified_diameter
+              ][specified_length];
+
+            console.log("всп время", trasitiontime);
+
+            let drilling_overrun = 5;
+
+            MainTime =
+              Number(((length + drilling_overrun) / (rpm * feed)).toFixed(2)) +
+              Number(trasitiontime.toFixed(2));
+
+            let strrezults = {
+              feed: feed,
+              cuttingspeed: Math.floor(cuttingspeed * 10) / 10,
+              rpm: Math.floor(rpm),
+              trasitiontime: trasitiontime.toFixed(2),
+              machintime: (length / (rpm * feed)).toFixed(2),
+              Otime: MainTime,
+            };
+
+            return strrezults;
+          }
+          break;
+
+        //
+        // ---------------зенкерование--------------
+
+        case "countersinking":
+          if (
+            Object.keys(dataperehod).includes("availability_SOG") &&
+            Object.keys(dataperehod).includes("diameter") &&
+            Object.keys(dataperehod).includes("length") &&
+            dataperehod.diameter &&
+            dataperehod.length &&
+            dataperehod.availability_SOG &&
+            dataperehod.diameter <= 60 &&
+            dataperehod.length <= this.maxLength
+          ) {
+            let diameter = Number(dataperehod.diameter);
+            let length = Number(dataperehod.length);
+
+            let specified_diameter = Object.keys(
+              dataTokarnovintorezn.feeds.countersinking[this.partmaterial]
+            )
+              .sort((a, b) => a - b)
+              .find((item) => item >= diameter);
+
+            let koefficient_feed =
+              dataTokarnovintorezn.correctionFactors.forFeeds.hardnessFactor[this.partmaterial][
+                this.parthardness
+              ];
+
+            console.log("коэффициент подачи", koefficient_feed);
+
+            let feed = (
+              dataTokarnovintorezn.feeds.countersinking[this.partmaterial][specified_diameter] *
+              koefficient_feed
+            ).toFixed(1);
+
+            console.log("подача", feed);
+
+            let specified_ld_ratio = Object.keys(
+              dataTokarnovintorezn.correctionFactors.forCuttingSpeed.drill_length
+            )
+              .sort((a, b) => a - b)
+              .find((item) => item >= length / diameter);
+
+            let koefficient_cuttingspeed =
+              dataTokarnovintorezn.correctionFactors.forCuttingSpeed.hardnessFactor[
+                this.partmaterial
+              ]["bistrorez"][this.part_gradematerial][this.parthardness] *
+              dataTokarnovintorezn.correctionFactors.forCuttingSpeed.drill_length[
+                specified_ld_ratio
+              ] *
+              dataTokarnovintorezn.correctionFactors.forCuttingSpeed.cooling[
+                dataperehod.availability_SOG
+              ];
+
+            console.log("коеф скорости", koefficient_cuttingspeed);
+
+            let cuttingspeed = 0;
+
+            if (dataperehod.typelunet === "none") {
+              cuttingspeed = (
+                dataTokarnovintorezn.cuttingSpeed.countersinking[this.partmaterial][
+                  specified_diameter
+                ] * koefficient_cuttingspeed
+              ).toFixed(1);
+            } else {
+              let specified_permissibleSpeed_weight = [
+                1000, 2000, 3000, 5000, 7000, 10000, 15000, 20000, 30000,
+              ].find((item) => item > Number(this.partweight));
+              let cuttingspeed_lunet =
+                dataTokarnovintorezn.cuttingSpeed.permissibleSpeed.typelunet[dataperehod.typelunet][
+                  specified_permissibleSpeed_weight
+                ];
+              let cuttingspeed_patron =
+                dataTokarnovintorezn.cuttingSpeed.countersinking[this.partmaterial][
+                  specified_diameter
+                ] * koefficient_cuttingspeed;
+
+              cuttingspeed =
+                +cuttingspeed_lunet <= +cuttingspeed_patron
+                  ? cuttingspeed_lunet.toFixed(1)
+                  : cuttingspeed_patron.toFixed(1);
+            }
+
+            console.log("скорость рез", cuttingspeed);
+
+            let rpm = (1000 * cuttingspeed) / (3.14 * diameter);
+
+            specified_diameter = Object.keys(
+              dataTokarnovintorezn.trasitionTime.countersinking[this.partmaterial]
+            )
+              .sort((a, b) => a - b)
+              .find((item) => item >= diameter);
+
+            let specified_length = Object.keys(
+              dataTokarnovintorezn.trasitionTime.countersinking[this.partmaterial][
+                specified_diameter
+              ]
+            )
+              .sort((a, b) => a - b)
+              .find((item) => item >= length);
+
+            let trasitiontime =
+              dataTokarnovintorezn.trasitionTime.countersinking[this.partmaterial][
+                specified_diameter
+              ][specified_length];
+
+            console.log("всп время", trasitiontime);
+
+            let drilling_overrun = 5;
+
+            MainTime =
+              Number(((length + drilling_overrun) / (rpm * feed)).toFixed(2)) +
+              Number(trasitiontime.toFixed(2));
+
+            let strrezults = {
+              feed: feed,
+              cuttingspeed: Math.floor(cuttingspeed * 10) / 10,
+              rpm: Math.floor(rpm),
+              trasitiontime: trasitiontime.toFixed(2),
+              machintime: (length / (rpm * feed)).toFixed(2),
+              Otime: MainTime,
+            };
+
+            return strrezults;
+          }
+          break;
+
+        //
+        // ---------------развертывание--------------
+
+        case "reaming":
+          if (
+            Object.keys(dataperehod).includes("availability_SOG") &&
+            Object.keys(dataperehod).includes("diameter") &&
+            Object.keys(dataperehod).includes("length") &&
+            dataperehod.diameter &&
+            dataperehod.length &&
+            dataperehod.availability_SOG &&
+            dataperehod.diameter <= 60 &&
+            dataperehod.length <= this.maxLength
+          ) {
+            let diameter = Number(dataperehod.diameter);
+            let length = Number(dataperehod.length);
+
+            let specified_diameter = Object.keys(
+              dataTokarnovintorezn.feeds.reaming[this.partmaterial]
+            )
+              .sort((a, b) => a - b)
+              .find((item) => item >= diameter);
+
+            let koefficient_feed =
+              dataTokarnovintorezn.correctionFactors.forFeeds.hardnessFactor[this.partmaterial][
+                this.parthardness
+              ];
+
+            console.log("коэффициент подачи", koefficient_feed);
+
+            let feed = (
+              dataTokarnovintorezn.feeds.reaming[this.partmaterial][specified_diameter] *
+              koefficient_feed
+            ).toFixed(1);
+
+            console.log("подача", feed);
+
+            let specified_ld_ratio = Object.keys(
+              dataTokarnovintorezn.correctionFactors.forCuttingSpeed.drill_length
+            )
+              .sort((a, b) => a - b)
+              .find((item) => item >= length / diameter);
+
+            let koefficient_cuttingspeed =
+              dataTokarnovintorezn.correctionFactors.forCuttingSpeed.hardnessFactor[
+                this.partmaterial
+              ]["bistrorez"][this.part_gradematerial][this.parthardness] *
+              dataTokarnovintorezn.correctionFactors.forCuttingSpeed.drill_length[
+                specified_ld_ratio
+              ] *
+              dataTokarnovintorezn.correctionFactors.forCuttingSpeed.cooling[
+                dataperehod.availability_SOG
+              ];
+
+            console.log("коеф скорости", koefficient_cuttingspeed);
+
+            let cuttingspeed = 0;
+
+            if (dataperehod.typelunet === "none") {
+              cuttingspeed = (
+                dataTokarnovintorezn.cuttingSpeed.reaming[this.partmaterial][specified_diameter] *
+                koefficient_cuttingspeed
+              ).toFixed(1);
+            } else {
+              let specified_permissibleSpeed_weight = [
+                1000, 2000, 3000, 5000, 7000, 10000, 15000, 20000, 30000,
+              ].find((item) => item > Number(this.partweight));
+              let cuttingspeed_lunet =
+                dataTokarnovintorezn.cuttingSpeed.permissibleSpeed.typelunet[dataperehod.typelunet][
+                  specified_permissibleSpeed_weight
+                ];
+              let cuttingspeed_patron =
+                dataTokarnovintorezn.cuttingSpeed.reaming[this.partmaterial][specified_diameter] *
+                koefficient_cuttingspeed;
+
+              cuttingspeed =
+                +cuttingspeed_lunet <= +cuttingspeed_patron
+                  ? cuttingspeed_lunet.toFixed(1)
+                  : cuttingspeed_patron.toFixed(1);
+            }
+
+            console.log("скорость рез", cuttingspeed);
+
+            let rpm = (1000 * cuttingspeed) / (3.14 * diameter);
+
+            specified_diameter = Object.keys(
+              dataTokarnovintorezn.trasitionTime.reaming[this.partmaterial]
+            )
+              .sort((a, b) => a - b)
+              .find((item) => item >= diameter);
+
+            let specified_length = Object.keys(
+              dataTokarnovintorezn.trasitionTime.reaming[this.partmaterial][specified_diameter]
+            )
+              .sort((a, b) => a - b)
+              .find((item) => item >= length);
+
+            let trasitiontime =
+              dataTokarnovintorezn.trasitionTime.reaming[this.partmaterial][specified_diameter][
+                specified_length
+              ];
+
+            console.log("всп время", trasitiontime);
+
+            let drilling_overrun = 5;
+
+            MainTime =
+              Number(((length + drilling_overrun) / (rpm * feed)).toFixed(2)) +
+              Number(trasitiontime.toFixed(2));
+
+            let strrezults = {
+              feed: feed,
+              cuttingspeed: Math.floor(cuttingspeed * 10) / 10,
+              rpm: Math.floor(rpm),
+              trasitiontime: trasitiontime.toFixed(2),
+              machintime: (length / (rpm * feed)).toFixed(2),
+              Otime: MainTime,
             };
 
             return strrezults;
@@ -8748,7 +10832,7 @@ let tokarnovintorezn_defaultstate = {
           break;
 
         default:
-          return "другой вид обработки";
+          return {};
       }
     }
   },
@@ -8781,8 +10865,31 @@ export default function Tokarnovintorezn_reducer(state = tokarnovintorezn_defaul
       else return { ...state, partweight: inpweight, partweightstate: true };
     case "TYPEWORKPIECE_TOKARNOVINTOREZN":
       return { ...state, typeworkpiece: action.data };
+    // case "MATERIAL_TOKARNOVINTOREZN":
+    //   return { ...state, partmaterial: action.data };
     case "MATERIAL_TOKARNOVINTOREZN":
-      return { ...state, partmaterial: action.data };
+      return {
+        ...state,
+        partmaterial: action.data,
+      };
+    case "MATERIALFORCUTTINGSPEED_TOKARNOVINTOREZN":
+      let firstPart_gradematerial = Object.keys(
+        dataTokarnovintorezn.correctionFactors.forCuttingSpeed.hardnessFactor[action.data].tvsplav
+      )[0];
+      return {
+        ...state,
+        partmaterialForCuttingSpeed: action.data,
+        part_gradematerial: firstPart_gradematerial,
+        parthardness: Object.keys(
+          dataTokarnovintorezn.correctionFactors.forCuttingSpeed.hardnessFactor[action.data]
+            .tvsplav[firstPart_gradematerial]
+        )[0],
+        hardnessmassiv: Object.keys(
+          dataTokarnovintorezn.correctionFactors.forCuttingSpeed.hardnessFactor[action.data]
+            .tvsplav[firstPart_gradematerial]
+        ),
+      };
+
     case "HARDNESSMASSIV_TOKARNOVINTOREZN":
       return {
         ...state,
@@ -8929,7 +11036,7 @@ export default function Tokarnovintorezn_reducer(state = tokarnovintorezn_defaul
               if (index == 1) {
                 return item.map((el, i, arr) => {
                   if (i == action.data[3]) {
-                    return { ...arr[i], ...{ [action.data[1]]: dataosnper, Otime: 0 } };
+                    return { ...arr[i], ...{ [action.data[1]]: dataosnper } };
                   } else return el;
                 });
               } else return item;
@@ -8937,6 +11044,69 @@ export default function Tokarnovintorezn_reducer(state = tokarnovintorezn_defaul
           } else return item;
         }),
       };
+
+    // case "CALCULATIONTIME_TOKARNOVINTOREZN": {
+    //   return {
+    //     ...state,
+    //     perehods: state.perehods.map((item, index) => {
+    //       if (item[0] == "Вспомагательный переход") {
+    //         return item.map((el, i) => {
+    //           if (
+    //             i == 1 &&
+    //             el.hasOwnProperty("installoption") &&
+    //             el.hasOwnProperty("positionaccuracy")
+    //           ) {
+    //             if (el["installoption"] !== "" && el["positionaccuracy"] !== "") {
+    //               return { ...el, ...{ Vtime: state.get_Tokarnovintorezn_TimeInstall(index) } };
+    //             } else {
+    //               return { ...el, ...{ Vtime: " " } };
+    //             }
+    //           } else return el;
+    //         });
+    //       } else {
+    //         return item.map((el, i) => {
+    //           if (i == 1) {
+    //             return el.map((it, ind) => {
+    //               let calculationdata = state.get_Tokarnovintorezn_MainTime(index, ind);
+    //               if (calculationdata) {
+    //                 return {
+    //                   ...it,
+    //                   ...{
+    //                     Otime: calculationdata.maintime,
+    //                     feed: calculationdata.feed,
+    //                     feed_after_05R: calculationdata.feed_after_05R,
+    //                     cuttingspeed: calculationdata.cuttingspeed,
+    //                     rpm: calculationdata.rpm,
+    //                     numprohod: calculationdata.numprohod,
+    //                     cutdepth: calculationdata.cutdepth,
+    //                     trasitiontime: calculationdata.trasitiontime,
+    //                     machintime: calculationdata.machintime,
+    //                     maintime: calculationdata.maintime,
+    //                   },
+    //                 };
+    //               } else
+    //                 return {
+    //                   ...it,
+    //                   ...{
+    //                     Otime: "",
+    //                     feed: "",
+    //                     feed_after_05R: "",
+    //                     cuttingspeed: "",
+    //                     rpm: "",
+    //                     numprohod: "",
+    //                     cutdepth: "",
+    //                     trasitiontime: "",
+    //                     machintime: "",
+    //                     maintime: "",
+    //                   },
+    //                 };
+    //             });
+    //           } else return el;
+    //         });
+    //       }
+    //     }),
+    //   };
+    // }
 
     case "CALCULATIONTIME_TOKARNOVINTOREZN": {
       return {
@@ -8964,18 +11134,7 @@ export default function Tokarnovintorezn_reducer(state = tokarnovintorezn_defaul
                   if (calculationdata) {
                     return {
                       ...it,
-                      ...{
-                        Otime: calculationdata.maintime,
-                        feed: calculationdata.feed,
-                        feed_after_05R: calculationdata.feed_after_05R,
-                        cuttingspeed: calculationdata.cuttingspeed,
-                        rpm: calculationdata.rpm,
-                        numprohod: calculationdata.numprohod,
-                        cutdepth: calculationdata.cutdepth,
-                        trasitiontime: calculationdata.trasitiontime,
-                        machintime: calculationdata.machintime,
-                        maintime: calculationdata.maintime,
-                      },
+                      ...calculationdata,
                     };
                   } else
                     return {
@@ -8990,7 +11149,6 @@ export default function Tokarnovintorezn_reducer(state = tokarnovintorezn_defaul
                         cutdepth: "",
                         trasitiontime: "",
                         machintime: "",
-                        maintime: "",
                       },
                     };
                 });
@@ -9000,6 +11158,7 @@ export default function Tokarnovintorezn_reducer(state = tokarnovintorezn_defaul
         }),
       };
     }
+
     case "RELOAD_DATAOSNPEREHODA_TOKARNOVINTOREZN":
       return {
         ...state,

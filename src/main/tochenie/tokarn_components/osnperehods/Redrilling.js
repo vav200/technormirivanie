@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-function Drilling(props) {
+function Redrilling(props) {
   let dispatch = useDispatch();
   let statenow = useSelector((dat) => dat.tokarnovintorezn);
-  const [stateoverhang, setStateOverhang] = useState();
+  let typecuttingmaterialfromstate = "";
+  let maxDiameter = "";
 
   let vspperhfromstate = useSelector((dat) => {
     return dat.tokarnovintorezn.perehods.reduce((prev, next, ind) =>
       next[0] === "Вспомагательный переход" && ind < props.numpereh && prev ? (prev = next) : prev
     );
   });
-
-  let typecuttingmaterialfromstate = "";
-  let maxDiameter = "";
 
   if (
     statenow.perehods[props.numpereh] &&
@@ -219,7 +217,7 @@ function Drilling(props) {
               : "inpname__withData"
           }`}
         >
-          Диаметр сверления, мм:
+          Диаметр рассверления, мм:
         </div>
         <div className="d-inline-block">
           <input
@@ -263,7 +261,7 @@ function Drilling(props) {
               : "inpname__withData"
           }`}
         >
-          Глубина сверления, мм:
+          Глубина рассверления, мм:
         </div>
         <div className="d-inline-block">
           <input
@@ -340,4 +338,4 @@ function Drilling(props) {
   );
 }
 
-export default Drilling;
+export default Redrilling;

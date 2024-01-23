@@ -5,6 +5,7 @@ import tokarn_img from "./tokarn_components/img/cutting_add.jpg";
 import MachineSpecification from "./tokarn_components/MachineSpecification";
 import PartSpecifications from "./tokarn_components/PartSpecifications";
 import Perehodi from "./tokarn_components/Perehodi";
+import ValidCalcUnit from "./tokarn_components/ValidCalcUnit";
 
 function Tokarnie() {
   let statenow = useSelector((dat) => dat);

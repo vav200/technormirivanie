@@ -79,6 +79,10 @@ function Internal_grooving(props) {
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateoverhang", "не более 150", ind],
             });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "controllength", "", props.index],
+            });
           } else {
             setStateOverhang("");
             dispatch({
@@ -97,6 +101,10 @@ function Internal_grooving(props) {
             dispatch({
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateoverhang", "не более 150", ind],
+            });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "controllength", "", props.index],
             });
           } else {
             setStateOverhang("");
@@ -117,6 +125,10 @@ function Internal_grooving(props) {
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateoverhang", "не более 200", ind],
             });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "controllength", "", props.index],
+            });
           } else {
             setStateOverhang("");
             dispatch({
@@ -135,6 +147,10 @@ function Internal_grooving(props) {
             dispatch({
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateoverhang", "не более 250", ind],
+            });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "controllength", "", props.index],
             });
           } else {
             setStateOverhang("");
@@ -155,6 +171,10 @@ function Internal_grooving(props) {
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateoverhang", "не более 800", ind],
             });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "controllength", "", props.index],
+            });
           } else {
             setStateOverhang("");
             dispatch({
@@ -174,6 +194,10 @@ function Internal_grooving(props) {
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateoverhang", "не более 1200", ind],
             });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "controllength", "", props.index],
+            });
           } else {
             setStateOverhang("");
             dispatch({
@@ -192,6 +216,10 @@ function Internal_grooving(props) {
             dispatch({
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateoverhang", "не более 1200", ind],
+            });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "controllength", "", props.index],
             });
           } else {
             setStateOverhang("");
@@ -263,6 +291,18 @@ function Internal_grooving(props) {
     dispatch({
       type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
       data: [props.numpereh, "availability_SOG", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "impact_treatment", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "typecuttingmaterial", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "Otime", 0, props.index],
     });
   }, []);
 
@@ -371,7 +411,7 @@ function Internal_grooving(props) {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname">Режущий инструмент:</div>
+        <div className="inpname inpname__withData">Режущий инструмент:</div>
         <div className="toolname">канавочный резец</div>
       </div>
 

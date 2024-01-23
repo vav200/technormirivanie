@@ -37,13 +37,13 @@ function MachineSpecification() {
         <div className="inpname inpname__podpunkt">над суппортом -</div>
         <span>{statenow.maxDiameterCentra}</span>
         <br />
-        <div className="inpname">Max вес детали, кг:</div>
+        {/* <div className="inpname">Max вес детали, кг:</div>
         <br />
         <div className="inpname inpname__podpunkt">обработка в патроне -</div>
         <span>{statenow.maxWeightPatron}</span>
         <br />
         <div className="inpname inpname__podpunkt">обработка в центрах -</div>
-        <span>{statenow.maxWeightCentra}</span>
+        <span>{statenow.maxWeightCentra}</span> */}
       </div>
     </div>
   );

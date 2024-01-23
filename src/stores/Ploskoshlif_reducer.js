@@ -511,7 +511,7 @@ let ploskoshlif_defaultstate = {
 
   get_PloskoShlif_TimeInstall(indper) {
     if (this.partweight > this.maxWeight) {
-      return "ошибки";
+      return { Vtime: "ошибки" };
     } else if (
       (this.perehods[indper][0] == "Вспомагательный переход" &&
         Object.keys(this.perehods[indper][1]).length < 2) ||
@@ -522,7 +522,7 @@ let ploskoshlif_defaultstate = {
     } else {
       if (this.partweight === "0" || this.numberparts === "0") return 0;
       else if (this.partweight === "" || this.numberparts === "") {
-        return "ошибки";
+        return { Vtime: "ошибки" };
       } else {
         const range = [
           0.01, 0.05, 0.08, 0.3, 1, 3, 5, 10, 20, 30, 50, 100, 200, 400, 800, 1500, 3000, 5000,
@@ -549,135 +549,164 @@ let ploskoshlif_defaultstate = {
   },
 
   get_PloskoShlif_MainTime(indper, indstr) {
-    if (this.partweight > this.maxWeight) return "ошибки";
-    else if (this.partweight === "" || this.numberparts === "") return "ошибки";
+    if (this.partweight > this.maxWeight) return { Otime: "ошибки" };
+    else if (this.partweight === "" || this.numberparts === "") return { Otime: "ошибки" };
     else if (
       this.perehods[indper][1][indstr].width > this.maxWidth ||
       this.perehods[indper][1][indstr].length > this.maxLength
     )
-      return "ошибки";
-    else if (
-      (this.perehods[indper][0] == "Основной переход" &&
-        (Object.keys(this.perehods[indper][1][indstr]).length < 5 ||
-          Object.values(this.perehods[indper][1][indstr]).includes(""))) ||
-      (this.perehods[indper][0] == "Основной переход" && this.perehods[indper][1].length == 0)
-    ) {
-      return "";
-    } else {
-      let allowance = this.perehods[indper][1][indstr].allowance;
-      let width = this.perehods[indper][1][indstr].width;
-      let length = this.perehods[indper][1][indstr].length;
-      let accuracy = this.perehods[indper][1][indstr].accuracy;
-      let roughness = this.perehods[indper][1][indstr].roghness;
-
+      return { Otime: "ошибки" };
+    else if (this.perehods[indper][0] == "Основной переход") {
       let MainTime = 0;
-      let doubleStrokeRoughing = 0; // двойные ходы в мин черновые
-      let doubleStrokeFinishing = 0; // двойные ходы в мин чистовые
-      let tableSpeedRoughing = 0; // скорость стола черновая
-      let tableSpeedFinishing = 0; // скорость стола чистовая
-      let crossFeedRoughing = 0; // черновая поперечная подача
-      let crossFeedFinishing = 0; // чистовая поперечная подача
-      let cuttingDepthRoughing = 0; // глубина резания черновая
-      let cuttingDepthFinishing = 0; // глубина резания чистовая
-      let roughingTrasitionTime = 0; // вспом время чернового перехода
-      let finishingTrasitionTime = 0; // вспом время чистового перехода
-      let finishingAllow = 0; // чистовой припуск
-      let hardnessFactor = 0;
-      let stiffnessFactor = 0;
-      let compositeFactor = 0;
-      let bTable = width <= 300 ? 300 : 400; // ширина обработки
-      let range = [
-        100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950,
-        1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000,
-      ];
-      let specifiedLength = range.find((item) => item >= length);
+      let dataperehod = this.perehods[indper][1][indstr];
+
       if (
-        allowance === 0 ||
-        width === 0 ||
-        length === 0 ||
-        this.numberparts === "0" ||
-        this.partweight === "0"
-      )
-        return 0;
-      else {
-        crossFeedRoughing = dataPloskoShlif.machineModels[this.model].crossFeed.roughingFeed;
-        cuttingDepthRoughing = dataPloskoShlif.machineModels[this.model].cuttingDepth.roughingDepth;
-        crossFeedFinishing = dataPloskoShlif.machineModels[this.model].crossFeed.finishingFeed;
-        cuttingDepthFinishing =
-          dataPloskoShlif.machineModels[this.model].cuttingDepth.finishingDepth;
-        for (let lengthPart in dataPloskoShlif.machineModels[this.model].tableSpeed.roughing) {
-          if (specifiedLength == lengthPart) {
-            doubleStrokeRoughing =
-              dataPloskoShlif.machineModels[this.model].tableSpeed.roughing[lengthPart];
-            tableSpeedRoughing = (doubleStrokeRoughing * lengthPart * 2) / 1000;
+        Object.keys(dataperehod).includes("allowance") &&
+        Object.keys(dataperehod).includes("width") &&
+        Object.keys(dataperehod).includes("length") &&
+        Object.keys(dataperehod).includes("accuracy") &&
+        Object.keys(dataperehod).includes("roghness") &&
+        dataperehod.allowance &&
+        dataperehod.width &&
+        dataperehod.length &&
+        dataperehod.accuracy &&
+        dataperehod.roghness
+      ) {
+        let allowance = Number(dataperehod.allowance);
+        let width = Number(dataperehod.width);
+        let length = Number(dataperehod.length);
+        let accuracy = dataperehod.accuracy;
+        let roughness = dataperehod.roghness;
+
+        let doubleStrokeRoughing = 0; // двойные ходы в мин черновые
+        let doubleStrokeFinishing = 0; // двойные ходы в мин чистовые
+        let tableSpeedRoughing = 0; // скорость стола черновая
+        let tableSpeedFinishing = 0; // скорость стола чистовая
+        let crossFeedRoughing = 0; // черновая поперечная подача
+        let crossFeedFinishing = 0; // чистовая поперечная подача
+        let cuttingDepthRoughing = 0; // глубина резания черновая
+        let cuttingDepthFinishing = 0; // глубина резания чистовая
+        let roughingTrasitionTime = 0; // вспом время чернового перехода
+        let finishingTrasitionTime = 0; // вспом время чистового перехода
+        let finishingAllow = 0; // чистовой припуск
+        let hardnessFactor = 0;
+        let stiffnessFactor = 0;
+        let compositeFactor = 0;
+        let bTable = width <= 300 ? 300 : 400; // ширина обработки
+        let range = [
+          100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950,
+          1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000,
+        ];
+        let specifiedLength = range.find((item) => item >= length);
+        if (
+          allowance === 0 ||
+          width === 0 ||
+          length === 0 ||
+          this.numberparts === "0" ||
+          this.partweight === "0"
+        )
+          return 0;
+        else {
+          crossFeedRoughing = dataPloskoShlif.machineModels[this.model].crossFeed.roughingFeed;
+          cuttingDepthRoughing =
+            dataPloskoShlif.machineModels[this.model].cuttingDepth.roughingDepth;
+          crossFeedFinishing = dataPloskoShlif.machineModels[this.model].crossFeed.finishingFeed;
+          cuttingDepthFinishing =
+            dataPloskoShlif.machineModels[this.model].cuttingDepth.finishingDepth;
+          for (let lengthPart in dataPloskoShlif.machineModels[this.model].tableSpeed.roughing) {
+            if (specifiedLength == lengthPart) {
+              doubleStrokeRoughing =
+                dataPloskoShlif.machineModels[this.model].tableSpeed.roughing[lengthPart];
+              tableSpeedRoughing = (doubleStrokeRoughing * lengthPart * 2) / 1000;
+            }
           }
-        }
-        for (let lengthPart in dataPloskoShlif.machineModels[this.model].tableSpeed.finishing) {
-          if (specifiedLength == lengthPart) {
-            doubleStrokeFinishing =
-              dataPloskoShlif.machineModels[this.model].tableSpeed.finishing[lengthPart];
-            tableSpeedFinishing = (doubleStrokeFinishing * lengthPart * 2) / 1000;
+          for (let lengthPart in dataPloskoShlif.machineModels[this.model].tableSpeed.finishing) {
+            if (specifiedLength == lengthPart) {
+              doubleStrokeFinishing =
+                dataPloskoShlif.machineModels[this.model].tableSpeed.finishing[lengthPart];
+              tableSpeedFinishing = (doubleStrokeFinishing * lengthPart * 2) / 1000;
+            }
           }
-        }
-        // auxiliary time--------------------------------------
+          // auxiliary time--------------------------------------
 
-        for (let lengthPart in dataPloskoShlif.machineModels[this.model].trasitionTime[bTable]
-          .roughingTrasition) {
-          if (specifiedLength <= lengthPart) {
-            roughingTrasitionTime =
-              dataPloskoShlif.machineModels[this.model].trasitionTime[bTable].roughingTrasition[
-                lengthPart
-              ];
-            break;
+          for (let lengthPart in dataPloskoShlif.machineModels[this.model].trasitionTime[bTable]
+            .roughingTrasition) {
+            if (specifiedLength <= lengthPart) {
+              roughingTrasitionTime =
+                dataPloskoShlif.machineModels[this.model].trasitionTime[bTable].roughingTrasition[
+                  lengthPart
+                ];
+              break;
+            }
           }
-        }
-        for (let lengthPart in dataPloskoShlif.machineModels[this.model].trasitionTime[bTable]
-          .finishingTrasition) {
-          if (specifiedLength <= lengthPart) {
-            finishingTrasitionTime =
-              dataPloskoShlif.machineModels[this.model].trasitionTime[bTable].finishingTrasition[
-                lengthPart
-              ];
-            break;
+          for (let lengthPart in dataPloskoShlif.machineModels[this.model].trasitionTime[bTable]
+            .finishingTrasition) {
+            if (specifiedLength <= lengthPart) {
+              finishingTrasitionTime =
+                dataPloskoShlif.machineModels[this.model].trasitionTime[bTable].finishingTrasition[
+                  lengthPart
+                ];
+              break;
+            }
           }
-        }
 
-        // finishing allowance--------------------------
+          // finishing allowance--------------------------
 
-        for (let lengthPart in dataPloskoShlif.machineModels[this.model].finishingAllowance[
-          bTable
-        ]) {
-          if (specifiedLength <= lengthPart) {
-            finishingAllow =
-              dataPloskoShlif.machineModels[this.model].finishingAllowance[bTable][lengthPart];
-            break;
+          for (let lengthPart in dataPloskoShlif.machineModels[this.model].finishingAllowance[
+            bTable
+          ]) {
+            if (specifiedLength <= lengthPart) {
+              finishingAllow =
+                dataPloskoShlif.machineModels[this.model].finishingAllowance[bTable][lengthPart];
+              break;
+            }
           }
+
+          // factors---------------------------------------------------
+
+          hardnessFactor = dataPloskoShlif.correctionFactors.hardnessFactor[this.parthardness];
+
+          stiffnessFactor = dataPloskoShlif.correctionFactors.stiffnessFactor[this.partstiffness];
+
+          compositeFactor =
+            dataPloskoShlif.correctionFactors.compositeFactor[accuracy][roughness][
+              this.partmaterial
+            ];
+
+          // base time calculation--------------------------------------
+
+          let trasitiontime = Math.ceil((roughingTrasitionTime + finishingTrasitionTime) * 10) / 10;
+
+          let machintime =
+            Math.ceil(
+              ((width * length * (allowance - finishingAllow)) /
+                (1000 * crossFeedRoughing * cuttingDepthRoughing * tableSpeedRoughing) +
+                (width * length * finishingAllow) /
+                  (1000 * crossFeedFinishing * cuttingDepthFinishing * tableSpeedFinishing)) *
+                hardnessFactor *
+                stiffnessFactor *
+                compositeFactor *
+                this.numberparts *
+                10
+            ) / 10;
+
+          MainTime = machintime + trasitiontime;
+
+          let strrezults = {
+            tableSpeedRoughing: tableSpeedRoughing,
+            tableSpeedFinishing: tableSpeedFinishing,
+            crossFeedRoughing: crossFeedRoughing,
+            crossFeedFinishing: crossFeedFinishing,
+            cuttingDepthRoughing: cuttingDepthRoughing,
+            cuttingDepthFinishing: cuttingDepthFinishing,
+            finishingAllow: finishingAllow,
+            trasitiontime: trasitiontime,
+            machintime: machintime,
+            Otime: MainTime,
+          };
+          return strrezults;
         }
-
-        // factors---------------------------------------------------
-
-        hardnessFactor = dataPloskoShlif.correctionFactors.hardnessFactor[this.parthardness];
-
-        stiffnessFactor = dataPloskoShlif.correctionFactors.stiffnessFactor[this.partstiffness];
-
-        compositeFactor =
-          dataPloskoShlif.correctionFactors.compositeFactor[accuracy][roughness][this.partmaterial];
-
-        // base time calculation--------------------------------------
-
-        MainTime =
-          ((width * length * (allowance - finishingAllow)) /
-            (1000 * crossFeedRoughing * cuttingDepthRoughing * tableSpeedRoughing) +
-            (width * length * finishingAllow) /
-              (1000 * crossFeedFinishing * cuttingDepthFinishing * tableSpeedFinishing) +
-            roughingTrasitionTime +
-            finishingTrasitionTime) *
-          hardnessFactor *
-          stiffnessFactor *
-          compositeFactor *
-          this.numberparts;
       }
-      return MainTime.toFixed(1);
     }
   },
 };
@@ -825,7 +854,28 @@ export default function Ploskoshlif_reducer(state = ploskoshlif_defaultstate, ac
             return item.map((el, i) => {
               if (i == 1) {
                 return el.map((it, ind) => {
-                  return { ...it, ...{ Otime: state.get_PloskoShlif_MainTime(index, ind) } };
+                  let calculationdata = state.get_PloskoShlif_MainTime(index, ind);
+                  if (calculationdata) {
+                    return {
+                      ...it,
+                      ...calculationdata,
+                    };
+                  } else
+                    return {
+                      ...it,
+                      ...{
+                        tableSpeedRoughing: "",
+                        tableSpeedFinishing: "",
+                        crossFeedRoughing: "",
+                        crossFeedFinishing: "",
+                        cuttingDepthRoughing: "",
+                        cuttingDepthFinishing: "",
+                        finishingAllow: "",
+                        trasitiontime: "",
+                        machintime: "",
+                        Otime: "",
+                      },
+                    };
                 });
               } else return el;
             });
@@ -833,6 +883,7 @@ export default function Ploskoshlif_reducer(state = ploskoshlif_defaultstate, ac
         }),
       };
     }
+
     default:
       return state;
   }

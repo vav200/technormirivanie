@@ -5,180 +5,185 @@ import { useDispatch, useSelector } from "react-redux";
 function PartSpecifications() {
   let dispatch = useDispatch();
   let statenow = useSelector((dat) => dat.tokarnovintorezn);
-  const [typepartmaterial, setTypepartmaterial] = useState("matP");
-  const [gradematerial_P, setGradematerial_P] = useState("C_nomore_60");
-  const [gradematerial_PL, setGradematerial_PL] = useState("C_nomore_60_with_Cr");
-  const [gradematerial_K, setGradematerial_K] = useState("gray");
-  const [gradematerial_N, setGradematerial_N] = useState("aluminum");
-  const [C_nomore_60, setC_nomore_60] = useState("117-142");
-  const [C_more_60, setC_more_60] = useState("174-200");
-  const [C_nomore_60_with_Cr, setC_nomore_60_with_Cr] = useState("117-142");
-  const [C_more_60_with_Cr, setC_more_60_with_Cr] = useState("145-171");
-  const [C_nomore_60_with_Mn, setC_nomore_60_with_Mn] = useState("174-200");
-  const [C_nomore_60_with_Ni, setC_nomore_60_with_Ni] = useState("117-142");
-  const [C_nomore_60_with_Cr_Ni, setC_nomore_60_with_Cr_Ni] = useState("117-142");
-  const [C_nomore_60_with_Cr_Ni_Mo, setC_nomore_60_with_Cr_Ni_Mo] = useState("117-142");
-  const [C_nomore_60_with_Cr_Mn, setC_nomore_60_with_Cr_Mn] = useState("145-171");
-  const [C_nomore_60_with_Cr_Si, setC_nomore_60_with_Cr_Si] = useState("145-171");
-  const [C_nomore_60_with_Cr_Ni_W, setC_nomore_60_with_Cr_Ni_W] = useState("174-200");
-  const [C_more_60_shx, setC_more_60_shx] = useState("202-228");
-  const [gray, setgray] = useState("121-140");
-  const [malleable, setmalleable] = useState("100-120");
-  const [antifriction, setantifriction] = useState("141-160");
-  const [highstrength, sethighstrength] = useState("141-160");
-  const [chromic, setchromic] = useState("141-160");
-  const [aluminum, setaluminum] = useState("40-100");
-  const [duralumin, setduralumin] = useState("40-100");
-  const [bronze, setbronze] = useState("40-100");
+  let typepartmaterial = useSelector((dat) => dat.tokarnovintorezn.partmaterialForCuttingSpeed);
+  // const [typepartmaterial, setTypepartmaterial] = useState("matP");
+  // const [gradematerial_P, setGradematerial_P] = useState("C_nomore_60");
+  // const [gradematerial_PL, setGradematerial_PL] = useState("C_nomore_60_with_Cr");
+  // const [gradematerial_K, setGradematerial_K] = useState("gray");
+  // const [gradematerial_N, setGradematerial_N] = useState("aluminum");
+  // const [C_nomore_60, setC_nomore_60] = useState("117-142");
+  // const [C_more_60, setC_more_60] = useState("174-200");
+  // const [C_nomore_60_with_Cr, setC_nomore_60_with_Cr] = useState("117-142");
+  // const [C_more_60_with_Cr, setC_more_60_with_Cr] = useState("145-171");
+  // const [C_nomore_60_with_Mn, setC_nomore_60_with_Mn] = useState("174-200");
+  // const [C_nomore_60_with_Ni, setC_nomore_60_with_Ni] = useState("117-142");
+  // const [C_nomore_60_with_Cr_Ni, setC_nomore_60_with_Cr_Ni] = useState("117-142");
+  // const [C_nomore_60_with_Cr_Ni_Mo, setC_nomore_60_with_Cr_Ni_Mo] = useState("117-142");
+  // const [C_nomore_60_with_Cr_Mn, setC_nomore_60_with_Cr_Mn] = useState("145-171");
+  // const [C_nomore_60_with_Cr_Si, setC_nomore_60_with_Cr_Si] = useState("145-171");
+  // const [C_nomore_60_with_Cr_Ni_W, setC_nomore_60_with_Cr_Ni_W] = useState("174-200");
+  // const [C_more_60_shx, setC_more_60_shx] = useState("202-228");
+  // const [gray, setgray] = useState("121-140");
+  // const [malleable, setmalleable] = useState("100-120");
+  // const [antifriction, setantifriction] = useState("141-160");
+  // const [highstrength, sethighstrength] = useState("141-160");
+  // const [chromic, setchromic] = useState("141-160");
+  // const [aluminum, setaluminum] = useState("40-100");
+  // const [duralumin, setduralumin] = useState("40-100");
+  // const [bronze, setbronze] = useState("40-100");
 
-  useEffect(() => {
-    switch (typepartmaterial) {
-      case "matP":
-        dispatch({ type: "GRADE_MATERIAL_TOKARNOVINTOREZN", data: gradematerial_P });
-        break;
-      case "matPL":
-        dispatch({ type: "GRADE_MATERIAL_TOKARNOVINTOREZN", data: gradematerial_PL });
-        break;
-      case "matK":
-        dispatch({ type: "GRADE_MATERIAL_TOKARNOVINTOREZN", data: gradematerial_K });
-        break;
-      case "matN":
-        dispatch({ type: "GRADE_MATERIAL_TOKARNOVINTOREZN", data: gradematerial_N });
-        break;
-    }
-    dispatch({ type: "CALCULATIONTIME_TOKARNOVINTOREZN" });
-  }, [typepartmaterial]);
+  // useEffect(() => {
+  //   switch (typepartmaterial) {
+  //     case "matP":
+  //       dispatch({ type: "GRADE_MATERIAL_TOKARNOVINTOREZN", data: gradematerial_P });
+  //       break;
+  //     case "matPL":
+  //       dispatch({ type: "GRADE_MATERIAL_TOKARNOVINTOREZN", data: gradematerial_PL });
+  //       break;
+  //     case "matK":
+  //       dispatch({ type: "GRADE_MATERIAL_TOKARNOVINTOREZN", data: gradematerial_K });
+  //       break;
+  //     case "matN":
+  //       dispatch({ type: "GRADE_MATERIAL_TOKARNOVINTOREZN", data: gradematerial_N });
+  //       break;
+  //   }
+  //   dispatch({ type: "CALCULATIONTIME_TOKARNOVINTOREZN" });
+  // }, [typepartmaterial]);
+
+  // useEffect(() => {
+  //   dispatch({ type: "HARDNESSMASSIV_TOKARNOVINTOREZN" });
+  //   switch (statenow.part_gradematerial) {
+  //     case "C_nomore_60":
+  //       dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_nomore_60 });
+  //       break;
+  //     case "C_more_60":
+  //       dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_more_60 });
+  //       break;
+  //     case "C_nomore_60_with_Cr":
+  //       dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_nomore_60_with_Cr });
+  //       break;
+  //     case "C_more_60_with_Cr":
+  //       dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_more_60_with_Cr });
+  //       break;
+  //     case "C_nomore_60_with_Mn":
+  //       dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_nomore_60_with_Mn });
+  //       break;
+  //     case "C_nomore_60_with_Ni":
+  //       dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_nomore_60_with_Ni });
+  //       break;
+  //     case "C_nomore_60_with_Cr_Ni":
+  //       dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_nomore_60_with_Cr_Ni });
+  //       break;
+  //     case "C_nomore_60_with_Cr_Ni_Mo":
+  //       dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_nomore_60_with_Cr_Ni_Mo });
+  //       break;
+  //     case "C_nomore_60_with_Cr_Mn":
+  //       dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_nomore_60_with_Cr_Mn });
+  //       break;
+  //     case "C_nomore_60_with_Cr_Si":
+  //       dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_nomore_60_with_Cr_Si });
+  //       break;
+  //     case "C_nomore_60_with_Cr_Ni_W":
+  //       dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_nomore_60_with_Cr_Ni_W });
+  //       break;
+  //     case "C_more_60_shx":
+  //       dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_more_60_shx });
+  //       break;
+  //     case "gray":
+  //       dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: gray });
+  //       break;
+  //     case "malleable":
+  //       dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: malleable });
+  //       break;
+  //     case "antifriction":
+  //       dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: antifriction });
+  //       break;
+  //     case "highstrength":
+  //       dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: highstrength });
+  //       break;
+  //     case "chromic":
+  //       dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: chromic });
+  //       break;
+  //     case "aluminum":
+  //       dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: aluminum });
+  //       break;
+  //     case "duralumin":
+  //       dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: duralumin });
+  //       break;
+  //     case "bronze":
+  //       dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: bronze });
+  //       break;
+  //   }
+  // }, [statenow.part_gradematerial]);
+
+  // function choiceGradeState(e) {
+  //   switch (statenow.part_gradematerial) {
+  //     case "C_nomore_60":
+  //       setC_nomore_60(e.target.value);
+  //       break;
+  //     case "C_more_60":
+  //       setC_more_60(e.target.value);
+  //       break;
+  //     case "C_nomore_60_with_Cr":
+  //       setC_nomore_60_with_Cr(e.target.value);
+  //       break;
+  //     case "C_more_60_with_Cr":
+  //       setC_more_60_with_Cr(e.target.value);
+  //       break;
+  //     case "C_nomore_60_with_Mn":
+  //       setC_nomore_60_with_Mn(e.target.value);
+  //       break;
+  //     case "C_nomore_60_with_Ni":
+  //       setC_nomore_60_with_Ni(e.target.value);
+  //       break;
+  //     case "C_nomore_60_with_Cr_Ni":
+  //       setC_nomore_60_with_Cr_Ni(e.target.value);
+  //       break;
+  //     case "C_nomore_60_with_Cr_Ni_Mo":
+  //       setC_nomore_60_with_Cr_Ni_Mo(e.target.value);
+  //       break;
+  //     case "C_nomore_60_with_Cr_Mn":
+  //       setC_nomore_60_with_Cr_Mn(e.target.value);
+  //       break;
+  //     case "C_nomore_60_with_Cr_Si":
+  //       setC_nomore_60_with_Cr_Si(e.target.value);
+  //       break;
+  //     case "C_nomore_60_with_Cr_Ni_W":
+  //       setC_nomore_60_with_Cr_Ni_W(e.target.value);
+  //       break;
+  //     case "C_more_60_shx":
+  //       setC_more_60_shx(e.target.value);
+  //       break;
+  //     case "gray":
+  //       setgray(e.target.value);
+  //       break;
+  //     case "malleable":
+  //       setmalleable(e.target.value);
+  //       break;
+  //     case "antifriction":
+  //       setantifriction(e.target.value);
+  //       break;
+  //     case "highstrength":
+  //       sethighstrength(e.target.value);
+  //       break;
+  //     case "chromic":
+  //       setchromic(e.target.value);
+  //       break;
+  //     case "aluminum":
+  //       setaluminum(e.target.value);
+  //       break;
+  //     case "duralumin":
+  //       setduralumin(e.target.value);
+  //       break;
+  //     case "bronze":
+  //       setbronze(e.target.value);
+  //       break;
+  //   }
+  // }
 
   useEffect(() => {
     dispatch({ type: "HARDNESSMASSIV_TOKARNOVINTOREZN" });
-    switch (statenow.part_gradematerial) {
-      case "C_nomore_60":
-        dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_nomore_60 });
-        break;
-      case "C_more_60":
-        dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_more_60 });
-        break;
-      case "C_nomore_60_with_Cr":
-        dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_nomore_60_with_Cr });
-        break;
-      case "C_more_60_with_Cr":
-        dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_more_60_with_Cr });
-        break;
-      case "C_nomore_60_with_Mn":
-        dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_nomore_60_with_Mn });
-        break;
-      case "C_nomore_60_with_Ni":
-        dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_nomore_60_with_Ni });
-        break;
-      case "C_nomore_60_with_Cr_Ni":
-        dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_nomore_60_with_Cr_Ni });
-        break;
-      case "C_nomore_60_with_Cr_Ni_Mo":
-        dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_nomore_60_with_Cr_Ni_Mo });
-        break;
-      case "C_nomore_60_with_Cr_Mn":
-        dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_nomore_60_with_Cr_Mn });
-        break;
-      case "C_nomore_60_with_Cr_Si":
-        dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_nomore_60_with_Cr_Si });
-        break;
-      case "C_nomore_60_with_Cr_Ni_W":
-        dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_nomore_60_with_Cr_Ni_W });
-        break;
-      case "C_more_60_shx":
-        dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: C_more_60_shx });
-        break;
-      case "gray":
-        dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: gray });
-        break;
-      case "malleable":
-        dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: malleable });
-        break;
-      case "antifriction":
-        dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: antifriction });
-        break;
-      case "highstrength":
-        dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: highstrength });
-        break;
-      case "chromic":
-        dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: chromic });
-        break;
-      case "aluminum":
-        dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: aluminum });
-        break;
-      case "duralumin":
-        dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: duralumin });
-        break;
-      case "bronze":
-        dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: bronze });
-        break;
-    }
-  }, [statenow.part_gradematerial]);
-
-  function choiceGradeState(e) {
-    switch (statenow.part_gradematerial) {
-      case "C_nomore_60":
-        setC_nomore_60(e.target.value);
-        break;
-      case "C_more_60":
-        setC_more_60(e.target.value);
-        break;
-      case "C_nomore_60_with_Cr":
-        setC_nomore_60_with_Cr(e.target.value);
-        break;
-      case "C_more_60_with_Cr":
-        setC_more_60_with_Cr(e.target.value);
-        break;
-      case "C_nomore_60_with_Mn":
-        setC_nomore_60_with_Mn(e.target.value);
-        break;
-      case "C_nomore_60_with_Ni":
-        setC_nomore_60_with_Ni(e.target.value);
-        break;
-      case "C_nomore_60_with_Cr_Ni":
-        setC_nomore_60_with_Cr_Ni(e.target.value);
-        break;
-      case "C_nomore_60_with_Cr_Ni_Mo":
-        setC_nomore_60_with_Cr_Ni_Mo(e.target.value);
-        break;
-      case "C_nomore_60_with_Cr_Mn":
-        setC_nomore_60_with_Cr_Mn(e.target.value);
-        break;
-      case "C_nomore_60_with_Cr_Si":
-        setC_nomore_60_with_Cr_Si(e.target.value);
-        break;
-      case "C_nomore_60_with_Cr_Ni_W":
-        setC_nomore_60_with_Cr_Ni_W(e.target.value);
-        break;
-      case "C_more_60_shx":
-        setC_more_60_shx(e.target.value);
-        break;
-      case "gray":
-        setgray(e.target.value);
-        break;
-      case "malleable":
-        setmalleable(e.target.value);
-        break;
-      case "antifriction":
-        setantifriction(e.target.value);
-        break;
-      case "highstrength":
-        sethighstrength(e.target.value);
-        break;
-      case "chromic":
-        setchromic(e.target.value);
-        break;
-      case "aluminum":
-        setaluminum(e.target.value);
-        break;
-      case "duralumin":
-        setduralumin(e.target.value);
-        break;
-      case "bronze":
-        setbronze(e.target.value);
-        break;
-    }
-  }
+  }, []);
 
   return (
     <div className="infoblock">
@@ -190,24 +195,20 @@ function PartSpecifications() {
           <input
             type="text"
             className={`${
-              statenow.partweight > statenow.maxWeightCentra || statenow.partweightstate === false
-                ? "selectbox_error"
-                : "selectbox"
+              statenow.partweight > statenow.maxWeightCentra ? "selectbox_error" : "selectbox"
             }`}
             value={statenow.partweight}
             onChange={(e) => {
               dispatch({ type: "WEIGHT_TOKARNOVINTOREZN", data: e.target.value });
-              // dispatch({ type: "CALCULATIONTIME_TOKARNOVINTOREZN" });
+              dispatch({ type: "CALCULATIONTIME_TOKARNOVINTOREZN" });
             }}
           />
           <div
             className={`selectbox__errormessage ${
-              statenow.partweightstate === false || statenow.partweight > statenow.maxWeight
-                ? "selectbox__errormessage_active"
-                : ""
+              statenow.partweight > statenow.maxWeightCentra ? "selectbox__errormessage_active" : ""
             }`}
           >
-            {statenow.partweightstate == false ? "введите значение" : "больше допустимой"}
+            {statenow.partweight > statenow.maxWeightCentra ? "больше допустимой" : ""}
           </div>
         </div>
       </div>
@@ -285,8 +286,13 @@ function PartSpecifications() {
                 value="matP"
                 onChange={(e) => {
                   dispatch({ type: "MATERIAL_TOKARNOVINTOREZN", data: e.target.value });
-                  dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: "117-142" });
-                  setTypepartmaterial("matP");
+                  dispatch({
+                    type: "MATERIALFORCUTTINGSPEED_TOKARNOVINTOREZN",
+                    data: e.target.value,
+                  });
+                  dispatch({ type: "CALCULATIONTIME_TOKARNOVINTOREZN" });
+                  // dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: "117-142" });
+                  // setTypepartmaterial("matP");
                 }}
                 defaultChecked
               />
@@ -302,8 +308,10 @@ function PartSpecifications() {
                 value="matP"
                 onChange={(e) => {
                   dispatch({ type: "MATERIAL_TOKARNOVINTOREZN", data: e.target.value });
-                  dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: "117-142" });
-                  setTypepartmaterial("matPL");
+                  dispatch({ type: "MATERIALFORCUTTINGSPEED_TOKARNOVINTOREZN", data: "matPL" });
+                  dispatch({ type: "CALCULATIONTIME_TOKARNOVINTOREZN" });
+                  // dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: "117-142" });
+                  // setTypepartmaterial("matPL");
                 }}
               />
             </label>
@@ -318,8 +326,13 @@ function PartSpecifications() {
                 value="matK"
                 onChange={(e) => {
                   dispatch({ type: "MATERIAL_TOKARNOVINTOREZN", data: e.target.value });
-                  dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: "100-170" });
-                  setTypepartmaterial("matK");
+                  dispatch({
+                    type: "MATERIALFORCUTTINGSPEED_TOKARNOVINTOREZN",
+                    data: e.target.value,
+                  });
+                  dispatch({ type: "CALCULATIONTIME_TOKARNOVINTOREZN" });
+                  // dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: "100-170" });
+                  // setTypepartmaterial("matK");
                 }}
                 checked={statenow.partmaterial === "matK"}
               />
@@ -335,8 +348,13 @@ function PartSpecifications() {
                 value="matN"
                 onChange={(e) => {
                   dispatch({ type: "MATERIAL_TOKARNOVINTOREZN", data: e.target.value });
-                  dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: "40-100" });
-                  setTypepartmaterial("matN");
+                  dispatch({
+                    type: "MATERIALFORCUTTINGSPEED_TOKARNOVINTOREZN",
+                    data: e.target.value,
+                  });
+                  dispatch({ type: "CALCULATIONTIME_TOKARNOVINTOREZN" });
+                  // dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: "40-100" });
+                  // setTypepartmaterial("matN");
                 }}
               />
             </label>
@@ -356,7 +374,7 @@ function PartSpecifications() {
           onChange={(e) => {
             dispatch({ type: "GRADE_MATERIAL_TOKARNOVINTOREZN", data: e.target.value });
             dispatch({ type: "CALCULATIONTIME_TOKARNOVINTOREZN" });
-            setGradematerial_P(e.target.value);
+            // setGradematerial_P(e.target.value);
           }}
           defaultValue={"C_nomore_60"}
         >
@@ -377,7 +395,7 @@ function PartSpecifications() {
           onChange={(e) => {
             dispatch({ type: "GRADE_MATERIAL_TOKARNOVINTOREZN", data: e.target.value });
             dispatch({ type: "CALCULATIONTIME_TOKARNOVINTOREZN" });
-            setGradematerial_PL(e.target.value);
+            // setGradematerial_PL(e.target.value);
           }}
           defaultValue={"C_nomore_60_with_Cr"}
         >
@@ -417,7 +435,7 @@ function PartSpecifications() {
           onChange={(e) => {
             dispatch({ type: "GRADE_MATERIAL_TOKARNOVINTOREZN", data: e.target.value });
             dispatch({ type: "CALCULATIONTIME_TOKARNOVINTOREZN" });
-            setGradematerial_K(e.target.value);
+            // setGradematerial_K(e.target.value);
           }}
           defaultValue={"gray"}
         >
@@ -439,7 +457,7 @@ function PartSpecifications() {
           onChange={(e) => {
             dispatch({ type: "GRADE_MATERIAL_TOKARNOVINTOREZN", data: e.target.value });
             dispatch({ type: "CALCULATIONTIME_TOKARNOVINTOREZN" });
-            setGradematerial_N(e.target.value);
+            // setGradematerial_N(e.target.value);
           }}
           defaultValue={"aluminum"}
         >
@@ -466,7 +484,7 @@ function PartSpecifications() {
           onChange={(e) => {
             dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: e.target.value });
             dispatch({ type: "CALCULATIONTIME_TOKARNOVINTOREZN" });
-            choiceGradeState(e);
+            // choiceGradeState(e);
           }}
           defaultValue={statenow.hardnessmassiv[0]}
         >
@@ -481,46 +499,7 @@ function PartSpecifications() {
               </option>
             )
           )}
-          {/* <option value="117-142">от 117 до 142</option>
-          <option value="145-171">от 145 до 171</option>
-          <option value="174-200">от 174 до 200</option>
-          <option value="202-228">от 202 до 228</option>
-          <option value="231-257">от 231 до 257</option>
-          <option value="260-286">от 260 до 286</option>
-          <option value="288-314">от 288 до 314</option>
-          <option value="317-343">от 317 до 343</option>
-          <option value="345-372">от 345 до 372</option>
-          <option value="374-400">от 374 до 400</option> */}
         </select>
-
-        {/* <select
-          className={`selectbox d-inline-block ${statenow.partmaterial !== "matK" ? "d-none" : ""}`}
-          value={statenow.parthardness ? statenow.parthardness : ""}
-          onChange={(e) => {
-            dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: e.target.value });
-            dispatch({ type: "CALCULATIONTIME_TOKARNOVINTOREZN" });
-          }}
-          defaultValue={"100-170"}
-        >
-          <option value="100-170">до 170</option>
-          <option value="171-220">от 171 до 220</option>
-          <option value="201-230">от 201 до 230</option>
-          <option value="231-260">свыше 230</option>
-        </select>
-
-        <select
-          className={`selectbox d-inline-block ${statenow.partmaterial !== "matN" ? "d-none" : ""}`}
-          value={statenow.parthardness ? statenow.parthardness : ""}
-          onChange={(e) => {
-            dispatch({ type: "HARDNESS_TOKARNOVINTOREZN", data: e.target.value });
-            dispatch({ type: "CALCULATIONTIME_TOKARNOVINTOREZN" });
-          }}
-          defaultValue={"40-100"}
-        >
-          <option value="40-100">до 100</option>
-          <option value="100-140">от 100 до 140</option>
-          <option value="140-200">свыше 140</option>
-        </select> */}
       </div>
 
       <div className="infoblock__item">

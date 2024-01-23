@@ -84,7 +84,15 @@ function External_grooving(props) {
     });
     dispatch({
       type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "impact_treatment", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
       data: [props.numpereh, "typecuttingmaterial", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "Otime", 0, props.index],
     });
   }, []);
 
@@ -193,7 +201,7 @@ function External_grooving(props) {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname">Режущий инструмент:</div>
+        <div className="inpname inpname__withData">Режущий инструмент:</div>
         <div className="toolname">отрезной резец</div>
       </div>
 

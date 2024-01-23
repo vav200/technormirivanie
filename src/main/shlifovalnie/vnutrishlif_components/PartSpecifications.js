@@ -9,14 +9,14 @@ function PartSpecifications() {
   return (
     <div className="infoblock">
       <div className="infoblock__item">
-        <label className="inpname">Масса детали, кг:</label>
+        <label className={`inpname ${!statenow.partweightstate ? "" : "inpname__withData"}`}>
+          Масса детали, кг:
+        </label>
         <div className="d-inline-block">
           <input
             type="text"
-            className={`selectbox ${
-              statenow.partweight > statenow.maxWeight || statenow.partweightstate === false
-                ? "selectbox_error"
-                : ""
+            className={` ${
+              statenow.partweight > statenow.maxWeight ? "selectbox_error" : "selectbox"
             }`}
             value={statenow.partweight}
             onChange={(e) => {
@@ -26,18 +26,18 @@ function PartSpecifications() {
           />
           <div
             className={`selectbox__errormessage ${
-              statenow.partweight > statenow.maxWeight || statenow.partweightstate === false
-                ? "selectbox__errormessage_active"
-                : ""
+              statenow.partweight > statenow.maxWeight ? "selectbox__errormessage_active" : ""
             }`}
           >
-            {statenow.partweightstate === false ? "введите значение" : "больше допустимой"}
+            {statenow.partweight > statenow.maxWeight ? "больше допустимой" : ""}
           </div>
         </div>
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname align-top">Материал детали:</div>
+        <div className={`inpname align-top ${statenow.partmaterial ? "inpname__withData" : ""}`}>
+          Материал детали:
+        </div>
         <div className="radiobox d-inline-block">
           <div className="form-check">
             <label className="form-check-label">
@@ -103,7 +103,9 @@ function PartSpecifications() {
         </div>
       </div>
       <div className="infoblock__item">
-        <div className="inpname">Твердость HRCэ:</div>
+        <div className={`inpname align-top ${statenow.parthardness ? "inpname__withData" : ""}`}>
+          Твердость HRCэ:
+        </div>
         <div className="radiobox d-inline-flex flex-sm-row flex-column">
           <div className="form-check form-check-inline">
             <label className="form-check-label">
@@ -155,7 +157,9 @@ function PartSpecifications() {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname">Отношение L/d:</div>
+        <div className={`inpname align-top ${statenow.partstiffness ? "inpname__withData" : ""}`}>
+          Отношение L/d:
+        </div>
         <div className="radiobox d-inline-flex flex-sm-row flex-column">
           <div className="form-check form-check-inline">
             <label className="form-check-label">
@@ -207,7 +211,11 @@ function PartSpecifications() {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname">Отношение D/s:</div>
+        <div
+          className={`inpname align-top ${statenow.partwallthickness ? "inpname__withData" : ""}`}
+        >
+          Отношение D/s:
+        </div>
         <div className="radiobox d-inline-flex flex-sm-row flex-column">
           <div className="form-check form-check-inline">
             <label className="form-check-label">
@@ -259,7 +267,11 @@ function PartSpecifications() {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname">Форма поверхности:</div>
+        <div
+          className={`inpname align-top ${statenow.partsurfaceshape ? "inpname__withData" : ""}`}
+        >
+          Форма поверхности:
+        </div>
         <div className="radiobox d-inline-flex flex-sm-row flex-column">
           <div className="form-check form-check-inline">
             <label className="form-check-label">
@@ -295,7 +307,7 @@ function PartSpecifications() {
         </div>
       </div>
 
-      <div className="infoblock__item">
+      {/* <div className="infoblock__item">
         <div className="inpname">Обрабатывается деталей:</div>
         <div className="d-inline-block">
           <input
@@ -315,7 +327,7 @@ function PartSpecifications() {
             введите значение
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

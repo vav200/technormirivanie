@@ -29,7 +29,7 @@ function Osnperehod(props) {
       !isNaN(statenow.perehods[props.numpereh][1][index].Otime) &&
       statenow.perehods[props.numpereh][1][index].Otime != 0
     ) {
-      return " - " + Number(statenow.perehods[props.numpereh][1][index].Otime).toFixed(1) + " мин";
+      return " - " + Number(statenow.perehods[props.numpereh][1][index].Otime).toFixed(1) + " мин)";
     } else return "";
   }
 
@@ -48,18 +48,38 @@ function Osnperehod(props) {
                 />
               </div>
               <h6 className="namestrpereh">
-                {index + 1}. Строка перехода {gettimestr(index)}
+                {index + 1}. Шлифовать поверхность
+                {statenow.perehods[props.numpereh][1][index].width && <span> В = </span>}
+                {statenow.perehods[props.numpereh][1][index].width}
+                {statenow.perehods[props.numpereh][1][index].length && (
+                  <span className="ms-2">L = </span>
+                )}
+                {statenow.perehods[props.numpereh][1][index].length}
+                {statenow.perehods[props.numpereh][1][index].Otime &&
+                  statenow.perehods[props.numpereh][1][index].Otime !== "ошибки" && (
+                    <span className="ms-3">(норма </span>
+                  )}
+                {gettimestr(index)}
               </h6>
 
               <div className="infoblock__item">
-                <div className="inpname">Ширина поверхности, мм:</div>
+                <div
+                  className={`inpname ${
+                    !statenow.perehods[props.numpereh][1][index] ||
+                    !statenow.perehods[props.numpereh][1][index].width
+                      ? ""
+                      : "inpname__withData"
+                  }`}
+                >
+                  Ширина поверхности, мм:
+                </div>
                 <div className="d-inline-block position-relative">
                   <input
                     type="text"
-                    className={`selectbox ${
+                    className={` ${
                       statenow.perehods[props.numpereh][1][index].width > statenow.maxWidth
                         ? "selectbox_error"
-                        : ""
+                        : "selectbox"
                     }`}
                     value={
                       statenow.perehods[props.numpereh][1][index].width
@@ -86,14 +106,23 @@ function Osnperehod(props) {
                 </div>
               </div>
               <div className="infoblock__item">
-                <div className="inpname">Длина поверхности, мм:</div>
+                <div
+                  className={`inpname ${
+                    !statenow.perehods[props.numpereh][1][index] ||
+                    !statenow.perehods[props.numpereh][1][index].length
+                      ? ""
+                      : "inpname__withData"
+                  }`}
+                >
+                  Длина поверхности, мм:
+                </div>
                 <div className="d-inline-block position-relative">
                   <input
                     type="text"
-                    className={`selectbox ${
+                    className={` ${
                       statenow.perehods[props.numpereh][1][index].length > statenow.maxLength
                         ? "selectbox_error"
-                        : ""
+                        : "selectbox"
                     }`}
                     value={
                       statenow.perehods[props.numpereh][1][index].length
@@ -120,7 +149,16 @@ function Osnperehod(props) {
                 </div>
               </div>
               <div className="infoblock__item">
-                <div className="inpname">Припуск на обработку, мм:</div>
+                <div
+                  className={`inpname ${
+                    !statenow.perehods[props.numpereh][1][index] ||
+                    !statenow.perehods[props.numpereh][1][index].allowance
+                      ? ""
+                      : "inpname__withData"
+                  }`}
+                >
+                  Припуск на обработку, мм:
+                </div>
                 <input
                   type="text"
                   className="selectbox"
@@ -139,7 +177,16 @@ function Osnperehod(props) {
                 />
               </div>
               <div className="infoblock__item">
-                <div className="inpname">Квалитет точности:</div>
+                <div
+                  className={`inpname ${
+                    !statenow.perehods[props.numpereh][1][index] ||
+                    !statenow.perehods[props.numpereh][1][index].accuracy
+                      ? ""
+                      : "inpname__withData"
+                  }`}
+                >
+                  Квалитет точности:
+                </div>
                 <select
                   className="selectbox"
                   value={
@@ -166,7 +213,16 @@ function Osnperehod(props) {
                 </select>
               </div>
               <div className="infoblock__item">
-                <div className="inpname">Шероховатость Ra, мм:</div>
+                <div
+                  className={`inpname ${
+                    !statenow.perehods[props.numpereh][1][index] ||
+                    !statenow.perehods[props.numpereh][1][index].roghness
+                      ? ""
+                      : "inpname__withData"
+                  }`}
+                >
+                  Шероховатость Ra, мм:
+                </div>
                 <select
                   className="selectbox"
                   value={
@@ -202,6 +258,44 @@ function Osnperehod(props) {
                     Ra0.4
                   </option>
                 </select>
+              </div>
+
+              <div
+                className={`modeblock ${
+                  statenow.perehods[props.numpereh][1][index].hasOwnProperty("Otime") &&
+                  !isNaN(statenow.perehods[props.numpereh][1][index].Otime) &&
+                  statenow.perehods[props.numpereh][1][index].Otime != 0
+                    ? ""
+                    : "d-none"
+                }`}
+              >
+                <h5 className="modeblock__title">Режимы обработки:</h5>
+                <ul className="modeblock__list">
+                  <li className="modeblock__item">
+                    скорость продольного хода черновая/чистовая -{" "}
+                    {statenow.perehods[props.numpereh][1][index].tableSpeedRoughing}/
+                    {statenow.perehods[props.numpereh][1][index].tableSpeedFinishing} мм/мин
+                  </li>
+
+                  <li className="modeblock__item">
+                    скорость продольного хода черновая/чистовая -{" "}
+                    {statenow.perehods[props.numpereh][1][index].crossFeedRoughing}/
+                    {statenow.perehods[props.numpereh][1][index].crossFeedFinishing} мм/мин
+                  </li>
+                  <li className="modeblock__item">
+                    глубина резания черновая/чистовая -{" "}
+                    {statenow.perehods[props.numpereh][1][index].cuttingDepthRoughing}/
+                    {statenow.perehods[props.numpereh][1][index].cuttingDepthFinishing} мм
+                  </li>
+
+                  <li className="modeblock__item">
+                    машинное время - {statenow.perehods[props.numpereh][1][index].machintime} мин
+                  </li>
+                  <li className="modeblock__item">
+                    вспомагательное время -{" "}
+                    {statenow.perehods[props.numpereh][1][index].trasitiontime} мин
+                  </li>
+                </ul>
               </div>
             </>
           ))

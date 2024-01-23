@@ -44,7 +44,7 @@ function Longturning(props) {
       break;
   }
 
-  function maxallowence(ind) {
+  function maxallowence(e, ind) {
     if (
       Object.keys(statenow.perehods[props.numpereh][1][ind]).includes("roghness") &&
       statenow.perehods[props.numpereh][1][ind].roghness
@@ -57,11 +57,19 @@ function Longturning(props) {
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateallowence", "не более 6", ind],
             });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "allowance", "", props.index],
+            });
           } else {
             setStateallowence("");
             dispatch({
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateallowence", "", ind],
+            });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "allowance", e.target.value, props.index],
             });
           }
           break;
@@ -72,11 +80,19 @@ function Longturning(props) {
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateallowence", "не более 4", ind],
             });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "allowance", "", props.index],
+            });
           } else {
             setStateallowence("");
             dispatch({
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateallowence", "", ind],
+            });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "allowance", e.target.value, props.index],
             });
           }
           break;
@@ -87,11 +103,19 @@ function Longturning(props) {
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateallowence", "не более 2", ind],
             });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "allowance", "", props.index],
+            });
           } else {
             setStateallowence("");
             dispatch({
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateallowence", "", ind],
+            });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "allowance", e.target.value, props.index],
             });
           }
           break;
@@ -102,11 +126,19 @@ function Longturning(props) {
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateallowence", "не более 1", ind],
             });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "allowance", "", props.index],
+            });
           } else {
             setStateallowence("");
             dispatch({
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateallowence", "", ind],
+            });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "allowance", e.target.value, props.index],
             });
           }
           break;
@@ -180,6 +212,23 @@ function Longturning(props) {
     dispatch({
       type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
       data: [props.numpereh, "vertex_radius", "", props.index],
+    });
+
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "crust", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "impact_treatment", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "charactertreatment", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "Otime", 0, props.index],
     });
   }, []);
 
@@ -428,7 +477,7 @@ function Longturning(props) {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname">Режущий инструмент:</div>
+        <div className="inpname inpname__withData">Режущий инструмент:</div>
         <div className="toolname">проходной резец</div>
       </div>
 
@@ -1180,11 +1229,7 @@ function Longturning(props) {
                 : ""
             }
             onChange={(e) => {
-              maxallowence(props.index);
-              dispatch({
-                type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
-                data: [props.numpereh, "allowance", e.target.value, props.index],
-              });
+              maxallowence(e, props.index);
               dispatch({ type: "CALCULATIONTIME_TOKARNOVINTOREZN" });
             }}
             ref={allow}

@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 function ValidCalcUnit() {
-  let statenow = useSelector((dat) => dat.vnutrishlif);
+  let statenow = useSelector((dat) => dat.tokarnovintorezn);
 
   function calcVtime() {
     return statenow.perehods.reduce((acc, item) => {
@@ -31,6 +31,9 @@ function ValidCalcUnit() {
       } else return acc;
     }, "");
   }
+
+  console.log("otime - ", calcOtime());
+  console.log("vtime - ", calcVtime());
 
   return (
     <>

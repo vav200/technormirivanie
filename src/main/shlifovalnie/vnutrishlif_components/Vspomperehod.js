@@ -157,7 +157,16 @@ function Vspomperehod(props) {
   return (
     <>
       <div className="infoblock__item infoblock__item_top">
-        <div className="inpname">Вариант установки:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1] ||
+            !statenow.perehods[props.numpereh][1].installoption
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Вариант установки:
+        </div>
         <div className="radiobox d-inline-block">
           <div className="form-check">
             <label
@@ -255,7 +264,16 @@ function Vspomperehod(props) {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname">Точность установки:</div>
+        <div
+          className={`inpname ${
+            !statenow.perehods[props.numpereh][1] ||
+            !statenow.perehods[props.numpereh][1].positionaccuracy
+              ? ""
+              : "inpname__withData"
+          }`}
+        >
+          Точность установки:
+        </div>
         <div className="radiobox d-inline-block">
           <div className="form-check">
             <label

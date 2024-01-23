@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-function Drilling(props) {
+function Reaming(props) {
   let dispatch = useDispatch();
   let statenow = useSelector((dat) => dat.tokarnovintorezn);
-  const [stateoverhang, setStateOverhang] = useState();
 
   let vspperhfromstate = useSelector((dat) => {
     return dat.tokarnovintorezn.perehods.reduce((prev, next, ind) =>
@@ -131,7 +130,7 @@ function Drilling(props) {
 
       <div className="infoblock__item">
         <div className="inpname inpname__withData">Режущий инструмент:</div>
-        <div className="toolname">сверло спиральное</div>
+        <div className="toolname">развертка</div>
       </div>
 
       <div className="infoblock__item">
@@ -219,7 +218,7 @@ function Drilling(props) {
               : "inpname__withData"
           }`}
         >
-          Диаметр сверления, мм:
+          Диаметр развертывания, мм:
         </div>
         <div className="d-inline-block">
           <input
@@ -263,7 +262,7 @@ function Drilling(props) {
               : "inpname__withData"
           }`}
         >
-          Глубина сверления, мм:
+          Глубина развертывания, мм:
         </div>
         <div className="d-inline-block">
           <input
@@ -340,4 +339,4 @@ function Drilling(props) {
   );
 }
 
-export default Drilling;
+export default Reaming;

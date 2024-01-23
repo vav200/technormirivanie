@@ -20,7 +20,7 @@ function Krugloshlif() {
       <MachineSpecification />
       <PartSpecifications />
       <Perehodi />
-      <ValidCalcUnit />
+      {/* <ValidCalcUnit /> */}
     </section>
   );
 }

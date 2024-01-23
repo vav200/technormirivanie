@@ -37,13 +37,7 @@ function ValidCalcUnit() {
 
   return (
     <>
-      <div
-        className={`truerezult ${
-          calcVtime() === "ошибки" || calcOtime() === "ошибки" || statenow.perehods.length == 0
-            ? "d-none"
-            : ""
-        }`}
-      >
+      <div className={`truerezult ${calcOtime() === "ошибки" ? "d-none" : ""}`}>
         <h5
           className={
             statenow.perehods.filter((item) => item[0] === "Вспомагательный переход").length > 0
@@ -52,7 +46,9 @@ function ValidCalcUnit() {
           }
         >
           Вспомагательное время операции:
-          {calcVtime() === "" ? calcVtime() : " Тв = " + calcVtime() + " мин"}
+          {calcVtime() === "" || calcVtime() === "ошибки"
+            ? ""
+            : " Тв = " + calcVtime().toFixed(2) + " мин"}
         </h5>
         <h5
           className={
@@ -62,17 +58,15 @@ function ValidCalcUnit() {
           }
         >
           Основное время операции:
-          {calcOtime() === "" ? calcOtime() : " То = " + calcOtime() + " мин"}
+          {calcOtime() === "" || calcOtime() === "ошибки"
+            ? ""
+            : " То = " + calcOtime().toFixed(2) + " мин"}
         </h5>
       </div>
 
       <div
         className={`falserezult ${
-          statenow.perehods.length != 0
-            ? calcOtime() === "ошибки" || calcVtime() === "ошибки"
-              ? ""
-              : "d-none"
-            : "d-none"
+          statenow.perehods.length != 0 ? (calcOtime() === "ошибки" ? "" : "d-none") : "d-none"
         }`}
       >
         <h5 className="text-danger">Расчет невозможен, исправьте ошибки!</h5>

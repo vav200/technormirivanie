@@ -45,7 +45,7 @@ function Internal_pruning(props) {
       break;
   }
 
-  function maxallowence(ind) {
+  function maxallowence(e, ind) {
     if (
       Object.keys(statenow.perehods[props.numpereh][1][ind]).includes("roghness") &&
       statenow.perehods[props.numpereh][1][ind].roghness
@@ -58,11 +58,19 @@ function Internal_pruning(props) {
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateallowence", "не более 6", ind],
             });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "allowance", "", props.index],
+            });
           } else {
             setStateallowence("");
             dispatch({
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateallowence", "", ind],
+            });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "allowance", e.target.value, props.index],
             });
           }
           break;
@@ -73,11 +81,19 @@ function Internal_pruning(props) {
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateallowence", "не более 4", ind],
             });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "allowance", "", props.index],
+            });
           } else {
             setStateallowence("");
             dispatch({
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateallowence", "", ind],
+            });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "allowance", e.target.value, props.index],
             });
           }
           break;
@@ -88,11 +104,19 @@ function Internal_pruning(props) {
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateallowence", "не более 2", ind],
             });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "allowance", "", props.index],
+            });
           } else {
             setStateallowence("");
             dispatch({
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateallowence", "", ind],
+            });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "allowance", e.target.value, props.index],
             });
           }
           break;
@@ -103,11 +127,19 @@ function Internal_pruning(props) {
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateallowence", "не более 1", ind],
             });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "allowance", "", props.index],
+            });
           } else {
             setStateallowence("");
             dispatch({
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateallowence", "", ind],
+            });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "allowance", e.target.value, props.index],
             });
           }
           break;
@@ -158,6 +190,10 @@ function Internal_pruning(props) {
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateoverhang", "не более 150", ind],
             });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "controllength", "", props.index],
+            });
           } else {
             setStateOverhang("");
             dispatch({
@@ -176,6 +212,10 @@ function Internal_pruning(props) {
             dispatch({
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateoverhang", "не более 150", ind],
+            });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "controllength", "", props.index],
             });
           } else {
             setStateOverhang("");
@@ -196,6 +236,10 @@ function Internal_pruning(props) {
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateoverhang", "не более 200", ind],
             });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "controllength", "", props.index],
+            });
           } else {
             setStateOverhang("");
             dispatch({
@@ -214,6 +258,10 @@ function Internal_pruning(props) {
             dispatch({
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateoverhang", "не более 250", ind],
+            });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "controllength", "", props.index],
             });
           } else {
             setStateOverhang("");
@@ -234,6 +282,10 @@ function Internal_pruning(props) {
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateoverhang", "не более 800", ind],
             });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "controllength", "", props.index],
+            });
           } else {
             setStateOverhang("");
             dispatch({
@@ -253,6 +305,10 @@ function Internal_pruning(props) {
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateoverhang", "не более 1200", ind],
             });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "controllength", "", props.index],
+            });
           } else {
             setStateOverhang("");
             dispatch({
@@ -271,6 +327,10 @@ function Internal_pruning(props) {
             dispatch({
               type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
               data: [props.numpereh, "stateoverhang", "не более 1200", ind],
+            });
+            dispatch({
+              type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+              data: [props.numpereh, "controllength", "", props.index],
             });
           } else {
             setStateOverhang("");
@@ -366,6 +426,14 @@ function Internal_pruning(props) {
     dispatch({
       type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
       data: [props.numpereh, "vertex_radius", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "charactertreatment", "", props.index],
+    });
+    dispatch({
+      type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
+      data: [props.numpereh, "Otime", 0, props.index],
     });
   }, []);
 
@@ -614,7 +682,7 @@ function Internal_pruning(props) {
       </div>
 
       <div className="infoblock__item">
-        <div className="inpname">Режущий инструмент:</div>
+        <div className="inpname inpname__withData">Режущий инструмент:</div>
         <div className="toolname">расточной резец</div>
       </div>
 
@@ -1448,11 +1516,7 @@ function Internal_pruning(props) {
                 : ""
             }
             onChange={(e) => {
-              maxallowence(props.index);
-              dispatch({
-                type: "DATAOSNPEREHODA_TOKARNOVINTOREZN",
-                data: [props.numpereh, "allowance", e.target.value, props.index],
-              });
+              maxallowence(e, props.index);
               dispatch({ type: "CALCULATIONTIME_TOKARNOVINTOREZN" });
             }}
             ref={allow}

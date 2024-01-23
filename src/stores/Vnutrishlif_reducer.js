@@ -465,112 +465,139 @@ let vnutrishlif_defaultstate = {
     }
   },
   get_Vnutrishlif_MainTime(indper, indstr) {
-    // debugger;
     if (this.partweight > this.maxWeight) {
-      return "ошибки";
-    } else if (this.partweight === "" || this.numberparts === "") return "ошибки";
+      return { Otime: "ошибки" };
+    } else if (this.partweight === "" || this.numberparts === "") return { Otime: "ошибки" };
     else if (
       this.perehods[indper][1][indstr].length > this.maxLength ||
       this.perehods[indper][1][indstr].diameter > this.maxDiameter
     ) {
-      return "ошибки";
-    } else if (
-      (this.perehods[indper][0] == "Основной переход" &&
-        (Object.keys(this.perehods[indper][1][indstr]).length < 5 ||
-          Object.values(this.perehods[indper][1][indstr]).includes(""))) ||
-      (this.perehods[indper][0] == "Основной переход" && this.perehods[indper][1].length == 0)
-    ) {
-      return "";
-    } else {
-      let allowance = Number(this.perehods[indper][1][indstr].allowance);
-      let diameter = Number(this.perehods[indper][1][indstr].diameter);
-      let length = Number(this.perehods[indper][1][indstr].length);
-      let accuracy = this.perehods[indper][1][indstr].accuracy;
-      let roughness = this.perehods[indper][1][indstr].roghness;
-
+      return { Otime: "ошибки" };
+    } else if (this.perehods[indper][0] == "Основной переход") {
       let MainTime = 0;
-      let turnsRoughing = 0; // оброты черновые
-      let turnsFinishing = 0; // обороты чистовые
-      let longfeedRoughing = 0; // продольная подача черн
-      let longfeedFinishing = 0; // продольная подача чист
-      let cuttingDepthRoughing = 0; // глубина резания черновая
-      let cuttingDepthFinishing = 0; // глубина резания чистовая
-      let roughingTrasitionTime = 0; // вспом время чернового перехода
-      let finishingTrasitionTime = 0; // вспом время чистового перехода
-      let finishingAllow = 0; // чистовой припуск
-      let factorPerebegaKruga = 0; // коэффиц. перебега
-      let lengthSurface = length <= 100 ? 100 : length <= 200 ? 200 : 400; // длина обработки
-      let range = [];
-      if (this.model == "3M227") {
-        range = [30, 50, 70, 100, 125, 150, 175, 200];
-      } else if (this.model == "3K229A") {
-        range = [70, 100, 125, 150, 175, 200, 250, 300, 350, 400];
-      }
-      let specifiedDiameter = range.find((item) => item >= diameter);
+      let dataperehod = this.perehods[indper][1][indstr];
 
       if (
-        allowance === 0 ||
-        diameter === 0 ||
-        length === 0 ||
-        this.numberparts === "0" ||
-        this.partweight === "0"
-      )
-        return 0;
-      else {
-        turnsRoughing =
-          dataVnutriShlif.machineModels[this.model].turns.roughingTurns[specifiedDiameter];
-        turnsFinishing =
-          dataVnutriShlif.machineModels[this.model].turns.finishingTurns[specifiedDiameter];
-        longfeedRoughing = dataVnutriShlif.machineModels[this.model].longfeed.roughingFeed;
-        longfeedFinishing = dataVnutriShlif.machineModels[this.model].longfeed.finishingFeed;
-        cuttingDepthRoughing =
-          dataVnutriShlif.machineModels[this.model].cuttingDepth.roughingDepth[specifiedDiameter];
-        cuttingDepthFinishing =
-          dataVnutriShlif.machineModels[this.model].cuttingDepth.finishingDepth[specifiedDiameter];
-        roughingTrasitionTime =
-          dataVnutriShlif.machineModels[this.model].trasitionTime[lengthSurface].roughingTrasition[
-            specifiedDiameter
-          ];
-        finishingTrasitionTime =
-          dataVnutriShlif.machineModels[this.model].trasitionTime[lengthSurface].finishingTrasition[
-            specifiedDiameter
-          ];
-        finishingAllow =
-          dataVnutriShlif.machineModels[this.model].finishingAllowance[specifiedDiameter];
-        factorPerebegaKruga = dataVnutriShlif.machineModels[this.model].perebegFactor;
+        Object.keys(dataperehod).includes("allowance") &&
+        Object.keys(dataperehod).includes("diameter") &&
+        Object.keys(dataperehod).includes("length") &&
+        Object.keys(dataperehod).includes("accuracy") &&
+        Object.keys(dataperehod).includes("roghness") &&
+        dataperehod.allowance &&
+        dataperehod.diameter &&
+        dataperehod.length &&
+        dataperehod.accuracy &&
+        dataperehod.roghness
+      ) {
+        let allowance = Number(dataperehod.allowance);
+        let diameter = Number(dataperehod.diameter);
+        let length = Number(dataperehod.length);
+        let accuracy = this.perehods[indper][1][indstr].accuracy;
+        let roughness = this.perehods[indper][1][indstr].roghness;
 
-        // factors---------------------------------------------------
+        let MainTime = 0;
+        let turnsRoughing = 0; // оброты черновые
+        let turnsFinishing = 0; // обороты чистовые
+        let longfeedRoughing = 0; // продольная подача черн
+        let longfeedFinishing = 0; // продольная подача чист
+        let cuttingDepthRoughing = 0; // глубина резания черновая
+        let cuttingDepthFinishing = 0; // глубина резания чистовая
+        let roughingTrasitionTime = 0; // вспом время чернового перехода
+        let finishingTrasitionTime = 0; // вспом время чистового перехода
+        let finishingAllow = 0; // чистовой припуск
+        let factorPerebegaKruga = 0; // коэффиц. перебега
+        let lengthSurface = length <= 100 ? 100 : length <= 200 ? 200 : 400; // длина обработки
+        let range = [];
+        if (this.model == "3M227") {
+          range = [30, 50, 70, 100, 125, 150, 175, 200];
+        } else if (this.model == "3K229A") {
+          range = [70, 100, 125, 150, 175, 200, 250, 300, 350, 400];
+        }
+        let specifiedDiameter = range.find((item) => item >= diameter);
 
-        let hardnessFactor = dataVnutriShlif.correctionFactors.hardnessFactor[this.parthardness];
+        if (
+          allowance === 0 ||
+          diameter === 0 ||
+          length === 0 ||
+          this.numberparts === "0" ||
+          this.partweight === "0"
+        )
+          return 0;
+        else {
+          turnsRoughing =
+            dataVnutriShlif.machineModels[this.model].turns.roughingTurns[specifiedDiameter];
+          turnsFinishing =
+            dataVnutriShlif.machineModels[this.model].turns.finishingTurns[specifiedDiameter];
+          longfeedRoughing = dataVnutriShlif.machineModels[this.model].longfeed.roughingFeed;
+          longfeedFinishing = dataVnutriShlif.machineModels[this.model].longfeed.finishingFeed;
+          cuttingDepthRoughing =
+            dataVnutriShlif.machineModels[this.model].cuttingDepth.roughingDepth[specifiedDiameter];
+          cuttingDepthFinishing =
+            dataVnutriShlif.machineModels[this.model].cuttingDepth.finishingDepth[
+              specifiedDiameter
+            ];
+          roughingTrasitionTime =
+            dataVnutriShlif.machineModels[this.model].trasitionTime[lengthSurface]
+              .roughingTrasition[specifiedDiameter];
+          finishingTrasitionTime =
+            dataVnutriShlif.machineModels[this.model].trasitionTime[lengthSurface]
+              .finishingTrasition[specifiedDiameter];
+          finishingAllow =
+            dataVnutriShlif.machineModels[this.model].finishingAllowance[specifiedDiameter];
+          factorPerebegaKruga = dataVnutriShlif.machineModels[this.model].perebegFactor;
 
-        let stiffnessFactor = dataVnutriShlif.correctionFactors.stiffnessFactor[this.partstiffness];
+          // factors---------------------------------------------------
 
-        let wallthicknessFactor =
-          dataVnutriShlif.correctionFactors.wallthicknessFactor[this.partwallthickness];
+          let hardnessFactor = dataVnutriShlif.correctionFactors.hardnessFactor[this.parthardness];
 
-        let surfaceshapeFactor =
-          dataVnutriShlif.correctionFactors.surfaceshapeFactor[this.partsurfaceshape];
+          let stiffnessFactor =
+            dataVnutriShlif.correctionFactors.stiffnessFactor[this.partstiffness];
 
-        let compositeFactor =
-          dataVnutriShlif.correctionFactors.compositeFactor[accuracy][roughness][this.partmaterial];
+          let wallthicknessFactor =
+            dataVnutriShlif.correctionFactors.wallthicknessFactor[this.partwallthickness];
 
-        // base time calculation--------------------------------------
+          let surfaceshapeFactor =
+            dataVnutriShlif.correctionFactors.surfaceshapeFactor[this.partsurfaceshape];
 
-        MainTime =
-          (((length + length * factorPerebegaKruga) * 2 * (allowance - finishingAllow)) /
-            (turnsRoughing * longfeedRoughing * cuttingDepthRoughing) +
-            ((length + length * factorPerebegaKruga) * 2 * finishingAllow) /
-              (turnsFinishing * longfeedFinishing * cuttingDepthFinishing) +
-            roughingTrasitionTime +
-            finishingTrasitionTime) *
-          hardnessFactor *
-          stiffnessFactor *
-          wallthicknessFactor *
-          surfaceshapeFactor *
-          compositeFactor *
-          this.numberparts;
+          let compositeFactor =
+            dataVnutriShlif.correctionFactors.compositeFactor[accuracy][roughness][
+              this.partmaterial
+            ];
+
+          let machintime =
+            Math.ceil(
+              (((length + length * factorPerebegaKruga) * 2 * (allowance - finishingAllow)) /
+                (turnsRoughing * longfeedRoughing * cuttingDepthRoughing) +
+                ((length + length * factorPerebegaKruga) * 2 * finishingAllow) /
+                  (turnsFinishing * longfeedFinishing * cuttingDepthFinishing)) *
+                hardnessFactor *
+                stiffnessFactor *
+                wallthicknessFactor *
+                surfaceshapeFactor *
+                compositeFactor *
+                this.numberparts *
+                10
+            ) / 10;
+
+          let trasitiontime = Math.ceil((roughingTrasitionTime + finishingTrasitionTime) * 10) / 10;
+
+          MainTime = machintime + trasitiontime;
+
+          let strrezults = {
+            longfeedRoughing: longfeedRoughing,
+            longfeedFinishing: longfeedFinishing,
+            turnsRoughing: turnsRoughing,
+            turnsFinishing: turnsFinishing,
+            cuttingDepthRoughing: cuttingDepthRoughing,
+            cuttingDepthFinishing: cuttingDepthFinishing,
+            finishingAllow: finishingAllow,
+            trasitiontime: trasitiontime,
+            machintime: machintime,
+            Otime: MainTime,
+          };
+          return strrezults;
+        }
       }
-      return MainTime.toFixed(1);
     }
   },
 };
@@ -728,7 +755,28 @@ export default function Vnutrishlif_reducer(state = vnutrishlif_defaultstate, ac
             return item.map((el, i) => {
               if (i == 1) {
                 return el.map((it, ind) => {
-                  return { ...it, ...{ Otime: state.get_Vnutrishlif_MainTime(index, ind) } };
+                  let calculationdata = state.get_Vnutrishlif_MainTime(index, ind);
+                  if (calculationdata) {
+                    return {
+                      ...it,
+                      ...calculationdata,
+                    };
+                  } else
+                    return {
+                      ...it,
+                      ...{
+                        longfeedRoughing: "",
+                        longfeedFinishing: "",
+                        turnsRoughing: "",
+                        turnsFinishing: "",
+                        cuttingDepthRoughing: "",
+                        cuttingDepthFinishing: "",
+                        finishingAllow: "",
+                        trasitiontime: "",
+                        machintime: "",
+                        Otime: "",
+                      },
+                    };
                 });
               } else return el;
             });
@@ -736,6 +784,7 @@ export default function Vnutrishlif_reducer(state = vnutrishlif_defaultstate, ac
         }),
       };
     }
+
     default:
       return state;
   }
