@@ -607,7 +607,7 @@ let krugloshlif_defaultstate = {
           dataKrugloshlif.installRemovalTime[this.perehods[indper][1].installoption][
             this.partlength
           ][specifiedWeight];
-        return installTime;
+        return Math.round(installTime * 10) / 10;
       }
     }
   },

@@ -537,7 +537,7 @@ let ploskoshlif_defaultstate = {
                   if (specifiedWeight == m) {
                     installTime =
                       dataPloskoShlif.installRemovalTime[key][acc][m] * this.numberparts;
-                    return installTime.toFixed(1);
+                    return Math.round(installTime * 10) / 10;
                   }
                 }
               }

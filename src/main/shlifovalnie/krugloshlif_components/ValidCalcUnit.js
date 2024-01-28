@@ -4,72 +4,43 @@ import { useSelector } from "react-redux";
 function ValidCalcUnit() {
   let statenow = useSelector((dat) => dat.krugloshlif);
 
-  function calcVtime() {
-    return statenow.perehods.reduce((acc, item) => {
-      if (item[0] == "Вспомагательный переход" && item[1]) {
-        if (item[1].hasOwnProperty("Vtime")) {
-          if (isNaN(item[1].Vtime) || item[1].Vtime === "") return (acc = item[1].Vtime);
-          else return Number(acc) + Number(item[1].Vtime);
-        } else return acc;
-      } else return acc;
-    }, "");
+  function calcAllTime() {
+    let allVtime = 0;
+    let allOtime = 0;
+    let numperV = 0;
+    let numperO = 0;
+    if (statenow.perehods.length > 1) {
+      allVtime = statenow.perehods.reduce((acc, item) => {
+        if (item[0] === "Вспомагательный переход" && item.length === 2) {
+          if (item[1].hasOwnProperty("Vtime") && (item[1].Vtime !== "ошибки" || !item[1].Vtime)) {
+            numperV++;
+            return acc + item[1].Vtime;
+          }
+        }
+        return acc;
+      }, 0);
+      allOtime = statenow.perehods.reduce((acc, item) => {
+        if (item[0] == "Основной переход" && item.length === 2) {
+          if (
+            item[1].every(
+              (obj) => obj.hasOwnProperty("Otime") && obj.Otime && obj.Otime !== "ошибки"
+            )
+          ) {
+            numperO++;
+            return acc + item[1].reduce((prev, current) => prev + current.Otime, 0);
+          }
+        }
+        return acc;
+      }, 0);
+    }
+    return { allTime: Math.round((allVtime + allOtime) * 10) / 10, numper: numperV + numperO };
   }
-
-  function calcOtime() {
-    return statenow.perehods.reduce((acc, item) => {
-      if (item[0] == "Основной переход" && item[1] && item[1][0]) {
-        if (item[1][0].hasOwnProperty("Otime")) {
-          let sumstr = item[1].reduce((prev, current) => {
-            if (current.hasOwnProperty("Otime")) {
-              if (current.Otime === "ошибки" || current.Otime === "") return (prev = current.Otime);
-              else return Number(prev) + Number(current.Otime);
-            } else return prev;
-          }, "");
-          if (sumstr === "ошибки" || sumstr === "") return (acc = sumstr);
-          else return Number(acc) + Number(sumstr.toFixed(1));
-        } else return acc;
-      } else return acc;
-    }, "");
-  }
-
-  console.log("otime - ", calcOtime());
-  console.log("vtime - ", calcVtime());
 
   return (
     <>
-      <div className={`truerezult ${calcOtime() === "ошибки" ? "d-none" : ""}`}>
-        <h5
-          className={
-            statenow.perehods.filter((item) => item[0] === "Вспомагательный переход").length > 0
-              ? ""
-              : "d-none"
-          }
-        >
-          Вспомагательное время операции:
-          {calcVtime() === "" || calcVtime() === "ошибки"
-            ? ""
-            : " Тв = " + calcVtime().toFixed(2) + " мин"}
-        </h5>
-        <h5
-          className={
-            statenow.perehods.filter((item) => item[0] === "Основной переход").length > 0
-              ? ""
-              : "d-none"
-          }
-        >
-          Основное время операции:
-          {calcOtime() === "" || calcOtime() === "ошибки"
-            ? ""
-            : " То = " + calcOtime().toFixed(2) + " мин"}
-        </h5>
-      </div>
-
-      <div
-        className={`falserezult ${
-          statenow.perehods.length != 0 ? (calcOtime() === "ошибки" ? "" : "d-none") : "d-none"
-        }`}
-      >
-        <h5 className="text-danger">Расчет невозможен, исправьте ошибки!</h5>
+      <div className={`infoblock out ${calcAllTime().numper > 1 ? "" : "d-none"}`}>
+        <h3 className="rezultoperation">Пронормировано переходов - {calcAllTime().numper}</h3>
+        <h3 className="rezultoperation">Норма времени на операцию - {calcAllTime().allTime} мин</h3>
       </div>
     </>
   );

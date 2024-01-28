@@ -454,7 +454,7 @@ let vnutrishlif_defaultstate = {
                   if (specifiedWeight == m) {
                     installTime =
                       dataVnutriShlif.installRemovalTime[key][acc][m] * this.numberparts;
-                    return installTime.toFixed(1);
+                    return Math.round(installTime * 10) / 10;
                   }
                 }
               }
@@ -464,6 +464,7 @@ let vnutrishlif_defaultstate = {
       }
     }
   },
+
   get_Vnutrishlif_MainTime(indper, indstr) {
     if (this.partweight > this.maxWeight) {
       return { Otime: "ошибки" };

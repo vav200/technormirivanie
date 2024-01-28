@@ -20,7 +20,7 @@ function Tokarnie() {
       <MachineSpecification />
       <PartSpecifications />
       <Perehodi />
-      {/* <ValidCalcUnit /> */}
+      <ValidCalcUnit />
     </section>
   );
 }
